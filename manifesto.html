@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>We Are Not Self-Made — a manifesto by InclusiFund</title>
+  <meta name="description" content="We build ecosystems, not empires. A manifesto for the people who know better." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="calm-kit/calm-kit.css" />
+  <link rel="stylesheet" href="manifesto.css" />
+
+  <!-- Calm Kit mounts before page scripts so state is applied before paint -->
+  <script src="calm-kit/calm-kit.js"></script>
+</head>
+<body>
+  <a href="#content" class="skip-link">Skip to content</a>
+
+  <canvas id="circuit" aria-hidden="true"></canvas>
+
+  <main id="content">
+
+    <header class="hero" data-section="hero" data-intensity="0.25">
+      <p class="eyebrow">A manifesto by InclusiFund</p>
+
+      <div class="particle-stage" id="particle-stage">
+        <h1 class="sr-only">We are not self-made. We are with everyone. The unit is humankind.</h1>
+        <canvas class="particle-canvas" aria-hidden="true"></canvas>
+        <div class="particle-fallback" aria-hidden="true">
+          <p class="pf-strike">Self-Made.</p>
+          <p class="pf-truth">With Everyone.</p>
+        </div>
+      </div>
+
+      <p class="lede">The unit is humankind.</p>
+
+      <button class="hero-replay" type="button" aria-label="Replay animation">
+        <span class="hero-replay-dot" aria-hidden="true"></span>
+        <span>Replay</span>
+      </button>
+
+      <p class="scroll-hint" aria-hidden="true">Scroll ↓</p>
+    </header>
+
+    <section class="movement" data-section="lie" data-intensity="0.12">
+      <p class="numeral">I</p>
+      <h2 class="title">The Lie</h2>
+      <div class="prose">
+        <p class="line">They stood on other people's shoulders and called it climbing.</p>
+        <p class="line">They drank from wells they didn't dig and called it hustle.</p>
+        <p class="line">They were born on third base and wrote books about hitting triples.</p>
+        <p class="line emphasis">The individualist frame is the anaesthetic of the privileged.</p>
+        <p class="line">It numbs them to the hands that raised them,</p>
+        <p class="line">the roads that carried them,</p>
+        <p class="line">the strangers whose labour built the chair they sit in</p>
+        <p class="line">as they tell you that <em>you</em> are the author of your own outcome.</p>
+      </div>
+    </section>
+
+    <section class="movement" data-section="truth" data-intensity="0.35">
+      <p class="numeral">II</p>
+      <h2 class="title">The Truth</h2>
+      <div class="prose">
+        <p class="line">No one raised themselves.</p>
+        <p class="line">No one taught themselves language.</p>
+        <p class="line">No one wrote their own safety net,</p>
+        <p class="line">their own postcode, their own parents.</p>
+        <p class="line">Every <em>"I did it alone"</em> is a forgetting.</p>
+        <p class="line">Every <em>"pull yourself up"</em> is a boot that was handed to you.</p>
+        <p class="line emphasis">The self-made myth is the most expensive lie ever sold to poor people —</p>
+        <p class="line">because it convinces them their poverty is their fault,</p>
+        <p class="line">and convinces the rich their wealth is their virtue.</p>
+      </div>
+    </section>
+
+    <section class="movement" data-section="unit" data-intensity="0.62">
+      <p class="numeral">III</p>
+      <h2 class="title">The Unit</h2>
+      <div class="prose">
+        <p class="line">The unit is not the self.</p>
+        <p class="line emphasis">The unit is humankind.</p>
+        <p class="line">We are a species that thinks in networks,</p>
+        <p class="line">heals in circles,</p>
+        <p class="line">and builds in relay.</p>
+        <p class="line">The lone genius is a story told by people who owe everyone.</p>
+        <p class="line">A human alone is a prototype.</p>
+        <p class="line">A human in community is a circuit.</p>
+        <p class="line">A community in motion is a civilisation.</p>
+      </div>
+    </section>
+
+    <section class="movement" data-section="build" data-intensity="0.95">
+      <p class="numeral">IV</p>
+      <h2 class="title">What We Build</h2>
+      <div class="prose">
+        <p class="line">We build ecosystems, not empires.</p>
+        <p class="line">We build circuits, not ladders.</p>
+        <p class="line">We build floors, not ceilings.</p>
+        <p class="line">When one of us rises, the lift must hold others.</p>
+        <p class="line">When one of us eats, the plate must travel.</p>
+        <p class="line">When one of us wins, the win must compound for the ones still starting.</p>
+        <p class="line emphasis">This is not charity. This is physics.</p>
+        <p class="line">Nothing in nature grows alone.</p>
+        <p class="line">Forests share roots. Cells share signals. Fire shares heat.</p>
+        <p class="line">Isolation is not strength — it is the shape of something about to die.</p>
+      </div>
+    </section>
+
+    <section class="movement invitation" data-section="invite" data-intensity="0.75">
+      <p class="numeral">V</p>
+      <h2 class="title">The Invitation</h2>
+      <div class="prose">
+        <p class="line">If you came here to climb alone —</p>
+        <p class="line">this isn't your room.</p>
+        <p class="line">If you came here to climb <em>with</em> —</p>
+        <p class="line emphasis">welcome home.</p>
+        <p class="line">We are not here to make a few of us rich.</p>
+        <p class="line">We are here to make all of us possible.</p>
+      </div>
+    </section>
+
+    <footer class="outro" data-section="outro" data-intensity="0.85">
+      <p class="sig-line">We are</p>
+      <p class="brand">InclusiFund.</p>
+      <p class="tagline">We rank up together.</p>
+      <p class="sign-off">Signed by every hand that helped build what you're standing on.</p>
+      <nav class="outro-nav">
+        <a href="https://inclusifund.co.uk" class="cta">Join the ecosystem →</a>
+        <a href="receipts.html" class="cta cta-ghost">See the receipts →</a>
+      </nav>
+    </footer>
+
+  </main>
+
+  <script src="manifesto.js" defer></script>
+</body>
+</html>

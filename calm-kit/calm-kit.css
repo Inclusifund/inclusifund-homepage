@@ -1,0 +1,342 @@
+/* ============================================================
+   Calm Kit — persistent accessibility panel for InclusiFund
+   Designed once here. Lifted to /meta/shared/calm-kit/ later so
+   every InclusiFund surface (manifesto, tools, AIQ, community)
+   inherits the same kit and persisted user preferences.
+   ============================================================ */
+
+/* ---------- Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/open-dyslexic');
+
+/* ---------- CSS variables controlled by the kit ---------- */
+:root {
+  --ck-text-scale: 1;
+  --ck-line-height-mul: 1;
+  --ck-letter-spacing-add: 0em;
+
+  --ck-motion-scale: 1;     /* 0 = off, 0.35 = low, 1 = full */
+  --ck-motion-duration-mul: 1;
+  --ck-canvas-display: block;
+
+  --ck-accent: var(--terracotta, #C45A3D);
+  --ck-ink: var(--ink, #1F2420);
+  --ck-bg: var(--cream, #F5EFE6);
+
+  --ck-focus-ring: 2px solid currentColor;
+  --ck-focus-offset: 2px;
+}
+
+/* Apply scaling globally */
+html {
+  font-size: calc(100% * var(--ck-text-scale));
+}
+body {
+  line-height: calc(1.5 * var(--ck-line-height-mul));
+  letter-spacing: calc(var(--ck-letter-spacing-add));
+}
+
+/* ---------- Font swaps ---------- */
+html.ck-font-hyperlegible {
+  --type-serif: "Atkinson Hyperlegible", Georgia, serif;
+  --type-sans: "Atkinson Hyperlegible", system-ui, sans-serif;
+}
+html.ck-font-dyslexic {
+  --type-serif: "Open Dyslexic", "OpenDyslexic", Georgia, serif;
+  --type-sans: "Open Dyslexic", "OpenDyslexic", system-ui, sans-serif;
+  --ck-letter-spacing-add: 0.01em;
+  --ck-line-height-mul: 1.15;
+}
+
+/* ---------- Motion levels ---------- */
+html.ck-motion-off,
+html.ck-motion-off body {
+  --ck-motion-scale: 0;
+  --ck-motion-duration-mul: 0.001;
+  --ck-canvas-display: none;
+}
+html.ck-motion-off *,
+html.ck-motion-off *::before,
+html.ck-motion-off *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+html.ck-motion-off #circuit,
+html.ck-motion-off .particle-canvas {
+  display: none !important;
+}
+html.ck-motion-off .particle-fallback {
+  display: block !important;
+}
+
+html.ck-motion-low {
+  --ck-motion-scale: 0.35;
+  --ck-motion-duration-mul: 1.8;
+}
+html.ck-motion-low *,
+html.ck-motion-low *::before,
+html.ck-motion-low *::after {
+  animation-duration: 3s !important;
+  transition-duration: calc(var(--ck-motion-duration-mul) * 0.9s) !important;
+}
+
+/* ---------- Focus visibility ---------- */
+html.ck-focus-high *:focus-visible {
+  outline: 3px solid var(--terracotta, #C45A3D) !important;
+  outline-offset: 3px !important;
+  border-radius: 2px;
+}
+
+/* ---------- Contrast modes ---------- */
+html.ck-contrast-high {
+  --cream: #FFFFFF;
+  --cream-deep: #DFF0F4;
+  --ink: #04191F;
+  --ink-soft: #153543;
+  --terracotta: #08565A;
+  --forest: #0A8E85;
+  --forest-deep: #031A21;
+}
+/* Warm night — low-blue variant for users who find teal too cool at night */
+html.ck-contrast-low-blue {
+  --cream: #F6EFE0;
+  --cream-deep: #E9DEC6;
+  --ink: #2D241A;
+  --ink-soft: #4A3E2E;
+  --terracotta: #B8522F;
+  --forest: #7C8F3E;
+  --forest-deep: #2E3519;
+  --gold: #D9A360;
+  --gold-warm: #E8C48A;
+}
+
+/* ============================================================
+   Panel structure
+   ============================================================ */
+#calm-kit {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  font-family: var(--type-sans, system-ui, sans-serif);
+  pointer-events: none;
+}
+#calm-kit * { pointer-events: auto; }
+
+.ck-tab {
+  align-self: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  padding: 1rem 0.5rem;
+  background: rgba(245, 239, 230, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(31, 36, 32, 0.12);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  font-family: var(--type-sans, system-ui, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft, #3A413C);
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, padding-left 0.25s ease;
+  margin-right: -1px;
+}
+.ck-tab:hover {
+  background: rgba(245, 239, 230, 1);
+  color: var(--terracotta, #C45A3D);
+  padding-left: 0.75rem;
+}
+.ck-tab-icon {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--forest, #2F5D50);
+  box-shadow: 0 0 8px rgba(47, 93, 80, 0.6);
+  margin-bottom: 0.5rem;
+  writing-mode: horizontal-tb;
+}
+.ck-tab-label {
+  writing-mode: vertical-rl;
+}
+
+.ck-panel {
+  width: 340px;
+  max-width: 90vw;
+  height: 100%;
+  background: var(--cream, #F5EFE6);
+  border-left: 1px solid rgba(31, 36, 32, 0.1);
+  box-shadow: -20px 0 40px rgba(31, 36, 32, 0.08);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+#calm-kit.is-open .ck-panel {
+  transform: translateX(0);
+}
+#calm-kit.is-open .ck-tab {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ck-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(31, 36, 32, 0.08);
+}
+.ck-head h2 {
+  font-family: var(--type-serif, Georgia, serif);
+  font-weight: 400;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  color: var(--ink, #1F2420);
+  margin: 0;
+}
+.ck-close {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--ink-soft, #3A413C);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.ck-close:hover {
+  background: rgba(31, 36, 32, 0.06);
+  color: var(--terracotta, #C45A3D);
+}
+
+.ck-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.ck-body fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.ck-body legend {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft, #3A413C);
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+
+.ck-seg {
+  display: flex;
+  gap: 0.25rem;
+  background: rgba(31, 36, 32, 0.05);
+  padding: 0.25rem;
+  border-radius: 8px;
+}
+.ck-seg button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 0.55rem 0.5rem;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-soft, #3A413C);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.ck-seg button:hover {
+  color: var(--ink, #1F2420);
+}
+.ck-seg button.is-active {
+  background: var(--cream, #F5EFE6);
+  color: var(--terracotta, #C45A3D);
+  box-shadow: 0 1px 3px rgba(31, 36, 32, 0.08);
+}
+
+.ck-preview {
+  background: rgba(31, 36, 32, 0.04);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--terracotta, #C45A3D);
+}
+.ck-preview-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft, #3A413C);
+  margin: 0 0 0.4rem;
+}
+.ck-preview-text {
+  font-family: var(--type-serif, Georgia, serif);
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--ink, #1F2420);
+  margin: 0;
+  font-style: italic;
+}
+
+.ck-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(31, 36, 32, 0.08);
+  font-size: 0.78rem;
+  color: var(--ink-soft, #3A413C);
+}
+.ck-reset {
+  background: transparent;
+  border: 1px solid rgba(31, 36, 32, 0.18);
+  color: var(--ink, #1F2420);
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: inherit;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.ck-reset:hover {
+  background: var(--ink, #1F2420);
+  color: var(--cream, #F5EFE6);
+  border-color: var(--ink, #1F2420);
+}
+.ck-saved {
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .ck-tab {
+    padding: 0.85rem 0.4rem;
+  }
+  .ck-panel {
+    width: 100vw;
+    max-width: 100vw;
+  }
+  .ck-body {
+    padding: 1rem 1.25rem;
+    gap: 0.9rem;
+  }
+}

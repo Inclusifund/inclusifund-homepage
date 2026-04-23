@@ -1,0 +1,464 @@
+/* ============================================================
+   We Are Not Self-Made — Manifesto Page
+   Palette: warm, not dark. Radical energy. Neurodiverse-friendly.
+   Honours Calm Kit variables for motion/text/contrast/font.
+   ============================================================ */
+
+:root {
+  /* InclusiFund brand palette — teal / white / light blues */
+  --cream: #F7FBFD;          /* base paper (pale blue-white) */
+  --cream-deep: #E6F4F8;     /* pale sky wash */
+  --sand: #CDE9F0;           /* light blue */
+  --ink: #0A2A35;            /* deep teal-navy ink */
+  --ink-soft: #355A68;       /* mid teal-grey */
+  --terracotta: #0D9488;     /* brand teal — primary accent (AIQ canonical) */
+  --terracotta-deep: #0B7A6F; /* deeper brand teal */
+  --forest: #14B8A6;         /* bright brand teal — networks/nodes */
+  --forest-deep: #082F38;    /* very dark teal-ink */
+  --gold: #5DD2D4;           /* bright aqua pop — glow/highlight */
+  --gold-warm: #B2E8EA;      /* very pale aqua */
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --type-serif: "Fraunces", "Canela", Georgia, serif;
+  --type-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--cream);
+}
+
+body {
+  font-family: var(--type-sans);
+  color: var(--ink);
+  background: var(--cream);
+  overflow-x: hidden;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  min-height: 100vh;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(93, 210, 212, 0.10), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(20, 184, 166, 0.08), transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ============================================================
+   Circuit background canvas
+   ============================================================ */
+#circuit {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+main { position: relative; z-index: 2; }
+
+.hero,
+.movement,
+.outro {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(3rem, 8vh, 6rem) clamp(1.5rem, 6vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   Hero + P2 particle stage
+   ============================================================ */
+.hero {
+  justify-content: center;
+  text-align: left;
+  position: relative;
+}
+
+.eyebrow {
+  font-family: var(--type-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--forest);
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1s var(--ease) 0.2s, transform 1s var(--ease) 0.2s;
+}
+.hero.is-visible .eyebrow { opacity: 1; transform: translateY(0); }
+
+.particle-stage {
+  position: relative;
+  width: 100%;
+  min-height: clamp(220px, 45vh, 420px);
+  margin-bottom: 2.2rem;
+}
+
+.particle-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+/* Static fallback — shown when motion is off */
+.particle-fallback {
+  display: none;
+  position: relative;
+}
+.particle-fallback .pf-strike,
+.particle-fallback .pf-truth {
+  font-family: var(--type-serif);
+  font-weight: 900;
+  font-size: clamp(3.2rem, 11vw, 8.5rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+.particle-fallback .pf-strike {
+  text-decoration: line-through;
+  text-decoration-color: var(--terracotta);
+  text-decoration-thickness: 6px;
+  margin-bottom: 0.2em;
+  opacity: 0.55;
+}
+.particle-fallback .pf-truth {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--terracotta);
+}
+
+.lede {
+  font-family: var(--type-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--ink-soft);
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1s var(--ease) 1.2s, transform 1s var(--ease) 1.2s;
+}
+.hero.is-visible .lede { opacity: 1; transform: translateY(0); }
+
+.hero-replay {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1rem;
+  background: rgba(10, 42, 53, 0.04);
+  border: 1px solid rgba(10, 42, 53, 0.14);
+  color: var(--ink-soft);
+  font-family: var(--type-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  border-radius: 999px;
+  cursor: pointer;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.9s var(--ease) 1.6s,
+              transform 0.9s var(--ease) 1.6s,
+              background 0.25s ease,
+              color 0.25s ease,
+              border-color 0.25s ease;
+}
+.hero.is-visible .hero-replay { opacity: 1; transform: translateY(0); }
+.hero-replay:hover {
+  background: var(--terracotta);
+  color: var(--cream);
+  border-color: var(--terracotta);
+}
+.hero-replay-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  transition: background 0.25s ease;
+}
+.hero-replay:hover .hero-replay-dot { background: var(--cream); }
+
+html.ck-motion-off .hero-replay { display: none; }
+
+.scroll-hint {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0;
+  transition: opacity 1s var(--ease) 1.8s;
+  animation: drift 3s ease-in-out infinite;
+  animation-delay: 2.5s;
+}
+.hero.is-visible .scroll-hint { opacity: 0.55; }
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ============================================================
+   Movement sections (I–V)
+   ============================================================ */
+.numeral {
+  font-family: var(--type-serif);
+  font-weight: 300;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  letter-spacing: 0.3em;
+  color: var(--terracotta);
+  margin-bottom: 0.75rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.is-visible .numeral { opacity: 1; transform: translateY(0); }
+
+.title {
+  font-family: var(--type-serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s var(--ease) 0.15s, transform 1s var(--ease) 0.15s;
+}
+.is-visible .title { opacity: 1; transform: translateY(0); }
+
+.prose { max-width: 38ch; }
+
+.prose .line {
+  font-family: var(--type-serif);
+  font-weight: 300;
+  font-size: clamp(1.3rem, 2.4vw, 2rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 1.1rem;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+}
+
+.prose .line em {
+  font-style: italic;
+  color: var(--terracotta);
+}
+
+.prose .line.emphasis {
+  font-weight: 600;
+  color: var(--forest-deep);
+  font-size: clamp(1.5rem, 2.8vw, 2.3rem);
+  padding: 0.4rem 0 0.4rem 1.1rem;
+  margin: 0.6rem 0 1.4rem;
+  border-left: 3px solid var(--terracotta);
+}
+
+.is-visible .prose .line:nth-child(1) { transition-delay: 0.25s; }
+.is-visible .prose .line:nth-child(2) { transition-delay: 0.40s; }
+.is-visible .prose .line:nth-child(3) { transition-delay: 0.55s; }
+.is-visible .prose .line:nth-child(4) { transition-delay: 0.70s; }
+.is-visible .prose .line:nth-child(5) { transition-delay: 0.85s; }
+.is-visible .prose .line:nth-child(6) { transition-delay: 1.00s; }
+.is-visible .prose .line:nth-child(7) { transition-delay: 1.15s; }
+.is-visible .prose .line:nth-child(8) { transition-delay: 1.30s; }
+.is-visible .prose .line:nth-child(9) { transition-delay: 1.45s; }
+.is-visible .prose .line:nth-child(10) { transition-delay: 1.60s; }
+
+.is-visible .prose .line { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   Invitation & outro
+   ============================================================ */
+.invitation .prose { max-width: 40ch; }
+
+.outro {
+  text-align: left;
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+}
+
+.sig-line {
+  font-family: var(--type-serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.9s var(--ease) 0.1s, transform 0.9s var(--ease) 0.1s;
+}
+
+.brand {
+  font-family: var(--type-serif);
+  font-weight: 900;
+  font-size: clamp(3.2rem, 10vw, 7.5rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--forest-deep);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1.1s var(--ease) 0.3s, transform 1.1s var(--ease) 0.3s;
+}
+
+.tagline {
+  font-family: var(--type-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  color: var(--terracotta);
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 1s var(--ease) 0.7s, transform 1s var(--ease) 0.7s;
+}
+
+.sign-off {
+  font-family: var(--type-sans);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  max-width: 38ch;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transition: opacity 1s var(--ease) 1.1s;
+}
+
+.outro-nav {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1s var(--ease) 1.4s, transform 1s var(--ease) 1.4s;
+}
+
+.outro.is-visible .sig-line,
+.outro.is-visible .brand,
+.outro.is-visible .tagline,
+.outro.is-visible .outro-nav {
+  opacity: 1;
+  transform: translateY(0);
+}
+.outro.is-visible .sign-off { opacity: 1; }
+
+.outro-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.75rem;
+  font-family: var(--type-sans);
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  color: var(--cream);
+  background: var(--ink);
+  text-decoration: none;
+  border-radius: 999px;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease),
+              transform 0.3s var(--ease), border-color 0.4s var(--ease);
+}
+.cta:hover {
+  background: var(--terracotta);
+  transform: translateY(-2px);
+}
+.cta.cta-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid rgba(10, 42, 53, 0.2);
+}
+.cta.cta-ghost:hover {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 640px) {
+  .hero,
+  .movement,
+  .outro {
+    padding: 4rem 1.25rem;
+  }
+  .prose .line.emphasis {
+    padding-left: 0.85rem;
+  }
+  .particle-stage {
+    min-height: clamp(180px, 38vh, 280px);
+  }
+}
+
+/* ============================================================
+   OS-level reduced motion (secondary safeguard to calm kit)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero.is-visible .eyebrow,
+  .hero.is-visible .lede,
+  .hero.is-visible .hero-replay,
+  .is-visible .prose .line,
+  .is-visible .title,
+  .is-visible .numeral {
+    opacity: 1;
+    transform: none;
+  }
+}
