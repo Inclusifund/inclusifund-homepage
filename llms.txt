@@ -1,0 +1,24 @@
+# InclusiFund
+
+> Grants, tools, and a community for people building CICs, charities, and community-run businesses in the UK. Built neurodiverse-first. Operated by InclusiGroup Ltd.
+
+InclusiFund is a UK funding ecosystem focused on grassroots community organisations — specifically CICs (Community Interest Companies), small charities, and community-run businesses that sit below the £1M income threshold where most institutional funding stops looking. We pair grant-matching and application-writing services with building tools (websites, director dashboards, content systems) for the same operators. Our worldview is set out in detail at /manifesto. Our impact ledger is at /receipts.
+
+## Core pages
+
+- [Homepage](/): Who InclusiFund is, what we offer, how to engage
+- [Manifesto](/manifesto.md): Why the self-made myth is wrong and what we build instead
+- [Receipts](/receipts.md): Seven numbers mapping one pound to the UK's £4.2bn small-charity funding gap
+
+## Related surfaces
+
+- studio.inclusifund.co.uk — our portfolio + studio landing pages (US/EG regions)
+- aiq.inclusifund.co.uk — AI fluency assessment platform
+- community.inclusifund.co.uk — Ghost-hosted member community
+- tools.inclusifund.co.uk — CIC toolkit (eligibility, compliance, grant-finder)
+
+## About the operator
+
+- InclusiGroup Ltd is the registered company; InclusiFund is the brand.
+- Founder: Reece Dunn. Contact: reece.dunn@inclusifund.co.uk.
+- AntiGravity Projects is the build arm (web agency / digital studio) that delivers the technology side.
