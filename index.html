@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" data-archetype="AC" data-motion="full" data-font="default" data-focus="visible" data-contrast="default"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InclusiFund — Not Self-Made. With Everyone.</title>
+<meta name="description" content="InclusiFund: grants, tools, and a community for people building CICs, charities, and community-run businesses in the UK. Built neurodiverse-first.">
+
+<meta property="og:title" content="InclusiFund — Not Self-Made. With Everyone.">
+<meta property="og:description" content="Funding, tools, and a network for CICs, charities, and community-run businesses across the UK.">
+<meta property="og:image" content="https://inclusifund.co.uk/img/og-card.png">
+<meta property="og:url" content="https://inclusifund.co.uk">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="InclusiFund — Not Self-Made. With Everyone.">
+<meta name="twitter:description" content="Funding, tools, and a network for CICs, charities, and community-run businesses across the UK.">
+<meta name="twitter:image" content="https://inclusifund.co.uk/img/og-card.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<!-- Top bar: brandmark + skin badge -->
+<header class="topbar" role="banner">
+  <a class="brandmark" href="#" aria-label="InclusiFund — home">
+    <span class="dot" aria-hidden="true"></span>
+    <span>InclusiFund</span>
+  </a>
+  <div class="skin-badge" aria-label="Change how this page reads">
+    <span aria-hidden="true">view</span>
+    <select id="skin-badge-select" aria-label="Switch archetype skin">
+      <option value="AC">A + C blend</option>
+      <option value="A">A · Overwhelmed Founder</option>
+      <option value="B">B · Deep Thinker</option>
+      <option value="C">C · Visual Processor</option>
+      <option value="D">D · Skeptic</option>
+      <option value="E">E · Community Builder</option>
+      <option value="F">F · Funder / Partner</option>
+    </select>
+  </div>
+</header>
+
+<!-- ============================================================
+     S1 — HERO particle break
+============================================================ -->
+<section id="s1-hero" aria-labelledby="hero-h">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-content">
+    <span class="eyebrow hero-eyebrow">funding · tools · your people, all in one place</span>
+    <h1 id="hero-h" class="hero-headline">Funding, tools, and a network for <em>your</em> community business.</h1>
+    <p class="hero-proof"><strong>142 communities</strong> · <strong>£1.2M moved</strong> · <strong>£3M target by October</strong> — built for people doing real work in real places.</p>
+    <div class="hero-ctas" role="list">
+      <a class="cta-tile primary" href="https://aiq.inclusifund.co.uk" role="listitem">
+        <span class="cta-eyebrow">1 · start here</span>
+        <span class="cta-title">AIQ</span>
+        <span class="cta-lede">Score your AI fluency in 3 questions.</span>
+        <span class="cta-meta">≈ 60 seconds</span>
+        <span class="cta-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="cta-tile" href="#s5-funnel" role="listitem">
+        <span class="cta-eyebrow">2 · get the money</span>
+        <span class="cta-title">Grant Custom</span>
+        <span class="cta-lede">Describe your idea. Watch grants match live.</span>
+        <span class="cta-meta">real-time · free</span>
+        <span class="cta-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="cta-tile" href="https://tools.inclusifund.co.uk" role="listitem">
+        <span class="cta-eyebrow">3 · get the kit</span>
+        <span class="cta-title">CIC Toolsuite</span>
+        <span class="cta-lede">Six tools to start, check, and fund your CIC.</span>
+        <span class="cta-meta">free · no card</span>
+        <span class="cta-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+    <div class="hero-footnote">
+      <a href="#s2-skins" class="hero-skin-link">Reading is hard today? <span>We can change how the page looks ↓</span></a>
+      <button class="replay" id="hero-replay" aria-label="Replay the particle animation">↻ replay animation</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S1b — MANIFESTO SECOND HERO
+============================================================ -->
+<section id="s1b-manifesto" aria-labelledby="s1b-h">
+  <div class="wrap manifesto-wrap">
+    <div class="manifesto-copy">
+      <span class="eyebrow">the big idea</span>
+      <h2 id="s1b-h" class="manifesto-headline">
+        Not self-made.<br><em>With everyone.</em>
+      </h2>
+      <p class="manifesto-lede">
+        They stood on other people's shoulders and called it climbing. We stopped lying. Every CIC, charity, and community-run business on this network got here because somebody helped — and we're here to be the next helper in your line.
+      </p>
+      <div class="manifesto-ctas">
+        <a class="btn manifesto-btn" href="https://studio.inclusifund.co.uk/manifesto">Read the manifesto →</a>
+        <a class="hero-skin-link" href="https://studio.inclusifund.co.uk/receipts">See what £1 really buys ↓</a>
+      </div>
+    </div>
+    <div class="manifesto-side">
+      <div class="manifesto-panel">
+        <span class="eyebrow">live now</span>
+        <ul class="launched-list">
+          <li><a href="https://aiq.inclusifund.co.uk"><strong>AIQ</strong> <span>your AI fluency score · 3 questions, 60 seconds</span></a></li>
+          <li><a href="https://tools.inclusifund.co.uk"><strong>CIC Toolsuite</strong> <span>six tools to start, check, and fund your CIC</span></a></li>
+          <li><a href="https://studio.inclusifund.co.uk/nonprofits"><strong>For CICs & charities</strong> <span>websites we build for CICs and the third sector</span></a></li>
+          <li><a href="https://studio.inclusifund.co.uk/strictlybusiness"><strong>For UK trades</strong> <span>sister landing for plumbers, electricians, contractors</span></a></li>
+          <li><a href="https://studio.inclusifund.co.uk/manifesto"><strong>Manifesto</strong> <span>not self-made, with everyone · our reason for this</span></a></li>
+          <li><a href="https://studio.inclusifund.co.uk/receipts"><strong>Receipts</strong> <span>the £1 zoom · five scales of what your money does</span></a></li>
+          <li><a href="https://community.inclusifund.co.uk"><strong>Community</strong> <span>members portal · your people in one room</span></a></li>
+          <li><a href="https://ecdunnltd.co.uk"><strong>EC Dunn Ltd</strong> <span>our first paying client site · procurement-ready build</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S1c — SIX WAYS IN
+============================================================ -->
+<section id="s1c-journeys" aria-labelledby="s1c-h">
+  <div class="wrap">
+    <div class="journeys-head">
+      <span class="eyebrow">six ways in</span>
+      <h2 id="s1c-h" class="h-serif">Pick your starting door.</h2>
+      <p class="lede">You don't need to know what you need. Any of these will move you forward.</p>
+    </div>
+    <div class="journeys-grid">
+      <a class="journey-card" href="https://tools.inclusifund.co.uk/onboarding.html">
+        <span class="journey-num">01</span>
+        <span class="journey-status live">live</span>
+        <span class="journey-title">Begin</span>
+        <span class="journey-lede">A five-step welcome. Tells us who you are so we stop wasting your time.</span>
+        <span class="journey-meta">the onboarding ritual</span>
+      </a>
+      <a class="journey-card" href="#s1c-journeys" aria-disabled="true">
+        <span class="journey-num">02</span>
+        <span class="journey-status soon">3 May</span>
+        <span class="journey-title">Readiness Score</span>
+        <span class="journey-lede">Eight honest questions. Tells you if your CIC is grant-ready — and where the gaps are.</span>
+        <span class="journey-meta">diagnostic · free PDF</span>
+      </a>
+      <a class="journey-card" href="#s1c-journeys" aria-disabled="true">
+        <span class="journey-num">03</span>
+        <span class="journey-status soon">6 May</span>
+        <span class="journey-title">Grant Match</span>
+        <span class="journey-lede">Pull the lever. Get your top three grant matches and what they pay out.</span>
+        <span class="journey-meta">slot machine · live pool</span>
+      </a>
+      <a class="journey-card" href="https://studio.inclusifund.co.uk/manifesto">
+        <span class="journey-num">04</span>
+        <span class="journey-status live">live</span>
+        <span class="journey-title">Manifesto Remix</span>
+        <span class="journey-lede">Type your story. We rewrite it in the InclusiFund voice — yours to download.</span>
+        <span class="journey-meta">AI-assisted · free</span>
+      </a>
+      <a class="journey-card" href="#s1c-journeys" aria-disabled="true">
+        <span class="journey-num">05</span>
+        <span class="journey-status soon">13 May</span>
+        <span class="journey-title">Founder Archetype</span>
+        <span class="journey-lede">Ten questions. Find out which founder you are — and which partners fit your shape.</span>
+        <span class="journey-meta">personality quiz</span>
+      </a>
+      <a class="journey-card" href="#s3-globe">
+        <span class="journey-num">06</span>
+        <span class="journey-status live">live</span>
+        <span class="journey-title">See the Network</span>
+        <span class="journey-lede">Our live map of CICs, partners and grant movement across the UK. No login.</span>
+        <span class="journey-meta">UK ecosystem map</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S3 — LIVING NETWORK GLOBE
+============================================================ -->
+<section id="s3-globe" aria-labelledby="s3-h">
+  <div class="wrap">
+    <div class="globe-layout">
+      <div class="globe-mount uk-mount" id="globe-mount">
+        <svg id="uk-map" viewBox="0 0 400 720" preserveAspectRatio="xMidYMid meet" aria-label="Map of the InclusiFund UK ecosystem — nodes and partnerships"></svg>
+        <div class="globe-card" id="globe-card" role="status" aria-live="polite"></div>
+      </div>
+      <div class="globe-sidebar">
+        <span class="eyebrow">the network, live</span>
+        <h2 id="s3-h" class="h-serif">You are not on your own.</h2>
+        <p class="lede">Every dot is a real CIC, charity, or partner we are working with right now. The lines show who is working with whom. Hover any dot to meet them.</p>
+
+        <div class="ticker" id="globe-ticker" aria-live="polite" aria-label="Live ecosystem activity"></div>
+
+        <div class="counters">
+          <div class="counter"><div class="n" id="count-communities">0</div><div class="l">communities</div><div class="ts" data-live-pending="true">last sync · 32s ago</div></div>
+          <div class="counter"><div class="n" id="count-moved">£0</div><div class="l">£ moved</div><div class="ts" data-live-pending="true">last sync · 32s ago</div></div>
+          <div class="counter"><div class="n" id="count-projects">0</div><div class="l">active projects</div><div class="ts" data-live-pending="true">last sync · 32s ago</div></div>
+        </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S4 — COSMIC ZOOM
+============================================================ -->
+<section id="s4-zoom" aria-labelledby="s4-h">
+  <div class="wrap">
+    <span class="eyebrow">what £1 actually does</span>
+    <h2 id="s4-h" class="h-serif" style="font-size: clamp(32px, 4.4vw, 52px); max-width: 16ch;">One pound, five scales.</h2>
+    <p class="lede">From one family's dinner to every pound the UK gives to charity in a year. Same £1 — very different stories, depending on how far back you stand.</p>
+
+    <div class="zoom-stage" id="zoom-stage" role="region" aria-label="Cosmic zoom — tap to step">
+      <canvas id="zoom-canvas"></canvas>
+      <div class="zoom-controls">
+        <div class="zoom-step" id="zoom-step" role="tablist" aria-label="Zoom levels"></div>
+      </div>
+      <div class="zoom-fact" id="zoom-fact" aria-live="polite"></div>
+    </div>
+
+    <a class="receipts-teaser" href="https://studio.inclusifund.co.uk/receipts">
+      <img src="./img/receipts-header.png" alt="£1 at five scales — from one family's dinner to a year of British giving">
+      <span class="receipts-teaser-cta">See the full ledger on /receipts <em>→</em></span>
+    </a>
+</div>
+</section>
+
+<!-- ============================================================
+     S5 — GRANT FUNNEL
+============================================================ -->
+<section id="s5-funnel" aria-labelledby="s5-h">
+  <div class="wrap">
+    <span class="eyebrow">find the money for your idea</span>
+    <h2 id="s5-h" class="h-serif" style="font-size: clamp(34px, 4.5vw, 56px); max-width: 20ch;">Tell us about your idea. Watch grants light up.</h2>
+    <p class="lede">As you type, we check three things: can you apply, is the idea strong, and will it get funded? Grants that match appear below as you go.</p>
+
+    <div class="funnel-layout">
+      <div>
+        <label for="idea-textarea" class="eyebrow" style="display:block;margin-bottom:8px">your idea</label>
+        <textarea id="idea-textarea" class="idea-textarea" placeholder="Describe your idea, project, or community." aria-describedby="band-elig band-strength band-fund"></textarea>
+      </div>
+      <div>
+        <div class="funnel-mount">
+          <canvas id="funnel-canvas" aria-hidden="true"></canvas>
+          <div class="funnel-bands">
+            <div class="band red" id="band-elig"><span>eligibility</span><span class="meter"><i></i></span></div>
+            <div class="band red" id="band-strength"><span>strength</span><span class="meter"><i></i></span></div>
+            <div class="band red" id="band-fund"><span>fundability</span><span class="meter"><i></i></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px;">
+      <span class="eyebrow">matched grants</span>
+      <div class="grants-list" id="grants-list" role="list"></div>
+    </div>
+</div>
+</section>
+
+<!-- ============================================================
+     S6 — VOICE
+============================================================ -->
+<section id="s6-voice" aria-labelledby="s6-h">
+  <div class="wrap" style="text-align:center;">
+    <span class="eyebrow">prefer your voice?</span>
+    <h2 id="s6-h" class="h-serif" style="font-size: clamp(34px, 4.5vw, 56px); margin-inline:auto; max-width:18ch;">Or just tell us. Out loud.</h2>
+    <p class="lede" style="margin-inline:auto;">Typing isn't for everyone. Hold the button and talk — we'll listen, write it down, and find the grants for you.</p>
+
+    <div style="margin-top: 48px;">
+      <button class="voice-btn" id="voice-btn" aria-label="Hold to record your idea. Space bar also works.">Hold to tell me about your idea</button>
+    </div>
+
+    <div class="waveform-mount">
+      <canvas id="waveform-canvas" aria-hidden="true"></canvas>
+    </div>
+    <div class="transcript" id="voice-transcript" aria-live="polite">your words appear here…</div>
+    <div class="voice-funnel" id="voice-funnel"></div>
+</div>
+</section>
+
+<!-- ============================================================
+     S7 — ACTIVITY WALL
+============================================================ -->
+<section id="s7-activity" aria-labelledby="s7-h">
+  <div class="wrap">
+    <div class="activity-head">
+      <div>
+        <span class="eyebrow">in the room right now</span>
+        <h2 id="s7-h" class="h-serif">Real humans. Real moves.</h2>
+      </div>
+      <span class="live-dot">live · community.inclusifund.co.uk</span>
+    </div>
+    <div class="activity-grid" id="activity-grid" role="feed" aria-busy="false"></div>
+</div>
+</section>
+
+<!-- ============================================================
+     S8 — AIQ
+============================================================ -->
+<section id="s8-aiq" aria-labelledby="s8-h">
+  <div class="wrap">
+    <div class="aiq-layout">
+      <div>
+        <span class="eyebrow">aiq · your ai-readiness score</span>
+        <h2 id="s8-h" class="h-serif" style="font-size: clamp(34px, 4.4vw, 56px);">How fluent are you with AI, actually?</h2>
+        <p class="lede">Three questions, sixty seconds. We give you a quick read — Explorer, Practitioner, Architect, or Native — then send you to the full test at aiq.inclusifund.co.uk with your answers already saved.</p>
+        <div class="aiq-cards" id="aiq-cards"></div>
+      </div>
+      <div>
+        <div class="aiq-meter-mount">
+          <canvas id="aiq-meter" aria-hidden="true"></canvas>
+          <div class="aiq-result" id="aiq-result" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S9 — TOOL CARDS
+============================================================ -->
+<section id="s9-tools" aria-labelledby="s9-h">
+  <div class="wrap">
+    <span class="eyebrow">the cic toolkit</span>
+    <h2 id="s9-h" class="h-serif" style="font-size: clamp(34px, 4.4vw, 56px);">Six tools. Sixty seconds each.</h2>
+    <p class="lede">Hover any card to see the tool in action. Click to open it at tools.inclusifund.co.uk.</p>
+
+    <div class="tools-grid">
+      <a class="tool-card" href="https://tools.inclusifund.co.uk" aria-label="Grant Finder tool">
+        <span class="tool-cta" aria-hidden="true">↗</span>
+        <div class="tool-name">Grant Finder</div>
+        <div class="tool-line">384 live UK funds ranked to your brief in under 60 seconds.</div>
+        <div class="peep"><img class="peep-img" src="./img/tool-grant-finder.png" alt="" loading="lazy"></div>
+      </a>
+
+      <a class="tool-card" href="https://tools.inclusifund.co.uk" aria-label="Eligibility Checker tool">
+        <span class="tool-cta" aria-hidden="true">↗</span>
+        <div class="tool-name">Eligibility Checker</div>
+        <div class="tool-line">Know in 60 seconds if you're eligible for £X — without the PDF cave-diving.</div>
+        <div class="peep"><img class="peep-img" src="./img/tool-eligibility.png" alt="" loading="lazy"></div>
+      </a>
+
+      <a class="tool-card" href="https://tools.inclusifund.co.uk" aria-label="nBS Drafter tool">
+        <span class="tool-cta" aria-hidden="true">↗</span>
+        <div class="tool-name">nBS Drafter</div>
+        <div class="tool-line">Narrative-Based Submission drafts that read like you, not a chatbot.</div>
+        <div class="peep"><img class="peep-img" src="./img/tool-nbs.png" alt="" loading="lazy"></div>
+      </a>
+
+      <a class="tool-card" href="https://tools.inclusifund.co.uk" aria-label="Compliance Wizard tool">
+        <span class="tool-cta" aria-hidden="true">↗</span>
+        <div class="tool-name">Compliance Wizard</div>
+        <div class="tool-line">GDPR, safeguarding, trustee mix — a one-screen green-tick audit.</div>
+        <div class="peep"><img class="peep-img" src="./img/tool-compliance.png" alt="" loading="lazy"></div>
+      </a>
+
+      <a class="tool-card" href="https://tools.inclusifund.co.uk" aria-label="Partnership Matcher tool">
+        <span class="tool-cta" aria-hidden="true">↗</span>
+        <div class="tool-name">Partnership Matcher</div>
+        <div class="tool-line">Find the orgs whose missions rhyme with yours. Warm intros, not cold ones.</div>
+        <div class="peep"><img class="peep-img" src="./img/tool-partnership.png" alt="" loading="lazy"></div>
+      </a>
+
+      <a class="tool-card" href="https://tools.inclusifund.co.uk" aria-label="Impact Tracker tool">
+        <span class="tool-cta" aria-hidden="true">↗</span>
+        <div class="tool-name">Impact Tracker</div>
+        <div class="tool-line">Outcomes → charts → funder-ready report, updated the day you update it.</div>
+        <div class="peep"><img class="peep-img" src="./img/tool-impact.png" alt="" loading="lazy"></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S10 — YOUR SPARK
+============================================================ -->
+<section id="s10-spark" aria-labelledby="s10-h">
+  <div class="wrap">
+    <div class="spark-layout">
+      <form class="spark-form" id="spark-form" novalidate="">
+        <span class="eyebrow">sign up — your way in</span>
+        <h2 id="s10-h" class="h-serif">Signing up is a keepsake, not a form.</h2>
+        <p class="lede">A card with your name, your project, and a mark that only your name can make. You keep it. It also puts your dot on the map.</p>
+        <input id="spark-name" class="spark-input" type="text" placeholder="Your name" aria-label="Your name" autocomplete="name" value="Mariam Y.">
+        <input id="spark-project" class="spark-input" type="text" placeholder="Your community or project" aria-label="Your project" value="Leeds Community Kitchen">
+        <input id="spark-email" class="spark-input" type="email" placeholder="you@community.co.uk" aria-label="Email" autocomplete="email" required="">
+        <button class="btn" type="submit">see it in the network →</button>
+        <div class="spark-caption">this is yours. it also puts your dot on our map.</div>
+      </form>
+
+      <div>
+        <div class="spark-card-mount" id="spark-card-mount">
+          <div class="spark-card" id="spark-card">
+            <div class="spark-inner">
+              <div>
+                <div class="label">InclusiFund · Spark</div>
+                <div class="name" id="spark-card-name">Mariam Y.</div>
+                <div class="project" id="spark-card-project">Leeds Community Kitchen</div>
+              </div>
+              <div class="sigil-box" id="spark-sigil" aria-hidden="true"></div>
+              <div style="display:flex; justify-content:space-between; align-items:end;">
+                <div class="label">your mark · only your name can make it</div>
+                <div class="date" id="spark-card-date"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S11 — FUNDER SEAT
+============================================================ -->
+<section id="s11-funder" aria-labelledby="s11-h">
+  <div class="wrap">
+    <span class="eyebrow funder-hint" style="color:var(--terracotta);">for funders &amp; partners</span>
+    <h2 id="s11-h" class="h-serif" style="font-size: clamp(34px, 4.4vw, 56px);">Play the funder seat.</h2>
+    <p class="lede">Five quick screens. Pick what matters to you, watch the numbers rearrange, grab a one-page PDF, book a twenty-minute call. No sales deck.</p>
+
+    <div class="funder-canvas" id="funder-canvas" role="region" aria-label="Funder seat — 5 frames">
+
+      <!-- Frame 1 -->
+      <div class="funder-frame" aria-label="Frame 1: you're a funder">
+        <div class="fhead"><span>01 / 05</span><span>funder seat</span></div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center; text-align:center;">
+          <div style="font-family: var(--serif); font-size: 48px; line-height: 1; color: var(--forest); margin-bottom: 16px;">You're a funder.</div>
+          <p style="max-width:30ch; margin-inline:auto;">Three minutes. Five frames. Then you'll know if we're worth the call.</p>
+          <div style="margin-top: 32px; display:flex; justify-content:center;">
+            <div class="organic-loader" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="fhead"><span>swipe →</span><span>inclusifund</span></div>
+      </div>
+
+      <!-- Frame 2 -->
+      <div class="funder-frame" aria-label="Frame 2: pick metrics">
+        <div class="fhead"><span>02 / 05</span><span>metrics</span></div>
+        <h3>What matters to you?</h3>
+        <p>Toggle the impact metrics you care about. Frame 3 redraws to match.</p>
+        <div class="funder-toggles" id="funder-toggles">
+          <button class="toggle" data-k="reach" aria-pressed="false"><span>Reach</span><span class="sw"></span></button>
+          <button class="toggle" data-k="moved" aria-pressed="false"><span>£ moved</span><span class="sw"></span></button>
+          <button class="toggle" data-k="cost" aria-pressed="false"><span>£ per outcome</span><span class="sw"></span></button>
+          <button class="toggle" data-k="demo" aria-pressed="false"><span>Demographic fit</span><span class="sw"></span></button>
+          <button class="toggle" data-k="geo" aria-pressed="false"><span>Geographic fit</span><span class="sw"></span></button>
+        </div>
+      </div>
+
+      <!-- Frame 3 -->
+      <div class="funder-frame" aria-label="Frame 3: live dashboard">
+        <div class="fhead"><span>03 / 05</span><span>your dashboard</span></div>
+        <h3 style="font-size:22px;">Live, to your metrics.</h3>
+        <div class="mini-dash" id="funder-dash"></div>
+        <div class="mini-chart">
+          <canvas id="funder-mini-chart"></canvas>
+        </div>
+        <div class="mini-map" id="funder-mini-map" aria-hidden="true"></div>
+      </div>
+
+      <!-- Frame 4 -->
+      <div class="funder-frame" aria-label="Frame 4: one-pager">
+        <div class="fhead"><span>04 / 05</span><span>one-pager preview</span></div>
+        <h3 style="font-size:22px;">Your branded one-pager.</h3>
+        <div class="onepager-preview">
+          <div>
+            <div style="font-family: var(--serif); font-size: 26px; color: var(--forest); letter-spacing:-0.01em;">InclusiFund · Partnership Brief</div>
+            <div style="color: var(--forest-3); font-size: 12px; margin-top:4px;">Generated · April 2026 · your metrics locked</div>
+            <div style="margin-top: 16px; display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+              <div style="background: var(--cream-2); padding: 10px; border-radius: 8px;"><div style="font-family:var(--serif); font-size:22px;">£1.2M</div><div style="font-size:10px; color:var(--forest-3); text-transform:uppercase; letter-spacing:.1em;">£ moved</div></div>
+              <div style="background: var(--cream-2); padding: 10px; border-radius: 8px;"><div style="font-family:var(--serif); font-size:22px;">142K</div><div style="font-size:10px; color:var(--forest-3); text-transform:uppercase; letter-spacing:.1em;">reach</div></div>
+            </div>
+          </div>
+          <div style="border-top: 1px dashed var(--cream-3); padding-top: 12px; font-size: 12px; color: var(--forest-3);">Cohort 3 · 87 active projects · 4 UK nations · 73% global-majority-led</div>
+          <button class="btn" style="align-self: flex-start;">↓ download PDF</button>
+        </div>
+      </div>
+
+      <!-- Frame 5 -->
+      <div class="funder-frame" aria-label="Frame 5: book a call">
+        <div class="fhead"><span>05 / 05</span><span>book a call</span></div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center; text-align:center;">
+          <h3 style="font-size:36px;">Twenty minutes.<br>That's all we need.</h3>
+          <p style="max-width:28ch; margin-inline:auto;">We'll bring the data. You bring the questions. If it's not a fit, we'll say so by minute nine.</p>
+          <a class="btn" href="https://cal.com/inclusifund/20min" style="align-self:center; margin-top:16px;">book via cal.com →</a>
+          <div style="margin-top:24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--forest-3);">avg reply · under 4 hours</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="funder-dots" id="funder-dots" role="tablist" aria-label="Funder frame pagination"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Footer
+============================================================ -->
+<!-- ============================================================
+     S2 — ARCHETYPE SKIN PICKER
+============================================================ -->
+<section id="s2-skins" aria-labelledby="s2-h">
+  <div class="wrap">
+    <div class="skins-head">
+      <span class="eyebrow">still here? we can change how this page works for you</span>
+      <h2 id="s2-h" class="h-serif">Pick how the page should read to you.</h2>
+      <p class="lede" style="margin-inline:auto;">Built for neurodiverse founders from day one. Six ways to read, one website. Text size, motion, spacing, and colour all change to match. Switch any time — we remember.</p>
+    </div>
+
+    <div class="skin-row" id="archetype-row" role="group" aria-label="Archetype skins">
+
+      <button class="skin-tile" data-key="A" aria-pressed="false" aria-label="Overwhelmed Founder skin — ADHD-friendly">
+        <span class="skin-key">A</span>
+        <img class="pictogram" src="./img/archetype-a.png" alt="" loading="lazy">
+        <div>
+          <div class="skin-label">Overwhelmed Founder</div>
+          <div class="skin-meta">ADHD-friendly · smaller bites</div>
+        </div>
+      </button>
+
+      <button class="skin-tile" data-key="B" aria-pressed="false" aria-label="Deep Thinker skin — autistic-friendly">
+        <span class="skin-key">B</span>
+        <img class="pictogram" src="./img/archetype-b.png" alt="" loading="lazy">
+        <div>
+          <div class="skin-label">Deep Thinker</div>
+          <div class="skin-meta">autistic · shows how it works</div>
+        </div>
+      </button>
+
+      <button class="skin-tile" data-key="C" aria-pressed="false" aria-label="Visual Processor skin — dyslexic-friendly">
+        <span class="skin-key">C</span>
+        <img class="pictogram" src="./img/archetype-c.png" alt="" loading="lazy">
+        <div>
+          <div class="skin-label">Visual Processor</div>
+          <div class="skin-meta">dyslexia-friendly · pictures first</div>
+        </div>
+      </button>
+
+      <button class="skin-tile" data-key="D" aria-pressed="false" aria-label="Skeptic skin — receipts-first">
+        <span class="skin-key">D</span>
+        <img class="pictogram" src="./img/archetype-d.png" alt="" loading="lazy">
+        <div>
+          <div class="skin-label">Skeptic</div>
+          <div class="skin-meta">prove it · numbers and names only</div>
+        </div>
+      </button>
+
+      <button class="skin-tile" data-key="E" aria-pressed="false" aria-label="Community Builder skin">
+        <span class="skin-key">E</span>
+        <img class="pictogram" src="./img/archetype-e.png" alt="" loading="lazy">
+        <div>
+          <div class="skin-label">Community Builder</div>
+          <div class="skin-meta">show me the people</div>
+        </div>
+      </button>
+
+      <button class="skin-tile" data-key="F" aria-pressed="false" aria-label="Funder / Partner skin">
+        <span class="skin-key">F</span>
+        <img class="pictogram" src="./img/archetype-f.png" alt="" loading="lazy">
+        <div>
+          <div class="skin-label">Funder / Partner</div>
+          <div class="skin-meta">funder view · numbers + one-pager</div>
+        </div>
+      </button>
+
+    </div>
+</div>
+</section>
+
+
+<footer class="page-footer">
+  <div class="wrap">
+    <div>
+      <h4>Not Self-Made.<br>With Everyone.</h4>
+      <p style="max-width: 40ch; color: var(--cream); opacity: 0.8;">Funding, tools, and a network for people building CICs, charities, and community-run businesses across the UK. An InclusiGroup Ltd initiative.</p>
+    </div>
+    <div>
+      <div style="text-transform:uppercase; letter-spacing:.14em; font-size:11px; color:var(--gold); margin-bottom:12px;">Live now</div>
+      <ul>
+        <li><a href="https://aiq.inclusifund.co.uk">aiq.inclusifund.co.uk</a></li>
+        <li><a href="https://tools.inclusifund.co.uk">tools.inclusifund.co.uk</a></li>
+        <li><a href="https://community.inclusifund.co.uk">community.inclusifund.co.uk</a></li>
+        <li><a href="https://studio.inclusifund.co.uk">studio.inclusifund.co.uk</a></li>
+        <li><a href="https://ecdunnltd.co.uk">ecdunnltd.co.uk</a></li>
+      </ul>
+    </div>
+    <div>
+      <div style="text-transform:uppercase; letter-spacing:.14em; font-size:11px; color:var(--gold); margin-bottom:12px;">Pages</div>
+      <ul>
+        <li><a href="https://studio.inclusifund.co.uk/manifesto">manifesto</a></li>
+        <li><a href="https://studio.inclusifund.co.uk/receipts">receipts · £1 zoom</a></li>
+        <li><a href="https://studio.inclusifund.co.uk/nonprofits">for CICs & charities</a></li>
+        <li><a href="https://studio.inclusifund.co.uk/strictlybusiness">for UK trades</a></li>
+        <li><a href="#s11-funder">funders</a></li>
+        <li><a href="#s10-spark">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     S12 — CALM CONSTRUCTION KIT (persistent dock)
+============================================================ -->
+<aside class="calm-dock minimised" id="calm-dock" aria-label="Calm Construction Kit — accessibility controls">
+  <button class="calm-edge" id="calm-edge" type="button" aria-label="Open Calm Kit accessibility controls" aria-expanded="false">
+    <span class="calm-edge-icon" aria-hidden="true">⚙</span>
+    <span class="calm-edge-label">calm kit</span>
+  </button>
+  <div class="calm-body">
+    <div class="calm-title">
+      <span class="t">Calm Kit</span>
+      <button class="calm-close" id="calm-close" type="button" aria-label="Close Calm Kit">×</button>
+    </div>
+
+    <div class="calm-row">
+      <span class="label">Motion</span>
+      <div class="seg" data-seg="motion" role="group" aria-label="Motion level">
+        <button data-v="off">Off</button>
+        <button data-v="low">Low</button>
+        <button data-v="full">Full</button>
+      </div>
+    </div>
+
+    <div class="calm-row">
+      <span class="label">Text size · <span id="ck-textsize-val">17px</span></span>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button class="chip" data-ts="-1" aria-label="Decrease text size" style="padding:6px 12px; border-radius:999px; background:var(--cream-2); border:1px solid var(--cream-3); font-weight:700;">A−</button>
+        <input id="ck-textsize" type="range" min="14" max="24" step="1" aria-label="Text size slider">
+        <button class="chip" data-ts="1" aria-label="Increase text size" style="padding:6px 12px; border-radius:999px; background:var(--cream-2); border:1px solid var(--cream-3); font-weight:700;">A+</button>
+      </div>
+    </div>
+
+    <div class="calm-row">
+      <span class="label">Line height</span>
+      <input id="ck-lineheight" type="range" min="1.2" max="2" step="0.05" aria-label="Line height slider">
+    </div>
+
+    <div class="calm-row">
+      <span class="label">Letter spacing</span>
+      <input id="ck-tracking" type="range" min="-0.02" max="0.12" step="0.01" aria-label="Letter spacing slider">
+    </div>
+
+    <div class="calm-row">
+      <span class="label">Font family</span>
+      <div class="seg" data-seg="font" role="group" aria-label="Font family">
+        <button data-v="default">Default</button>
+        <button data-v="atkinson">Atkinson</button>
+        <button data-v="opendyslexic">OpenDys</button>
+      </div>
+    </div>
+
+    <div class="calm-row">
+      <span class="label">Focus outline</span>
+      <div class="seg" data-seg="focus" role="group" aria-label="Focus outline">
+        <button data-v="visible">Visible</button>
+        <button data-v="hidden">Hidden</button>
+      </div>
+    </div>
+
+    <div class="calm-row">
+      <span class="label">Contrast</span>
+      <div class="seg" data-seg="contrast" role="group" aria-label="Contrast mode">
+        <button data-v="default">Default</button>
+        <button data-v="high">High</button>
+        <button data-v="low-blue">Low-blue</button>
+      </div>
+    </div>
+
+    <div class="calm-preview">
+      <small>live preview</small>
+      We build warm, accessible funding for community business. Your settings apply to every section above — motion, density, type.
+    </div>
+  </div>
+</aside>
+
+<script src="./app.js" defer></script>
+
+</body></html>
