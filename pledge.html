@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Common Standard for CIC Banking — 21 days, not 2 years</title>
+<meta name="description" content="A public pledge asking UK banks to commit to fast-track current-account onboarding for Community Interest Companies. Tiered commitments, public scoreboard, testifying founders.">
+<meta property="og:title" content="The Common Standard for CIC Banking">
+<meta property="og:description" content="New UK CICs wait up to 2 years for a bank account. A public standard asks banks to commit to 21 days instead.">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --teal: #0ea5a4;
+    --teal-dark: #0d7a78;
+    --teal-ink: #0a4f4e;
+    --warm: #fbfaf5;
+    --warm-alt: #f3f1e8;
+    --ink: #1b2322;
+    --ink-soft: #44524f;
+    --gold: #d4a227;
+    --silver: #9aa7a8;
+    --bronze: #b67840;
+    --stop: #c14552;
+    --go: #2f9e62;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", "Helvetica Neue", system-ui, -apple-system, sans-serif;
+    background: var(--warm);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    background: linear-gradient(160deg, var(--teal-ink) 0%, var(--teal) 90%);
+    color: var(--warm);
+    padding: 96px 0 80px;
+  }
+  header.hero .kicker {
+    font-size: 13px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin: 0 0 22px;
+    opacity: 0.82;
+  }
+  header.hero h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(42px, 7vw, 84px);
+    line-height: 1.02;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+  header.hero h2.sub {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(22px, 2.6vw, 34px);
+    font-weight: 400;
+    margin: 0 0 26px;
+    opacity: 0.92;
+    letter-spacing: -0.01em;
+  }
+  header.hero p.lead {
+    font-size: clamp(17px, 1.7vw, 20px);
+    max-width: 660px;
+    margin: 0 0 34px;
+    opacity: 0.95;
+  }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  a.btn {
+    display: inline-block;
+    padding: 14px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: transform 0.08s ease;
+  }
+  a.btn:hover { transform: translateY(-1px); }
+  a.btn.primary { background: var(--warm); color: var(--teal-ink); }
+  a.btn.ghost { background: transparent; color: var(--warm); border: 1px solid rgba(255,255,255,0.35); }
+
+  section { padding: 72px 0; }
+  section.alt { background: var(--warm-alt); }
+  section h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(28px, 3.2vw, 40px);
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  section h2 + p.section-lead {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin: 0 0 40px;
+  }
+
+  /* --- Testifying founders --- */
+  .triptych {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 18px;
+  }
+  .founder {
+    background: white;
+    border-radius: 14px;
+    padding: 28px 26px;
+    box-shadow: 0 2px 6px rgba(10,79,78,0.08);
+    border-top: 4px solid var(--teal);
+    display: flex;
+    flex-direction: column;
+  }
+  .founder .role-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: #f0d8c0;
+    color: #7a4a1e;
+    margin-bottom: 14px;
+    align-self: flex-start;
+  }
+  .founder .role-tag.live { background: #f1dbde; color: var(--stop); }
+  .founder .role-tag.transition { background: #fbeec7; color: #7a5a0a; }
+  .founder .role-tag.retro { background: #e0f0e8; color: var(--go); }
+  .founder h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 22px;
+    margin: 0 0 2px;
+    letter-spacing: -0.01em;
+  }
+  .founder .entity {
+    color: var(--teal-dark);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .founder .quote {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 15px;
+    flex: 1;
+  }
+  .founder .pending-tag {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8a6a1a;
+    background: #f4ede0;
+    padding: 4px 10px;
+    border-radius: 999px;
+    align-self: flex-start;
+    margin-top: 16px;
+  }
+
+  /* --- Tiers --- */
+  .three-tiers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .tier {
+    background: white;
+    border-radius: 14px;
+    padding: 28px 26px;
+    border-top: 6px solid var(--bronze);
+    box-shadow: 0 2px 6px rgba(10,79,78,0.06);
+  }
+  .tier.silver { border-top-color: var(--silver); }
+  .tier.gold { border-top-color: var(--gold); }
+  .tier h3 {
+    margin: 0 0 4px;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+  }
+  .tier h4 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 24px;
+    margin: 0 0 14px;
+  }
+  .tier ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .tier ul li { margin-bottom: 6px; }
+
+  /* --- Scoreboard --- */
+  .scoreboard table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .scoreboard th, .scoreboard td {
+    text-align: left;
+    padding: 14px 12px;
+    border-bottom: 1px solid rgba(10,79,78,0.08);
+  }
+  .scoreboard th {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: transparent;
+  }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .tag-gold { background: #fbeec7; color: #7a5a0a; }
+  .tag-silver { background: #e3e9ea; color: #3e4f50; }
+  .tag-bronze { background: #f0d8c0; color: #7a4a1e; }
+  .tag-none { background: #f1dbde; color: var(--stop); }
+  .tag-pending { background: #e0f0e8; color: var(--go); }
+
+  /* --- Validators --- */
+  .signatories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px;
+  }
+  .sig {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(10,79,78,0.06);
+  }
+  .sig strong { display: block; font-size: 16px; margin-bottom: 2px; }
+  .sig span { color: var(--ink-soft); font-size: 14px; }
+  .sig em {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #e0f0e8;
+    color: var(--go);
+    font-size: 11px;
+    font-style: normal;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .sig em.pending { background: #f4ede0; color: #8a6a1a; }
+
+  /* --- Info boxes --- */
+  .governance, .not-asking {
+    background: white;
+    border-radius: 12px;
+    padding: 28px 32px;
+    box-shadow: 0 1px 4px rgba(10,79,78,0.04);
+  }
+  .governance h3, .not-asking h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 720px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  .sign-cta {
+    background: white;
+    border-radius: 16px;
+    padding: 44px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(10,79,78,0.06);
+  }
+  .sign-cta h2 { margin-top: 0; }
+  .sign-cta a.btn.primary { background: var(--teal); color: white; }
+  .sign-cta a.btn.ghost { border-color: var(--teal); color: var(--teal-dark); }
+
+  footer {
+    padding: 48px 0 72px;
+    background: var(--teal-ink);
+    color: var(--warm);
+    font-size: 13px;
+    opacity: 0.9;
+  }
+  footer a { color: var(--warm); text-decoration: underline; text-underline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">The Common Standard for CIC Banking</p>
+    <h1>21 days, not 2 years.</h1>
+    <h2 class="sub">A public standard UK banks can sign, and be accountable against.</h2>
+    <p class="lead">New UK Community Interest Companies wait up to 24 months for a business bank account. Grants expire. Founders burn out. The Common Standard is a tiered, public pledge that asks UK banks to commit — and publishes who has, and who hasn't.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#pledge">Read the Common Standard</a>
+      <a class="btn ghost" href="#scoreboard">See the bank scoreboard</a>
+    </div>
+  </div>
+</header>
+
+<section id="founders">
+  <div class="wrap">
+    <h2>Three founders, three CICs, one missing sort code</h2>
+    <p class="section-lead">These three founders are testifying alongside the Common Standard. A live current blocker, a CIC-transition blocker, and a retrospective four-year view.</p>
+
+    <div class="triptych">
+      <div class="founder">
+        <span class="role-tag live">Live blocker — today</span>
+        <h3>Alex Teniola</h3>
+        <div class="entity">Founder, Connect and Construct CIC</div>
+        <p class="quote">"I've passed every test the state sets for a CIC. The banks are the last mile, and the last mile is the longest."</p>
+        <span class="pending-tag">Sign-off pending</span>
+      </div>
+      <div class="founder">
+        <span class="role-tag transition">CIC-transition blocker</span>
+        <h3>Chris Preddie OBE</h3>
+        <div class="entity">Founder-Director, Make Dreams Reality CIC</div>
+        <p class="quote">"The OBE doesn't move the queue. Thirty years of delivery doesn't move the queue. What moves the queue is a bank deciding CIC onboarding is a priority."</p>
+        <span class="pending-tag">Sign-off pending</span>
+      </div>
+      <div class="founder">
+        <span class="role-tag retro">Four-year retrospective</span>
+        <h3>Joteprakash Singh</h3>
+        <div class="entity">Founder, Earth Village CIC (est. 2021)</div>
+        <p class="quote">"We got through. Most CICs don't get through in time to catch the grant. We owe the next founder a better standard."</p>
+        <span class="pending-tag">Sign-off pending</span>
+      </div>
+    </div>
+
+    <p style="font-size:13px; color:var(--ink-soft); margin-top:24px;">
+      Founder testimony quotes are draft — each founder reviews and approves their own wording before launch.
+    </p>
+  </div>
+</section>
+
+<section class="alt" id="pledge">
+  <div class="wrap">
+    <h2>The Common Standard — three tiers</h2>
+    <p class="section-lead">Signatory banks publicly commit to one of the following. Each tier includes the tier below.</p>
+
+    <div class="three-tiers">
+      <div class="tier">
+        <h3>Bronze</h3>
+        <h4>Publish and be judged</h4>
+        <ul>
+          <li>Publish a named public CIC onboarding process with indicative timeline.</li>
+          <li>Name a regional escalation contact for stuck CICs.</li>
+          <li>Where CICs are not currently served, publish a roadmap to begin — with a target date.</li>
+        </ul>
+      </div>
+      <div class="tier silver">
+        <h3>Silver</h3>
+        <h4>45 days, verified</h4>
+        <ul>
+          <li>45-day maximum onboarding for CICs meeting Governance Verification.</li>
+          <li>Quarterly publication of CIC wait-time data.</li>
+          <li>Grant-drawdown pre-authorisation mechanism.</li>
+        </ul>
+      </div>
+      <div class="tier gold">
+        <h3>Gold</h3>
+        <h4>21 days, staffed, reported</h4>
+        <ul>
+          <li>21-day maximum onboarding for CICs meeting Governance Verification.</li>
+          <li>Dedicated CIC relationship team or named CIC pathway.</li>
+          <li>Annual public CIC banking report.</li>
+          <li>Grant-drawdown pre-authorisation mechanism.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:40px;">
+      <div class="governance">
+        <h3>Governance Verification</h3>
+        <p>The Common Standard SLAs apply to CICs that meet a published governance floor. Satisfied by any of:</p>
+        <ul style="padding-left:18px; color: var(--ink-soft); font-size:15px;">
+          <li>Current ORCIC filing compliance</li>
+          <li>A valid CIC36 approval less than 12 months old</li>
+          <li>Endorsement from a recognised sector body (Social Enterprise UK, Power to Change, CIC Association)</li>
+        </ul>
+      </div>
+      <div class="not-asking">
+        <h3>What the Common Standard does <em>not</em> ask</h3>
+        <ul style="padding-left:18px; color: var(--ink-soft); font-size:15px;">
+          <li>Relaxing KYC, AML, or sanctions screening.</li>
+          <li>Guaranteeing account opening — only acting within the window or escalating.</li>
+          <li>Underwriting CIC commercial risk.</li>
+          <li>Publishing customer-identifiable data.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="scoreboard">
+  <div class="wrap">
+    <h2>The bank scoreboard</h2>
+    <p class="section-lead">Public record of signatory tier, or non-signatory status. Updated as banks sign.</p>
+    <div class="scoreboard">
+      <table>
+        <thead>
+          <tr>
+            <th>Bank</th>
+            <th>Current CIC stance</th>
+            <th>Tier sought</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Metro Bank</td><td>~2h in-branch CIC onboarding</td><td><span class="tag tag-gold">Gold</span></td><td>Invited</td></tr>
+          <tr><td>Unity Trust Bank</td><td>Not-for-profit specialist — serves CICs</td><td><span class="tag tag-gold">Gold</span></td><td>Invited</td></tr>
+          <tr><td>Barclays</td><td>Charity &amp; Impact Account — claims 5 working days</td><td><span class="tag tag-gold">Gold</span></td><td>Invited</td></tr>
+          <tr><td>Lloyds</td><td>Charity / Community / School accounts — no published SLA</td><td><span class="tag tag-silver">Silver</span></td><td>Invited</td></tr>
+          <tr><td>The Co-operative Bank</td><td>Community Direct Plus — slow opening process</td><td><span class="tag tag-silver">Silver</span></td><td>Invited</td></tr>
+          <tr><td>Tide</td><td><strong>Does not serve CICs</strong></td><td><span class="tag tag-bronze">Bronze (roadmap)</span></td><td>Invited</td></tr>
+          <tr><td>Starling Business</td><td>CIC stance unclear — verifying</td><td><span class="tag tag-bronze">TBD</span></td><td>Verifying</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px; color:var(--ink-soft); margin-top:14px;">
+      Sources for current CIC stance: published bank eligibility pages and UK Finance bank profiles.
+    </p>
+  </div>
+</section>
+
+<section class="alt" id="signatories">
+  <div class="wrap">
+    <h2>Anchor validators</h2>
+    <p class="section-lead">The sector-infrastructure voice behind the Common Standard. Validators, not banks — the moral weight that makes the tiers binding in public.</p>
+    <div class="signatories">
+      <div class="sig">
+        <strong>Christopher Murray</strong>
+        <span>CEO, Young People's Foundation Trust</span>
+        <em class="pending">Pending sign-off</em>
+      </div>
+      <div class="sig">
+        <strong>Social Enterprise UK</strong>
+        <span>Trade body</span>
+        <em class="pending">Invited</em>
+      </div>
+      <div class="sig">
+        <strong>Power to Change</strong>
+        <span>Community business infrastructure</span>
+        <em class="pending">Invited</em>
+      </div>
+      <div class="sig">
+        <strong>CIC Association</strong>
+        <span>Member body</span>
+        <em class="pending">Invited</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sign">
+  <div class="wrap">
+    <div class="sign-cta">
+      <h2>Endorse the Common Standard</h2>
+      <p style="color: var(--ink-soft); max-width: 620px; margin: 0 auto 28px;">
+        Banks — sign at Bronze, Silver or Gold. Sector organisations — endorse as a validator. CIC founders — share your onboarding story so it stops being invisible.
+      </p>
+      <div class="cta-row" style="justify-content:center;">
+        <a class="btn primary" href="mailto:pledge@inclusifund.co.uk?subject=Common%20Standard%20-%20Sign">Banks: sign</a>
+        <a class="btn ghost" href="mailto:pledge@inclusifund.co.uk?subject=Common%20Standard%20-%20Endorse">Sector: endorse</a>
+        <a class="btn ghost" href="mailto:pledge@inclusifund.co.uk?subject=Common%20Standard%20-%20Share%20my%20story">Founders: share a story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>The Common Standard for CIC Banking — launched 2026 by InclusiFund. A public-accountability framework. No bank is underwritten, endorsed, or criticised — only listed against its own commitments.</p>
+    <p>For press: <a href="mailto:pledge@inclusifund.co.uk">pledge@inclusifund.co.uk</a>. Common Standard text and signatory roster available on request.</p>
+  </div>
+</footer>
+
+</body>
+</html>
