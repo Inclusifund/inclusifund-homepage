@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Homepage stylesheet — used by ported S3 globe + S4 cosmic-zoom sections. -->
+  <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="/macro/macro.css" />
 </head>
 <body>
@@ -73,41 +75,28 @@
       <p class="m-paragraph m-paragraph-lead">Q2 2026 is the <strong>shortest funding-decision window of the year</strong>. Most foundation rounds close mid-May to mid-July. Spring Statement (27 Mar): "no new departmental upliftls". Don't wait for new pots — mine the existing channels harder.</p>
     </section>
 
-    <!-- STANDING RECEIPTS — 5-scale circle ladder, ported from homepage -->
-    <section class="m-section m-receipts">
-      <p class="m-kicker">£1 at five scales — what it does, who holds it</p>
-      <h2 class="m-section-h">From one bucket to the ceiling.</h2>
-      <p class="m-paragraph m-paragraph-muted">Same £1 — five different zooms. Roll across the ladder before you read what's flowing today.</p>
+    <!-- ============================================================
+         S4 — COSMIC ZOOM (ported verbatim from inclusifund-homepage S4)
+    ============================================================ -->
+    <section id="s4-zoom" aria-labelledby="s4-h" class="m-ported-section">
+      <div class="wrap">
+        <span class="eyebrow">what £1 actually does</span>
+        <h2 id="s4-h" class="h-serif" style="font-size: clamp(32px, 4.4vw, 52px); max-width: 16ch;">One pound, five scales.</h2>
+        <p class="lede">From one family's dinner to every pound the UK gives to charity in a year. Same £1 — very different stories, depending on how far back you stand.</p>
 
-      <div class="m-scale-grid" role="group" aria-label="Money scales">
-        <div class="m-scale-cell">
-          <div class="m-scale-circle m-scale-1"><span>£1</span></div>
-          <div class="m-scale-amount">£1</div>
-          <div class="m-scale-label">one bucket, one person</div>
+        <div class="zoom-stage" id="zoom-stage" role="region" aria-label="Cosmic zoom — tap to step">
+          <canvas id="zoom-canvas"></canvas>
+          <div class="zoom-controls">
+            <div class="zoom-step" id="zoom-step" role="tablist" aria-label="Zoom levels"></div>
+          </div>
+          <div class="zoom-fact" id="zoom-fact" aria-live="polite"></div>
         </div>
-        <div class="m-scale-cell">
-          <div class="m-scale-circle m-scale-2"><span>£16.5K</span></div>
-          <div class="m-scale-amount">£16,500</div>
-          <div class="m-scale-label">a real grant, last week<br/><em>Earth Village CIC · Lottery</em></div>
-        </div>
-        <div class="m-scale-cell">
-          <div class="m-scale-circle m-scale-3"><span>£482K</span></div>
-          <div class="m-scale-amount">£482K</div>
-          <div class="m-scale-label">moved by InclusiFund this year<br/><em>Tier 8 · grassroots hands</em></div>
-        </div>
-        <div class="m-scale-cell">
-          <div class="m-scale-circle m-scale-4"><span>£4.2bn</span></div>
-          <div class="m-scale-amount">£4.2bn</div>
-          <div class="m-scale-label">small-charity annual shortfall<br/><em>PBE + NPC research</em></div>
-        </div>
-        <div class="m-scale-cell">
-          <div class="m-scale-circle m-scale-5"><span>£138bn</span></div>
-          <div class="m-scale-amount">£138bn</div>
-          <div class="m-scale-label">top 1% liquid wealth<br/><em>Tier 1 · ONS Wealth Survey</em></div>
-        </div>
+
+        <a class="receipts-teaser" href="https://inclusifund.co.uk/receipts">
+          <img src="/img/receipts-header.png" alt="£1 at five scales — from one family's dinner to a year of British giving">
+          <span class="receipts-teaser-cta">See the full ledger on /receipts <em>→</em></span>
+        </a>
       </div>
-
-      <a class="m-scale-teaser" href="https://inclusifund.co.uk/receipts">See the full ledger on /receipts →</a>
     </section>
 
     <!-- TIER SIGNALS - card grid with bolder titles + spacing -->
@@ -146,6 +135,34 @@
     <section class="m-section m-pattern">
       <p class="m-kicker">Pattern of the day</p>
       <p class="m-pull">Friction is the moat. Wind-downs + headroom-tightening + Tier 5 inertia = a quiet squeeze. Founders who build relationships with <strong>2–3 specific gatekeepers</strong> in 2026–27 will out-perform founders who keep applying to 30 cold pots.</p>
+    </section>
+
+    <!-- ============================================================
+         S3 — LIVING NETWORK GLOBE (ported verbatim from inclusifund-homepage S3)
+         "You are not on your own" — confidence builder before the action ask.
+    ============================================================ -->
+    <section id="s3-globe" aria-labelledby="s3-h" class="m-ported-section">
+      <div class="wrap">
+        <div class="globe-layout">
+          <div class="globe-mount uk-mount" id="globe-mount">
+            <svg id="uk-map" viewBox="0 0 400 720" preserveAspectRatio="xMidYMid meet" aria-label="Map of the InclusiFund UK ecosystem — nodes and partnerships"></svg>
+            <div class="globe-card" id="globe-card" role="status" aria-live="polite"></div>
+          </div>
+          <div class="globe-sidebar">
+            <span class="eyebrow">the network, live</span>
+            <h2 id="s3-h" class="h-serif">You are not on your own.</h2>
+            <p class="lede">Every dot is a real CIC, charity, or partner we are working with right now. The lines show who is working with whom. Hover any dot to meet them.</p>
+
+            <div class="ticker" id="globe-ticker" aria-live="polite" aria-label="Live ecosystem activity"></div>
+
+            <div class="counters">
+              <div class="counter"><div class="n" id="count-communities">0</div><div class="l">communities</div><div class="ts" data-live-pending="true">last sync · 32s ago</div></div>
+              <div class="counter"><div class="n" id="count-moved">£0</div><div class="l">£ moved</div><div class="ts" data-live-pending="true">last sync · 32s ago</div></div>
+              <div class="counter"><div class="n" id="count-projects">0</div><div class="l">active projects</div><div class="ts" data-live-pending="true">last sync · 32s ago</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ACTIONS — bolder titles split from body for clarity -->
@@ -337,5 +354,7 @@
       status.textContent = "Opening your email app — hit send and you're in.";
     });
   </script>
+  <!-- Homepage app.js drives ported S3 globe + S4 cosmic-zoom. Defensive init: each mount fn no-ops if its element is absent. -->
+  <script src="/app.js" defer></script>
 </body>
 </html>
