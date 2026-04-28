@@ -73,48 +73,72 @@
       <p class="m-paragraph m-paragraph-lead">Q2 2026 is the <strong>shortest funding-decision window of the year</strong>. Most foundation rounds close mid-May to mid-July. Spring Statement (27 Mar): "no new departmental upliftls". Don't wait for new pots — mine the existing channels harder.</p>
     </section>
 
-    <!-- STANDING RECEIPTS - bigger, visual stat cards -->
+    <!-- STANDING RECEIPTS — 5-scale circle ladder, ported from homepage -->
     <section class="m-section m-receipts">
-      <p class="m-kicker">The standing receipts</p>
-      <div class="m-stat-grid">
-        <div class="m-stat m-stat-1">
-          <div class="m-stat-icon" aria-hidden="true">▲</div>
-          <div class="m-stat-num">£138bn</div>
-          <div class="m-stat-label">Liquid wealth, top 1%</div>
-          <div class="m-stat-meta">Tier 1 · ONS</div>
+      <p class="m-kicker">£1 at five scales — what it does, who holds it</p>
+      <h2 class="m-section-h">From one bucket to the ceiling.</h2>
+      <p class="m-paragraph m-paragraph-muted">Same £1 — five different zooms. Roll across the ladder before you read what's flowing today.</p>
+
+      <div class="m-scale-grid" role="group" aria-label="Money scales">
+        <div class="m-scale-cell">
+          <div class="m-scale-circle m-scale-1"><span>£1</span></div>
+          <div class="m-scale-amount">£1</div>
+          <div class="m-scale-label">one bucket, one person</div>
         </div>
-        <div class="m-stat m-stat-2">
-          <div class="m-stat-icon" aria-hidden="true">◇</div>
-          <div class="m-stat-num">£4.2bn</div>
-          <div class="m-stat-label">Annual small-charity gap</div>
-          <div class="m-stat-meta">PBE + NPC</div>
+        <div class="m-scale-cell">
+          <div class="m-scale-circle m-scale-2"><span>£16.5K</span></div>
+          <div class="m-scale-amount">£16,500</div>
+          <div class="m-scale-label">a real grant, last week<br/><em>Earth Village CIC · Lottery</em></div>
         </div>
-        <div class="m-stat m-stat-3">
-          <div class="m-stat-icon" aria-hidden="true">●</div>
-          <div class="m-stat-num">£482K</div>
-          <div class="m-stat-label">InclusiFund moved this year</div>
-          <div class="m-stat-meta">Tier 8 · 2025-26</div>
+        <div class="m-scale-cell">
+          <div class="m-scale-circle m-scale-3"><span>£482K</span></div>
+          <div class="m-scale-amount">£482K</div>
+          <div class="m-scale-label">moved by InclusiFund this year<br/><em>Tier 8 · grassroots hands</em></div>
         </div>
-        <div class="m-stat m-stat-4">
-          <div class="m-stat-icon" aria-hidden="true">▸</div>
-          <div class="m-stat-num">£16,500</div>
-          <div class="m-stat-label">A real grant, last week</div>
-          <div class="m-stat-meta">Tier 9 · Earth Village CIC</div>
+        <div class="m-scale-cell">
+          <div class="m-scale-circle m-scale-4"><span>£4.2bn</span></div>
+          <div class="m-scale-amount">£4.2bn</div>
+          <div class="m-scale-label">small-charity annual shortfall<br/><em>PBE + NPC research</em></div>
+        </div>
+        <div class="m-scale-cell">
+          <div class="m-scale-circle m-scale-5"><span>£138bn</span></div>
+          <div class="m-scale-amount">£138bn</div>
+          <div class="m-scale-label">top 1% liquid wealth<br/><em>Tier 1 · ONS Wealth Survey</em></div>
         </div>
       </div>
+
+      <a class="m-scale-teaser" href="https://inclusifund.co.uk/receipts">See the full ledger on /receipts →</a>
     </section>
 
-    <!-- TIER SIGNALS - card grid not bullets -->
+    <!-- TIER SIGNALS - card grid with bolder titles + spacing -->
     <section class="m-section">
       <p class="m-kicker">What's flowing right now</p>
       <h2 class="m-section-h">Tier-by-tier read.</h2>
       <div class="m-tier-grid">
-        <div class="m-tier-card"><span class="m-tier-badge">T2</span><h3>State</h3><p>Spring Statement reaffirmed fiscal-headroom constraint. Departmental budgets flat-or-declining real terms FY26-27.</p></div>
-        <div class="m-tier-card"><span class="m-tier-badge">T3</span><h3>Arms-length</h3><p>NLCF Awards-for-All processing 12→16 weeks. NLHF "Levelling Up for Culture" reapplications open Q3.</p></div>
-        <div class="m-tier-card"><span class="m-tier-badge">T4</span><h3>Foundations</h3><p>Lankelly Chase wind-down nearly complete. Tudor Trust criteria refresh due Q2. Database from 2024 — half stale.</p></div>
-        <div class="m-tier-card"><span class="m-tier-badge">T5</span><h3>CSR + Banks</h3><p>Tide still rejects CICs (April 2026). Co-op / Unity / Metro / Triodos remain CIC-open. Lloyds "Enable" closed Q2.</p></div>
-        <div class="m-tier-card"><span class="m-tier-badge">T6</span><h3>Local</h3><p>UKSPF Year 3 allocations being published this quarter. Single-settlement deals (GMCA, WMCA, Liverpool, West Yorks) absorb CSR-adjacent spend.</p></div>
-        <div class="m-tier-card"><span class="m-tier-badge">T7</span><h3>Aggregators</h3><p>360Giving Q1 2026 data drop pending. Once published — run a who-funded-whom matching pass against your mission keywords.</p></div>
+        <article class="m-tier-card">
+          <header class="m-tier-head"><span class="m-tier-badge">T2</span><h3 class="m-tier-title">State</h3></header>
+          <p>Spring Statement reaffirmed fiscal-headroom constraint. Departmental budgets flat-or-declining real terms FY26-27.</p>
+        </article>
+        <article class="m-tier-card">
+          <header class="m-tier-head"><span class="m-tier-badge">T3</span><h3 class="m-tier-title">Arms-length</h3></header>
+          <p>NLCF Awards-for-All processing 12→16 weeks. NLHF "Levelling Up for Culture" reapplications open Q3.</p>
+        </article>
+        <article class="m-tier-card">
+          <header class="m-tier-head"><span class="m-tier-badge">T4</span><h3 class="m-tier-title">Foundations</h3></header>
+          <p>Lankelly Chase wind-down nearly complete. Tudor Trust criteria refresh due Q2. Database from 2024 — half stale.</p>
+        </article>
+        <article class="m-tier-card">
+          <header class="m-tier-head"><span class="m-tier-badge">T5</span><h3 class="m-tier-title">CSR + Banks</h3></header>
+          <p>Tide still rejects CICs (April 2026). Co-op / Unity / Metro / Triodos remain CIC-open. Lloyds "Enable" closed Q2.</p>
+        </article>
+        <article class="m-tier-card">
+          <header class="m-tier-head"><span class="m-tier-badge">T6</span><h3 class="m-tier-title">Local</h3></header>
+          <p>UKSPF Year 3 allocations being published this quarter. Single-settlement deals (GMCA, WMCA, Liverpool, West Yorks) absorb CSR-adjacent spend.</p>
+        </article>
+        <article class="m-tier-card">
+          <header class="m-tier-head"><span class="m-tier-badge">T7</span><h3 class="m-tier-title">Aggregators</h3></header>
+          <p>360Giving Q1 2026 data drop pending. Once published — run a who-funded-whom matching pass against your mission keywords.</p>
+        </article>
       </div>
     </section>
 
@@ -124,15 +148,45 @@
       <p class="m-pull">Friction is the moat. Wind-downs + headroom-tightening + Tier 5 inertia = a quiet squeeze. Founders who build relationships with <strong>2–3 specific gatekeepers</strong> in 2026–27 will out-perform founders who keep applying to 30 cold pots.</p>
     </section>
 
-    <!-- ACTIONS -->
+    <!-- ACTIONS — bolder titles split from body for clarity -->
     <section class="m-section m-actions">
       <p class="m-kicker">What to grab this week</p>
       <div class="m-action-grid">
-        <div class="m-action"><span class="m-action-num">1</span><div><strong>Today.</strong> Pull your CIC's mission to 5 keywords. Search 360Giving Q4 2025 dataset for "CIC + [your keywords]". List every funder who gave to a CIC like yours.</div></div>
-        <div class="m-action"><span class="m-action-num">2</span><div><strong>This week.</strong> Apply to Awards for All if you haven't in 12 months. Window wider than autumn.</div></div>
-        <div class="m-action"><span class="m-action-num">3</span><div><strong>Bank check.</strong> If your CIC banks with Tide — switch to Co-op, Unity, Metro, or Triodos. The dispute is structural.</div></div>
-        <div class="m-action"><span class="m-action-num">4</span><div><strong>By Fri 1 May.</strong> If you're in a single-settlement combined-authority area — read your CA's Year 3 UKSPF priorities. Write a 1-paragraph alignment statement.</div></div>
-        <div class="m-action"><span class="m-action-num">5</span><div><strong>Strategic.</strong> Build a relationship with one Tier 4 foundation officer over 6 months. Worth more than 10 cold applications.</div></div>
+        <article class="m-action">
+          <span class="m-action-num">1</span>
+          <div class="m-action-body">
+            <h4 class="m-action-title">Today</h4>
+            <p>Pull your CIC's mission to 5 keywords. Search 360Giving Q4 2025 dataset for "CIC + [your keywords]". List every funder who gave to a CIC like yours.</p>
+          </div>
+        </article>
+        <article class="m-action">
+          <span class="m-action-num">2</span>
+          <div class="m-action-body">
+            <h4 class="m-action-title">This week</h4>
+            <p>Apply to Awards for All if you haven't in 12 months. Window wider than autumn.</p>
+          </div>
+        </article>
+        <article class="m-action">
+          <span class="m-action-num">3</span>
+          <div class="m-action-body">
+            <h4 class="m-action-title">Bank check</h4>
+            <p>If your CIC banks with Tide — switch to Co-op, Unity, Metro, or Triodos. The dispute is structural.</p>
+          </div>
+        </article>
+        <article class="m-action">
+          <span class="m-action-num">4</span>
+          <div class="m-action-body">
+            <h4 class="m-action-title">By Fri 1 May</h4>
+            <p>If you're in a single-settlement combined-authority area — read your CA's Year 3 UKSPF priorities. Write a 1-paragraph alignment statement.</p>
+          </div>
+        </article>
+        <article class="m-action">
+          <span class="m-action-num">5</span>
+          <div class="m-action-body">
+            <h4 class="m-action-title">Strategic</h4>
+            <p>Build a relationship with one Tier 4 foundation officer over 6 months. Worth more than 10 cold applications.</p>
+          </div>
+        </article>
       </div>
     </section>
 
