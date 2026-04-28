@@ -451,10 +451,10 @@
       [54.18,-6.33],[54.35,-7.63],[55.00,-7.32],[55.18,-6.72],[55.23,-6.15],
     ];
 
-    // Anonymised ecosystem nodes — role descriptors only, no identifying names.
-    // Per InclusiFund firewall: client-label language stays off public surfaces.
+    // Ecosystem nodes — only Hempen Organic + Earth Village CIC named (consent given);
+    // all others role-descriptor only per InclusiFund firewall.
     const NODES = [
-      { n:"A heritage-pub regen CIC",      loc:"South Coast",  lat:50.83, lon:-0.14, ms:"Lottery submission imminent",     gold:true },
+      { n:"Earth Village CIC",             loc:"Brighton",     lat:50.83, lon:-0.14, ms:"£16.5K Lottery submission ready",  gold:true },
       { n:"A heritage-pub launch partnership", loc:"South Coast", lat:50.84, lon:-0.16, ms:"Public launch this month",       gold:false },
       { n:"A creative-portal partner",     loc:"London",       lat:51.52, lon:-0.10, ms:"47K reach · weekly drops",         gold:true },
       { n:"A national-network amplifier",  loc:"London",       lat:51.56, lon:-0.12, ms:"300K+ network · partner tier",     gold:false },
@@ -464,7 +464,7 @@
       { n:"A trades SME",                  loc:"North West",   lat:53.48, lon:-2.24, ms:"Paying client · monthly retainer", gold:false },
       { n:"A T5+ enterprise client",       loc:"Yorkshire",    lat:53.80, lon:-1.55, ms:"Drafting · evidence archived",     gold:true },
       { n:"A Scottish creative collective", loc:"Edinburgh",   lat:55.95, lon:-3.19, ms:"Partnership signed",               gold:false },
-      { n:"A Welsh workshop partner",      loc:"Cardiff",      lat:51.48, lon:-3.18, ms:"Cohort 3 active",                  gold:true },
+      { n:"Hempen Organic",                loc:"South Oxfordshire", lat:51.55, lon:-1.05, ms:"Regen-hemp coop · land-justice programmes", gold:true },
       { n:"A Glasgow community CIC",       loc:"Glasgow",      lat:55.86, lon:-4.25, ms:"First payout cleared",             gold:false },
     ];
 
@@ -554,12 +554,13 @@
 
     // Ticker
     const tickerEl = $("#globe-ticker");
-    // Anonymised activity feed — role descriptors only. Specific £ + activity OK; no names.
+    // Live activity feed — only Earth Village CIC + Hempen Organic named (consent given);
+    // all others role-descriptor only per InclusiFund firewall.
     const events = [
-      { who: "A heritage-pub CIC", what: "readied a £16.5K Lottery submission", ts: "2 min ago" },
+      { who: "Earth Village CIC", what: "readied a £16.5K Lottery submission", ts: "2 min ago" },
       { who: "A creative-portal partner", what: "posted carousel to 47K reach", ts: "7 min ago" },
       { who: "A national-network amplifier", what: "joined partner tier", ts: "22 min ago" },
-      { who: "A white-label grant partner", what: "drafted an nBS for a new CIC", ts: "35 min ago" },
+      { who: "Hempen Organic", what: "lined up 2026 ELMS + FETF applications", ts: "35 min ago" },
       { who: "An equine-rescue CIC", what: "filed intake docs", ts: "48 min ago" },
       { who: "A paying trades SME", what: "renewed site hosting", ts: "1 hr ago" },
       { who: "A heritage-pub launch", what: "campaign moves into public phase", ts: "1 hr ago" },
@@ -1053,13 +1054,14 @@
   function mountActivity() {
     const grid = $("#activity-grid");
     if (!grid) return;
-    // Anonymised activity grid — composite + role-only descriptors, no identifying names.
+    // Activity grid — only Earth Village CIC + Hempen Organic named (consent given);
+    // all others composite role descriptors per InclusiFund firewall.
     const EVENTS = [
       { who: "A first-time CIC founder", verb: "drafted their", obj: "nBS application", meta: "South West · 2m ago", href: "#" },
       { who: "A creative-portal partner", verb: "posted a carousel to", obj: "47K followers", meta: "London · 5m ago", href: "#" },
-      { who: "A heritage-pub CIC", verb: "submitted", obj: "£16.5K to National Lottery", meta: "South Coast · 8m ago", href: "#" },
+      { who: "Earth Village CIC", verb: "submitted", obj: "£16.5K to National Lottery", meta: "Brighton · 8m ago", href: "#" },
       { who: "A regen-strategy partner", verb: "met with", obj: "a landowner today", meta: "Midlands · 11m ago", href: "#" },
-      { who: "A creative collective", verb: "closed", obj: "their first round", meta: "Edinburgh · 16m ago", href: "#" },
+      { who: "Hempen Organic", verb: "queued", obj: "2026 ELMS + FETF + AfA applications", meta: "South Oxfordshire · 16m ago", href: "#" },
       { who: "A workshop partner", verb: "published", obj: "impact report 2026Q1", meta: "Cardiff · 22m ago", href: "#" },
       { who: "A community CIC", verb: "received", obj: "first payout of £6.4K", meta: "Yorkshire · 31m ago", href: "#" },
       { who: "A new constellation member", verb: "joined", obj: "the network", meta: "South Coast · 48m ago", href: "#" },
