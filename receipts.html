@@ -6,9 +6,6 @@
   <title>The Receipts — InclusiFund</title>
   <meta name="description" content="The scale of what we move, and what's left to move. A cosmic zoom through the ledger of UK grassroots funding." />
 
-  <link rel="canonical" href="https://inclusifund.co.uk/receipts" />
-  <link rel="alternate" type="text/markdown" href="/receipts.md" title="Receipts (markdown source)" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -46,8 +43,8 @@
     <button class="r-rail-dot" data-stop="3" type="button" aria-label="Step 4: £16,500 — a small-charity grant">
       <span class="r-rail-label">£16,500 — a grant</span>
     </button>
-    <button class="r-rail-dot" data-stop="4" type="button" aria-label="Step 5: £1.2 million — what InclusiFund has moved so far">
-      <span class="r-rail-label">£1.2M — us</span>
+    <button class="r-rail-dot" data-stop="4" type="button" aria-label="Step 5: £482,000 — a year of InclusiFund">
+      <span class="r-rail-label">£482K — us</span>
     </button>
     <button class="r-rail-dot" data-stop="5" type="button" aria-label="Step 6: £4.2bn — UK small-charity funding gap">
       <span class="r-rail-label">£4.2bn — the gap</span>
@@ -81,14 +78,14 @@
         <span class="f-fact">The exact sum Earth Village CIC submitted to the National Lottery last week — a full year of community programming in Nottingham.</span>
       </li>
       <li>
-        <span class="f-amount">£1.2M</span>
-        <span class="f-role">What InclusiFund has moved so far · £3M target by October</span>
-        <span class="f-fact">What we've moved into grassroots hands so far. On track for £3M by October.</span>
+        <span class="f-amount">£482,000</span>
+        <span class="f-role">What InclusiFund moved into grassroots hands this year</span>
+        <span class="f-fact">What we've helped move into grassroots hands in the last 12 months.</span>
       </li>
       <li>
         <span class="f-amount">£4.2 billion</span>
         <span class="f-role">UK small-charity sector's annual funding shortfall</span>
-        <span class="f-fact">What UK small charities (income under £1M) are short of every single year. Roughly 3,500× what we move today.</span>
+        <span class="f-fact">What UK small charities (income under £1M) are short of every single year. Roughly 9,000× what we move.</span>
       </li>
       <li>
         <span class="f-amount">£138 billion</span>
@@ -120,12 +117,82 @@
         <p class="r-final-tagline">We rank up together. Start here.</p>
         <div class="r-final-actions">
           <a class="cta cta-primary" href="https://inclusifund.co.uk">Join the ecosystem →</a>
+          <a class="cta cta-ghost" href="https://inclusifund.co.uk/macro">📰 Read today's macro brief →</a>
           <a class="cta cta-ghost" href="manifesto.html">← Re-read the manifesto</a>
+        </div>
+
+        <!-- Email capture + 3-question CIC profile -->
+        <div class="r-capture">
+          <p class="r-capture-kicker">Or — get InclusiNews in your inbox</p>
+          <p class="r-capture-lede">Free daily macro brief. Where money is moving, what's drying up, what to grab. Three quick questions tune what we send you.</p>
+          <form id="r-subscribe-form" class="r-form" novalidate>
+            <label class="r-field">
+              <span class="r-field-label">Email *</span>
+              <input type="email" name="email" required autocomplete="email" placeholder="you@yourcic.co.uk" />
+            </label>
+            <label class="r-field">
+              <span class="r-field-label">Organisation type</span>
+              <select name="org_type">
+                <option value="">— Select —</option>
+                <option>Pre-CIC / planning to register</option>
+                <option>CIC, less than 1 year old</option>
+                <option>CIC, 1–3 years old</option>
+                <option>CIC, 3+ years old</option>
+                <option>SME (Ltd, sole trader)</option>
+                <option>Charity</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label class="r-field">
+              <span class="r-field-label">What's blocking you most?</span>
+              <select name="blocker">
+                <option value="">— Select —</option>
+                <option>Funding access</option>
+                <option>Banking (CIC accounts, payment processing)</option>
+                <option>Compliance / governance</option>
+                <option>Skills / capacity</option>
+                <option>Network / introductions</option>
+                <option>Strategy / where to focus</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label class="r-field">
+              <span class="r-field-label">UK region (optional)</span>
+              <input type="text" name="region" placeholder="e.g. Greater Manchester, London, West Yorks" autocomplete="address-level1" />
+            </label>
+            <button type="submit" class="cta cta-primary r-form-submit">Subscribe to InclusiNews</button>
+            <p class="r-form-status" aria-live="polite"></p>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
   <script src="receipts.js" defer></script>
+  <script>
+    // InclusiNews email capture handler.
+    // TODO(Royal): wire to Convex HTTP action `inclusinews:subscribe` once endpoint is deployed.
+    // Fallback for v1 — opens the user's mail client prefilled.
+    document.getElementById('r-subscribe-form')?.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const status = form.querySelector('.r-form-status');
+      const data = Object.fromEntries(new FormData(form).entries());
+      if (!data.email || !data.email.includes('@')) {
+        status.textContent = 'Please enter a valid email.';
+        return;
+      }
+      const subject = encodeURIComponent('InclusiNews — subscribe');
+      const body = encodeURIComponent(
+        'Please subscribe me to InclusiNews.\n\n' +
+        'Email: ' + data.email + '\n' +
+        'Org type: ' + (data.org_type || '—') + '\n' +
+        'Blocker: ' + (data.blocker || '—') + '\n' +
+        'Region: ' + (data.region || '—') + '\n'
+      );
+      window.location.href = 'mailto:hello@inclusifund.co.uk?subject=' + subject + '&body=' + body;
+      status.textContent = "Opening your email app — hit send and you're in.";
+    });
+  </script>
 </body>
 </html>

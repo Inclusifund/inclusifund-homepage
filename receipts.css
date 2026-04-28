@@ -410,6 +410,91 @@ html.ck-motion-off body.receipts-body {
 }
 
 /* ============================================================
+   InclusiNews email capture (final stop, below CTA buttons)
+   ============================================================ */
+.r-capture {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(10, 42, 53, 0.12);
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.r-capture-kicker {
+  font-family: var(--type-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.r-capture-lede {
+  font-family: var(--type-sans);
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.r-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.r-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.r-field-label {
+  font-family: var(--type-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.r-field input,
+.r-field select {
+  padding: 0.65rem 0.85rem;
+  font-family: var(--type-sans);
+  font-size: 0.98rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid rgba(10, 42, 53, 0.18);
+  border-radius: 8px;
+  transition: border-color 200ms var(--ease);
+}
+
+.r-field input:focus,
+.r-field select:focus {
+  outline: none;
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 3px rgba(15, 139, 141, 0.15);
+}
+
+.r-form-submit {
+  justify-self: start;
+  margin-top: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.r-form-status {
+  font-family: var(--type-sans);
+  font-size: 0.92rem;
+  color: var(--terracotta-deep);
+  min-height: 1.2em;
+  margin: 0;
+}
+
+/* ============================================================
    OS reduced-motion safeguard
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {

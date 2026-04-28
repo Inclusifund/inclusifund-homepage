@@ -1,0 +1,280 @@
+/* ============================================================
+   InclusiNews slide deck — Royal-talks-over presentation style
+   Reuses receipts page palette (Fraunces serif + Inter sans).
+   Each .slide is a full viewport. Arrow-keys advance. Optional
+   auto-advance via data-auto-ms. Single-file deck, zero deps.
+   ============================================================ */
+
+:root {
+  --cream: #F7FBFD;
+  --cream-deep: #E6F4F8;
+  --ink: #0A2A35;
+  --ink-soft: #355A68;
+  --teal: #0F8B8D;
+  --teal-deep: #0B6E6E;
+  --teal-bright: #14B8A6;
+  --gold: #5DD2D4;
+  --gold-warm: #B2E8EA;
+  --type-serif: "Fraunces", Georgia, serif;
+  --type-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--type-sans);
+  height: 100%;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.deck {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6vh 8vw;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 700ms var(--ease);
+  text-align: center;
+}
+
+.slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.slide-kicker {
+  font-family: var(--type-sans);
+  font-weight: 500;
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.slide-amount {
+  font-family: var(--type-serif);
+  font-weight: 300;
+  font-size: clamp(4rem, 16vw, 14rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  margin-bottom: 2rem;
+}
+
+.slide-amount.tonal {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--teal-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.slide-headline {
+  font-family: var(--type-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 5.5vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 80vw;
+  margin-bottom: 1.5rem;
+  color: var(--cream);
+}
+
+.slide-body {
+  font-family: var(--type-sans);
+  font-weight: 300;
+  font-size: clamp(1.05rem, 1.8vw, 1.6rem);
+  line-height: 1.45;
+  max-width: 56vw;
+  color: var(--cream-deep);
+  opacity: 0.92;
+}
+
+.slide-body strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.slide-tag {
+  position: absolute;
+  bottom: 4vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--type-sans);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.7;
+}
+
+.slide-tag a { color: var(--gold); text-decoration: none; }
+.slide-tag a:hover { text-decoration: underline; }
+
+/* Tier ladder slide layout */
+.tier-ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 70vw;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.tier-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.5rem 1.25rem;
+  background: rgba(247, 251, 253, 0.04);
+  border-left: 3px solid var(--teal);
+  font-family: var(--type-sans);
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  text-align: left;
+}
+
+.tier-row .tier-num {
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-right: 1.5rem;
+  min-width: 4ch;
+}
+
+.tier-row .tier-name {
+  flex: 1;
+  color: var(--cream);
+  font-weight: 500;
+}
+
+.tier-row .tier-amt {
+  color: var(--gold-warm);
+  font-family: var(--type-serif);
+  font-weight: 400;
+  margin-left: 1rem;
+}
+
+/* Numeric comparison slide */
+.compare {
+  display: flex;
+  gap: 4vw;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.compare-cell {
+  text-align: center;
+  min-width: 240px;
+}
+
+.compare-cell .compare-num {
+  font-family: var(--type-serif);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--teal-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.compare-cell .compare-label {
+  margin-top: 0.75rem;
+  font-family: var(--type-sans);
+  font-weight: 400;
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+  color: var(--ink-soft);
+  opacity: 0.85;
+}
+
+.compare-x {
+  font-family: var(--type-serif);
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+/* Progress dots */
+.deck-rail {
+  position: absolute;
+  bottom: 1.8vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.rail-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink-soft);
+  border: none;
+  cursor: pointer;
+  transition: background 200ms var(--ease), transform 200ms var(--ease);
+  padding: 0;
+}
+
+.rail-dot.is-active {
+  background: var(--gold);
+  transform: scale(1.4);
+}
+
+/* Helper hint */
+.deck-hint {
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+  font-family: var(--type-sans);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.5;
+  z-index: 10;
+}
+
+/* CTA outro slide */
+.outro-cta {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-bright) 100%);
+  color: var(--cream);
+  font-family: var(--type-sans);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 200ms var(--ease);
+}
+
+.outro-cta:hover { transform: translateY(-2px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide { transition: none; }
+}
