@@ -451,20 +451,21 @@
       [54.18,-6.33],[54.35,-7.63],[55.00,-7.32],[55.18,-6.72],[55.23,-6.15],
     ];
 
-    // Real ecosystem nodes — pulled from InclusiFund project memory
+    // Anonymised ecosystem nodes — role descriptors only, no identifying names.
+    // Per InclusiFund firewall: client-label language stays off public surfaces.
     const NODES = [
-      { n:"Earth Village CIC",      loc:"Brighton",   lat:50.83, lon:-0.14, ms:"£16.5K nBS ready to submit",   gold:true },
-      { n:"Bulls Head Partnership", loc:"Brighton",   lat:50.84, lon:-0.16, ms:"Rise of the Bull · 23 Apr",    gold:false },
-      { n:"Naniverse",              loc:"London",     lat:51.52, lon:-0.10, ms:"Anthony Charlery · 47K reach", gold:true },
-      { n:"Chris Preddie",          loc:"London",     lat:51.56, lon:-0.12, ms:"300K+ network · secret client",gold:false },
-      { n:"Louis Barnett",          loc:"London",     lat:51.49, lon:-0.22, ms:"White-label grant partner",    gold:true },
-      { n:"Social Construct",       loc:"London",     lat:51.50, lon:-0.02, ms:"Alex Teniola · youth CIC",     gold:false },
-      { n:"Sussex Horse Sanctuary", loc:"Sussex",     lat:50.95, lon:-0.45, ms:"Amber John · intake live",     gold:true },
-      { n:"EC Dunn Ltd",            loc:"Manchester", lat:53.48, lon:-2.24, ms:"First paying client · £200 PAYF", gold:false },
-      { n:"Javeria intake",         loc:"Leeds",      lat:53.80, lon:-1.55, ms:"Evidence archived · drafting", gold:true },
-      { n:"Kestrel Collective",     loc:"Edinburgh",  lat:55.95, lon:-3.19, ms:"Partnership signed",           gold:false },
-      { n:"Cardiff Atlas",          loc:"Cardiff",    lat:51.48, lon:-3.18, ms:"Workshop cohort 3",            gold:true },
-      { n:"North Sky CIC",          loc:"Glasgow",    lat:55.86, lon:-4.25, ms:"First payout cleared",         gold:false },
+      { n:"A heritage-pub regen CIC",      loc:"South Coast",  lat:50.83, lon:-0.14, ms:"Lottery submission imminent",     gold:true },
+      { n:"A heritage-pub launch partnership", loc:"South Coast", lat:50.84, lon:-0.16, ms:"Public launch this month",       gold:false },
+      { n:"A creative-portal partner",     loc:"London",       lat:51.52, lon:-0.10, ms:"47K reach · weekly drops",         gold:true },
+      { n:"A national-network amplifier",  loc:"London",       lat:51.56, lon:-0.12, ms:"300K+ network · partner tier",     gold:false },
+      { n:"A white-label grant partner",   loc:"London",       lat:51.49, lon:-0.22, ms:"Multi-org pipeline live",          gold:true },
+      { n:"A youth-skills CIC",            loc:"London",       lat:51.50, lon:-0.02, ms:"Apprentice cohort live",           gold:false },
+      { n:"An equine-rescue CIC",          loc:"South East",   lat:50.95, lon:-0.45, ms:"Intake live · founder onboarded",  gold:true },
+      { n:"A trades SME",                  loc:"North West",   lat:53.48, lon:-2.24, ms:"Paying client · monthly retainer", gold:false },
+      { n:"A T5+ enterprise client",       loc:"Yorkshire",    lat:53.80, lon:-1.55, ms:"Drafting · evidence archived",     gold:true },
+      { n:"A Scottish creative collective", loc:"Edinburgh",   lat:55.95, lon:-3.19, ms:"Partnership signed",               gold:false },
+      { n:"A Welsh workshop partner",      loc:"Cardiff",      lat:51.48, lon:-3.18, ms:"Cohort 3 active",                  gold:true },
+      { n:"A Glasgow community CIC",       loc:"Glasgow",      lat:55.86, lon:-4.25, ms:"First payout cleared",             gold:false },
     ];
 
     // Partnership wires between nodes
@@ -553,17 +554,18 @@
 
     // Ticker
     const tickerEl = $("#globe-ticker");
+    // Anonymised activity feed — role descriptors only. Specific £ + activity OK; no names.
     const events = [
-      { who: "Earth Village CIC", what: "readied £16.5K nBS submission", ts: "2 min ago" },
-      { who: "Anthony (Naniverse)", what: "posted carousel to 47K", ts: "7 min ago" },
-      { who: "Chris Preddie", what: "joined partner tier", ts: "22 min ago" },
-      { who: "Louis Barnett", what: "drafted nBS for new CIC", ts: "35 min ago" },
-      { who: "Sussex Horse Sanctuary", what: "filed intake docs", ts: "48 min ago" },
-      { who: "EC Dunn Ltd", what: "renewed site hosting", ts: "1 hr ago" },
-      { who: "Bulls Head × Earth Village", what: "Rise of the Bull launches 23 Apr", ts: "1 hr ago" },
-      { who: "North Sky CIC", what: "cleared first payout", ts: "2 hrs ago" },
-      { who: "Kestrel Collective", what: "closed partnership", ts: "3 hrs ago" },
-      { who: "Social Construct", what: "onboarded 12 youth apprentices", ts: "4 hrs ago" },
+      { who: "A heritage-pub CIC", what: "readied a £16.5K Lottery submission", ts: "2 min ago" },
+      { who: "A creative-portal partner", what: "posted carousel to 47K reach", ts: "7 min ago" },
+      { who: "A national-network amplifier", what: "joined partner tier", ts: "22 min ago" },
+      { who: "A white-label grant partner", what: "drafted an nBS for a new CIC", ts: "35 min ago" },
+      { who: "An equine-rescue CIC", what: "filed intake docs", ts: "48 min ago" },
+      { who: "A paying trades SME", what: "renewed site hosting", ts: "1 hr ago" },
+      { who: "A heritage-pub launch", what: "campaign moves into public phase", ts: "1 hr ago" },
+      { who: "A Glasgow community CIC", what: "cleared first payout", ts: "2 hrs ago" },
+      { who: "A Scottish creative collective", what: "closed a partnership", ts: "3 hrs ago" },
+      { who: "A youth-skills CIC", what: "onboarded 12 apprentices", ts: "4 hrs ago" },
     ];
     let ei = 0;
     function pushEvent() {
@@ -1051,19 +1053,20 @@
   function mountActivity() {
     const grid = $("#activity-grid");
     if (!grid) return;
+    // Anonymised activity grid — composite + role-only descriptors, no identifying names.
     const EVENTS = [
-      { who: "Mariam Y.", verb: "drafted her", obj: "nBS application", meta: "Bristol · 2m ago", href: "#" },
-      { who: "Anthony Impraim", verb: "posted a carousel to", obj: "47K followers", meta: "London · 5m ago", href: "#" },
-      { who: "Earth Village CIC", verb: "submitted", obj: "£16.5K to National Lottery", meta: "Bristol · 8m ago", href: "#" },
-      { who: "Jote S.", verb: "met with", obj: "a landowner today", meta: "Birmingham · 11m ago", href: "#" },
-      { who: "Kestrel Collective", verb: "closed", obj: "their first round", meta: "Edinburgh · 16m ago", href: "#" },
-      { who: "Cardiff Atlas", verb: "published", obj: "impact report 2026Q1", meta: "Cardiff · 22m ago", href: "#" },
-      { who: "North Sky CIC", verb: "received", obj: "first payout of £6.4K", meta: "Leeds · 31m ago", href: "#" },
-      { who: "Brighton Forge", verb: "joined", obj: "the constellation", meta: "Brighton · 48m ago", href: "#" },
-      { who: "Glasgow Hearth", verb: "completed", obj: "AIQ · Practitioner band", meta: "Glasgow · 1h ago", href: "#" },
-      { who: "Lagos Circle", verb: "formed", obj: "a cross-border syndicate", meta: "Lagos · 1h ago", href: "#" },
-      { who: "Accra Link", verb: "onboarded", obj: "three new members", meta: "Accra · 2h ago", href: "#" },
-      { who: "Belfast Orbit", verb: "passed", obj: "eligibility for 4 grants", meta: "Belfast · 2h ago", href: "#" },
+      { who: "A first-time CIC founder", verb: "drafted their", obj: "nBS application", meta: "South West · 2m ago", href: "#" },
+      { who: "A creative-portal partner", verb: "posted a carousel to", obj: "47K followers", meta: "London · 5m ago", href: "#" },
+      { who: "A heritage-pub CIC", verb: "submitted", obj: "£16.5K to National Lottery", meta: "South Coast · 8m ago", href: "#" },
+      { who: "A regen-strategy partner", verb: "met with", obj: "a landowner today", meta: "Midlands · 11m ago", href: "#" },
+      { who: "A creative collective", verb: "closed", obj: "their first round", meta: "Edinburgh · 16m ago", href: "#" },
+      { who: "A workshop partner", verb: "published", obj: "impact report 2026Q1", meta: "Cardiff · 22m ago", href: "#" },
+      { who: "A community CIC", verb: "received", obj: "first payout of £6.4K", meta: "Yorkshire · 31m ago", href: "#" },
+      { who: "A new constellation member", verb: "joined", obj: "the network", meta: "South Coast · 48m ago", href: "#" },
+      { who: "An AIQ Practitioner", verb: "completed", obj: "AIQ · Practitioner band", meta: "Glasgow · 1h ago", href: "#" },
+      { who: "A diaspora circle", verb: "formed", obj: "a cross-border syndicate", meta: "Lagos · 1h ago", href: "#" },
+      { who: "A West Africa link", verb: "onboarded", obj: "three new members", meta: "Accra · 2h ago", href: "#" },
+      { who: "A Belfast organisation", verb: "passed", obj: "eligibility for 4 grants", meta: "Belfast · 2h ago", href: "#" },
     ];
     const accents = ["t","f","g"];
     let idx = 0;
