@@ -772,8 +772,9 @@
       ctx.globalAlpha = 1;
 
       if (auto && el > holdTime + transTime + 0.4) {
-        if (idx < LEVELS.length - 1) { idx++; setFact(); }
+        if (idx < LEVELS.length - 1) idx++;
         else idx = 0;
+        setFact();          // bug fix: also update text on wrap (Level 5 → 1) so canvas + label stay in sync
         t0 = performance.now();
       }
       requestAnimationFrame(frame);
