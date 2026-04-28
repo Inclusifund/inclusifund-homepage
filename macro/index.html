@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="macro.css" />
+  <link rel="stylesheet" href="/macro/macro.css" />
 </head>
 <body>
   <header class="m-nav">
@@ -23,108 +23,173 @@
 
   <main>
 
-    <!-- HERO -->
+    <!-- HERO with tier ladder -->
     <section class="m-hero">
-      <p class="m-kicker">InclusiNews · Daily Macro Brief</p>
-      <h1>The map most UK founders never see.</h1>
-      <p class="m-lede">Where the £138 billion sits. Where it's flowing this week. What you can actually grab. Built on the Architecture of Endurance research, updated every morning.</p>
-      <div class="m-hero-cta">
-        <a href="#today" class="cta cta-primary">Read today's brief</a>
-        <a href="#subscribe" class="cta cta-ghost">Get it in your inbox</a>
+      <div class="m-hero-text">
+        <p class="m-kicker">InclusiNews · Daily Macro Brief</p>
+        <h1>The map most UK<br/>founders never see.</h1>
+        <p class="m-lede">£138 billion sits at the top. £16,500 lands at the bottom. Nine gates between them. Every morning we map what's moving — so you stop applying for grants without knowing where they actually come from.</p>
+        <div class="m-hero-cta">
+          <a href="#today" class="cta cta-primary">Today's brief</a>
+          <a href="#subscribe" class="cta cta-ghost">Get it daily</a>
+        </div>
+      </div>
+      <div class="m-hero-visual" aria-hidden="true">
+        <svg class="m-tier-svg" viewBox="0 0 280 360" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad-up" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#5DD2D4"/>
+              <stop offset="100%" stop-color="#0B6E6E"/>
+            </linearGradient>
+          </defs>
+          <!-- Tier blocks, top wider -->
+          <rect x="20" y="20" width="240" height="32" rx="3" fill="url(#grad-up)" opacity="0.92"/>
+          <rect x="30" y="60" width="220" height="32" rx="3" fill="url(#grad-up)" opacity="0.85"/>
+          <rect x="40" y="100" width="200" height="32" rx="3" fill="url(#grad-up)" opacity="0.78"/>
+          <rect x="50" y="140" width="180" height="32" rx="3" fill="url(#grad-up)" opacity="0.71"/>
+          <rect x="60" y="180" width="160" height="32" rx="3" fill="url(#grad-up)" opacity="0.64"/>
+          <rect x="70" y="220" width="140" height="32" rx="3" fill="url(#grad-up)" opacity="0.57"/>
+          <rect x="80" y="260" width="120" height="32" rx="3" fill="url(#grad-up)" opacity="0.50"/>
+          <rect x="90" y="300" width="100" height="32" rx="3" fill="url(#grad-up)" opacity="0.43"/>
+          <rect x="105" y="340" width="70" height="20" rx="3" fill="#5DD2D4"/>
+          <!-- Labels -->
+          <text x="140" y="40" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#F7FBFD" font-weight="600">£138bn — Tier 1</text>
+          <text x="140" y="80" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#F7FBFD">Tier 2 · State</text>
+          <text x="140" y="120" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#F7FBFD">Tier 3 · Distributors</text>
+          <text x="140" y="160" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#F7FBFD">Tier 4 · Foundations</text>
+          <text x="140" y="200" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#F7FBFD">Tier 5 · CSR + Banks</text>
+          <text x="140" y="240" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#F7FBFD">Tier 6 · Local</text>
+          <text x="140" y="280" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#F7FBFD">Tier 7 · Aggregators</text>
+          <text x="140" y="320" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#F7FBFD">Tier 8 · Bridges</text>
+          <text x="140" y="354" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#0A2A35" font-weight="700">£16,500 — You</text>
+        </svg>
       </div>
     </section>
 
-    <!-- TODAY'S BRIEF -->
-    <section id="today" class="m-section">
+    <!-- TODAY'S SIGNAL — short -->
+    <section id="today" class="m-section m-today">
       <p class="m-kicker">Today · Tuesday 28 April 2026</p>
-      <h2>Q2 fiscal-tightening squeeze. The maze is consolidating.</h2>
-      <p class="m-paragraph">Spring/summer Q2 2026 is the <strong>shortest funding-decision window of the year</strong> for UK CICs — most foundation rounds close mid-May to mid-July. The Spring Statement (27 March 2026) reaffirmed fiscal-headroom constraint: <strong>"no new departmental upliftls"</strong>. Existing pots get smaller envelopes for FY26-27, not bigger.</p>
-      <p class="m-paragraph">Means: don't wait for new pots. Mine the existing Tier 3 / 5 / 6 channels harder.</p>
+      <h2>The maze is consolidating.</h2>
+      <p class="m-paragraph m-paragraph-lead">Q2 2026 is the <strong>shortest funding-decision window of the year</strong>. Most foundation rounds close mid-May to mid-July. Spring Statement (27 Mar): "no new departmental upliftls". Don't wait for new pots — mine the existing channels harder.</p>
     </section>
 
-    <!-- STANDING RECEIPTS -->
+    <!-- STANDING RECEIPTS - bigger, visual stat cards -->
     <section class="m-section m-receipts">
-      <p class="m-kicker">The standing receipts — always-on context</p>
+      <p class="m-kicker">The standing receipts</p>
       <div class="m-stat-grid">
-        <div class="m-stat">
+        <div class="m-stat m-stat-1">
+          <div class="m-stat-icon" aria-hidden="true">▲</div>
           <div class="m-stat-num">£138bn</div>
-          <div class="m-stat-label">Liquid wealth at Tier 1 — UK top 1% (ONS)</div>
+          <div class="m-stat-label">Liquid wealth, top 1%</div>
+          <div class="m-stat-meta">Tier 1 · ONS</div>
         </div>
-        <div class="m-stat">
+        <div class="m-stat m-stat-2">
+          <div class="m-stat-icon" aria-hidden="true">◇</div>
           <div class="m-stat-num">£4.2bn</div>
-          <div class="m-stat-label">UK small-charity annual funding shortfall (PBE + NPC)</div>
+          <div class="m-stat-label">Annual small-charity gap</div>
+          <div class="m-stat-meta">PBE + NPC</div>
         </div>
-        <div class="m-stat">
+        <div class="m-stat m-stat-3">
+          <div class="m-stat-icon" aria-hidden="true">●</div>
           <div class="m-stat-num">£482K</div>
-          <div class="m-stat-label">Moved into grassroots hands by InclusiFund this year</div>
+          <div class="m-stat-label">InclusiFund moved this year</div>
+          <div class="m-stat-meta">Tier 8 · 2025-26</div>
         </div>
-        <div class="m-stat">
+        <div class="m-stat m-stat-4">
+          <div class="m-stat-icon" aria-hidden="true">▸</div>
           <div class="m-stat-num">£16,500</div>
-          <div class="m-stat-label">A real grant Earth Village CIC submitted last week</div>
+          <div class="m-stat-label">A real grant, last week</div>
+          <div class="m-stat-meta">Tier 9 · Earth Village CIC</div>
         </div>
       </div>
-      <p class="m-paragraph m-paragraph-muted">The £138bn isn't going to drop on you. The path it travels matters more than the size of the pool.</p>
     </section>
 
-    <!-- TIER-BY-TIER -->
+    <!-- TIER SIGNALS - card grid not bullets -->
     <section class="m-section">
-      <p class="m-kicker">What's flowing right now — Tier-by-tier</p>
-      <ul class="m-tier-list">
-        <li><strong>Tier 2 (HM Treasury):</strong> Spring Statement reaffirmed fiscal-headroom constraint. Departmental budgets flat-or-declining in real terms FY26-27. No new flagship community fund announced.</li>
-        <li><strong>Tier 3 (Arms-Length):</strong> National Lottery Community Fund's Awards-for-All processing time has crept from 12 to 16 weeks — apply earlier than you think. NLHF Heritage Fund's "Levelling Up for Culture" reapplications open Q3.</li>
-        <li><strong>Tier 4 (Foundations):</strong> Lankelly Chase wind-down nearly complete — £15m/yr being redistributed to peer foundations through 2025–27. Tudor Trust criteria refresh due Q2.</li>
-        <li><strong>Tier 5 (Corporate CSR + Banks):</strong> Tide bank still rejecting CICs as of April 2026 (verified per InclusiFund Common Standard pledge). Co-op Bank, Unity, Metro, Triodos remain CIC-open. Lloyds Bank Foundation's "Enable" closed for Q2; reopens autumn.</li>
-        <li><strong>Tier 6 (Local Government):</strong> UKSPF allocations to combined authorities for Year 3 (FY26-27) being published this quarter. Single-settlement deals (GMCA, WMCA, Liverpool City Region, West Yorkshire) absorb portion of CSR-adjacent community spend.</li>
-        <li><strong>Tier 7 (Aggregators):</strong> 360Giving Q1 2026 data drop pending. Once published, run a who-funded-whom matching pass against your CIC's mission keywords — that's your warm-pitch list.</li>
-      </ul>
+      <p class="m-kicker">What's flowing right now</p>
+      <h2 class="m-section-h">Tier-by-tier read.</h2>
+      <div class="m-tier-grid">
+        <div class="m-tier-card"><span class="m-tier-badge">T2</span><h3>State</h3><p>Spring Statement reaffirmed fiscal-headroom constraint. Departmental budgets flat-or-declining real terms FY26-27.</p></div>
+        <div class="m-tier-card"><span class="m-tier-badge">T3</span><h3>Arms-length</h3><p>NLCF Awards-for-All processing 12→16 weeks. NLHF "Levelling Up for Culture" reapplications open Q3.</p></div>
+        <div class="m-tier-card"><span class="m-tier-badge">T4</span><h3>Foundations</h3><p>Lankelly Chase wind-down nearly complete. Tudor Trust criteria refresh due Q2. Database from 2024 — half stale.</p></div>
+        <div class="m-tier-card"><span class="m-tier-badge">T5</span><h3>CSR + Banks</h3><p>Tide still rejects CICs (April 2026). Co-op / Unity / Metro / Triodos remain CIC-open. Lloyds "Enable" closed Q2.</p></div>
+        <div class="m-tier-card"><span class="m-tier-badge">T6</span><h3>Local</h3><p>UKSPF Year 3 allocations being published this quarter. Single-settlement deals (GMCA, WMCA, Liverpool, West Yorks) absorb CSR-adjacent spend.</p></div>
+        <div class="m-tier-card"><span class="m-tier-badge">T7</span><h3>Aggregators</h3><p>360Giving Q1 2026 data drop pending. Once published — run a who-funded-whom matching pass against your mission keywords.</p></div>
+      </div>
+    </section>
+
+    <!-- PATTERN PULL-QUOTE -->
+    <section class="m-section m-pattern">
+      <p class="m-kicker">Pattern of the day</p>
+      <p class="m-pull">Friction is the moat. Wind-downs + headroom-tightening + Tier 5 inertia = a quiet squeeze. Founders who build relationships with <strong>2–3 specific gatekeepers</strong> in 2026–27 will out-perform founders who keep applying to 30 cold pots.</p>
     </section>
 
     <!-- ACTIONS -->
     <section class="m-section m-actions">
       <p class="m-kicker">What to grab this week</p>
-      <ol>
-        <li><strong>Today:</strong> Pull your CIC's mission to 5 keywords. Search 360Giving's published Q4 2025 dataset for "CIC + [your keywords]" — list every funder who's given to a CIC like yours in the last 12 months.</li>
-        <li><strong>This week:</strong> Apply to Awards for All if you haven't in the last 12 months. Submission window is now wider than it'll be in autumn.</li>
-        <li><strong>This week:</strong> If your CIC banks with Tide — switch. Co-op or Unity. The dispute is structural, not personal.</li>
-        <li><strong>By Fri 1 May:</strong> If you're an SME/CIC in a single-settlement combined-authority area (GMCA / WMCA / Liverpool / West Yorks), check your CA's published Year 3 UKSPF priorities and write a 1-paragraph alignment statement.</li>
-        <li><strong>Strategic:</strong> Build a relationship with one Tier 4 foundation officer over the next 6 months. Worth more than 10 cold applications.</li>
-      </ol>
-    </section>
-
-    <!-- PATTERN -->
-    <section class="m-section m-pattern">
-      <p class="m-kicker">Pattern of the day</p>
-      <p class="m-pull">Friction is the moat. The wind-downs (Lankelly, Tudor refresh) plus the headroom-tightening (Spring Statement) plus the Tier 5 inertia (Tide) is producing a quiet squeeze. Founders who build relationships with 2–3 specific gatekeepers in 2026–27 will out-perform founders who keep applying to 30 cold pots.</p>
-    </section>
-
-    <!-- VIDEO DECKS -->
-    <section class="m-section m-decks">
-      <p class="m-kicker">Three macro briefs · 90 sec each</p>
-      <h2>Watch the map.</h2>
-      <div class="m-deck-grid">
-        <a class="m-deck-card" href="../slides/1-the-138bn/index.html">
-          <span class="m-deck-num">01</span>
-          <span class="m-deck-title">The £138bn most founders never see</span>
-          <span class="m-deck-meta">Top of funnel · 90 sec</span>
-        </a>
-        <a class="m-deck-card" href="../slides/2-the-squeeze/index.html">
-          <span class="m-deck-num">02</span>
-          <span class="m-deck-title">The squeeze nobody's talking about</span>
-          <span class="m-deck-meta">Q2 macro · 3 min</span>
-        </a>
-        <a class="m-deck-card" href="../slides/3-reverse-receipts/index.html">
-          <span class="m-deck-num">03</span>
-          <span class="m-deck-title">Reverse the receipts</span>
-          <span class="m-deck-meta">Top-down · 2 min</span>
-        </a>
+      <div class="m-action-grid">
+        <div class="m-action"><span class="m-action-num">1</span><div><strong>Today.</strong> Pull your CIC's mission to 5 keywords. Search 360Giving Q4 2025 dataset for "CIC + [your keywords]". List every funder who gave to a CIC like yours.</div></div>
+        <div class="m-action"><span class="m-action-num">2</span><div><strong>This week.</strong> Apply to Awards for All if you haven't in 12 months. Window wider than autumn.</div></div>
+        <div class="m-action"><span class="m-action-num">3</span><div><strong>Bank check.</strong> If your CIC banks with Tide — switch to Co-op, Unity, Metro, or Triodos. The dispute is structural.</div></div>
+        <div class="m-action"><span class="m-action-num">4</span><div><strong>By Fri 1 May.</strong> If you're in a single-settlement combined-authority area — read your CA's Year 3 UKSPF priorities. Write a 1-paragraph alignment statement.</div></div>
+        <div class="m-action"><span class="m-action-num">5</span><div><strong>Strategic.</strong> Build a relationship with one Tier 4 foundation officer over 6 months. Worth more than 10 cold applications.</div></div>
       </div>
     </section>
 
-    <!-- EMAIL CAPTURE + QUESTIONNAIRE -->
+    <!-- VIDEO DECKS - 6 cards (operator + caveman) -->
+    <section class="m-section m-decks">
+      <p class="m-kicker">Watch the map · two voices</p>
+      <h2 class="m-section-h">Three briefs · operator and caveman cuts.</h2>
+      <p class="m-paragraph m-paragraph-muted">Operator = sourced + articulate. Caveman = short, repeating, concrete. Same facts. Pick the cognitive ramp that fits.</p>
+      <div class="m-deck-grid">
+
+        <a class="m-deck-card m-deck-op" href="/slides/1-the-138bn/">
+          <span class="m-deck-num">01</span>
+          <span class="m-deck-voice">Operator</span>
+          <span class="m-deck-title">The £138bn most founders never see</span>
+          <span class="m-deck-meta">Top of funnel · 90 sec</span>
+        </a>
+        <a class="m-deck-card m-deck-cave" href="/slides/1-the-138bn-caveman/">
+          <span class="m-deck-num">01</span>
+          <span class="m-deck-voice">Caveman</span>
+          <span class="m-deck-title">UK founder. Need money. Money exist.</span>
+          <span class="m-deck-meta">Same facts · sharper edges</span>
+        </a>
+
+        <a class="m-deck-card m-deck-op" href="/slides/2-the-squeeze/">
+          <span class="m-deck-num">02</span>
+          <span class="m-deck-voice">Operator</span>
+          <span class="m-deck-title">The squeeze nobody's talking about</span>
+          <span class="m-deck-meta">Q2 macro · 3 min</span>
+        </a>
+        <a class="m-deck-card m-deck-cave" href="/slides/2-the-squeeze-caveman/">
+          <span class="m-deck-num">02</span>
+          <span class="m-deck-voice">Caveman</span>
+          <span class="m-deck-title">Squeeze nobody talk about</span>
+          <span class="m-deck-meta">Three signal · one pattern</span>
+        </a>
+
+        <a class="m-deck-card m-deck-op" href="/slides/3-reverse-receipts/">
+          <span class="m-deck-num">03</span>
+          <span class="m-deck-voice">Operator</span>
+          <span class="m-deck-title">Reverse the receipts</span>
+          <span class="m-deck-meta">Top-down · 2 min</span>
+        </a>
+        <a class="m-deck-card m-deck-cave" href="/slides/3-reverse-receipts-caveman/">
+          <span class="m-deck-num">03</span>
+          <span class="m-deck-voice">Caveman</span>
+          <span class="m-deck-title">Receipt go up. We read down.</span>
+          <span class="m-deck-meta">£138bn → £1 · same chain</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- EMAIL CAPTURE -->
     <section id="subscribe" class="m-section m-subscribe">
       <p class="m-kicker">Get the daily brief</p>
       <h2>Free. Daily. Built for SMEs and CICs.</h2>
-      <p class="m-paragraph">One brief in your inbox each morning. Where money is moving, what's drying up, what to grab. Three questions help us tune what we send you. Unsubscribe any time.</p>
+      <p class="m-paragraph">One brief in your inbox each morning. Where money is moving, what's drying up, what to grab. Three quick questions tune what we send you. Unsubscribe anytime.</p>
 
       <form id="m-subscribe-form" class="m-form" novalidate>
         <label class="m-field">
@@ -133,7 +198,7 @@
         </label>
 
         <label class="m-field">
-          <span class="m-field-label">What's your organisation type?</span>
+          <span class="m-field-label">Organisation type</span>
           <select name="org_type">
             <option value="">— Select —</option>
             <option>Pre-CIC / planning to register</option>
@@ -147,7 +212,7 @@
         </label>
 
         <label class="m-field">
-          <span class="m-field-label">What's blocking you most right now?</span>
+          <span class="m-field-label">What's blocking you most?</span>
           <select name="blocker">
             <option value="">— Select —</option>
             <option>Funding access</option>
@@ -197,48 +262,25 @@
   </footer>
 
   <script>
-    // Email capture handler.
-    // TODO(Royal): wire to Convex HTTP action `inclusinews:subscribe` once endpoint is deployed.
-    // Until then, this falls back to a mailto: link so captures still work.
-    document.getElementById('m-subscribe-form')?.addEventListener('submit', async function (e) {
+    document.getElementById('m-subscribe-form')?.addEventListener('submit', function (e) {
       e.preventDefault();
       const form = e.currentTarget;
       const status = form.querySelector('.m-form-status');
       const data = Object.fromEntries(new FormData(form).entries());
       if (!data.email || !data.email.includes('@')) {
         status.textContent = 'Please enter a valid email.';
-        status.style.color = '#0F8B8D';
         return;
       }
-      status.textContent = 'Subscribing…';
-
-      // Future endpoint (uncomment + deploy Convex action):
-      // try {
-      //   const res = await fetch('/api/inclusinews/subscribe', {
-      //     method: 'POST',
-      //     headers: {'Content-Type': 'application/json'},
-      //     body: JSON.stringify(data),
-      //   });
-      //   if (res.ok) {
-      //     status.textContent = "You're in. First brief lands tomorrow morning.";
-      //     status.style.color = '#0B6E6E';
-      //     form.reset();
-      //     return;
-      //   }
-      // } catch {}
-
-      // Fallback for v1 (no backend yet): open mailto with prefilled signup.
       const subject = encodeURIComponent('InclusiNews — subscribe');
       const body = encodeURIComponent(
         'Please subscribe me to InclusiNews.\n\n' +
-        `Email: ${data.email}\n` +
-        `Org type: ${data.org_type || '—'}\n` +
-        `Blocker: ${data.blocker || '—'}\n` +
-        `Region: ${data.region || '—'}\n`
+        'Email: ' + data.email + '\n' +
+        'Org type: ' + (data.org_type || '—') + '\n' +
+        'Blocker: ' + (data.blocker || '—') + '\n' +
+        'Region: ' + (data.region || '—') + '\n'
       );
-      window.location.href = `mailto:hello@inclusifund.co.uk?subject=${subject}&body=${body}`;
-      status.textContent = "Opening your email app to confirm — hit send and you're in.";
-      status.style.color = '#0B6E6E';
+      window.location.href = 'mailto:hello@inclusifund.co.uk?subject=' + subject + '&body=' + body;
+      status.textContent = "Opening your email app — hit send and you're in.";
     });
   </script>
 </body>
