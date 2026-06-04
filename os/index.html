@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>InclusiFund OS — funding, built simply</title>
+<meta name="description" content="Everything InclusiFund does — funding, governance, websites and the free open toolkit — on one calm desktop. Tap an app. No overwhelm.">
+<meta name="theme-color" content="#FBF7F0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* calm, warm, neurodiverse-friendly — the opposite of the old OTT homepage */
+    --paper:#FBF7F0; --cloud:#FFFFFF;
+    --ink:#1E2A3A; --ink-soft:#3C4B5E; --muted:#6B7A8D;
+    --teal:#0FA8A0; --deep-teal:#0B6E74; --sky:#3E7CB1;
+    --gold:#E8A93B; --peach:#F5A97F; --lilac:#9B8CE0;
+    --glass:rgba(255,255,255,.72); --stroke:rgba(30,42,58,.12); --stroke2:rgba(30,42,58,.06);
+    --ok:#2FA37A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden}
+  body{background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased}
+  .fraunces{font-family:Fraunces,Georgia,serif} .mono{font-family:'Space Mono',monospace}
+  a{color:inherit;text-decoration:none}
+
+  /* ===== desktop shell ===== */
+  .os{position:relative;height:100vh;height:100dvh;width:100%;overflow:hidden}
+  /* calm daylight gradient + slow-drifting warm blobs instead of dark video */
+  .os::before{content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(60% 50% at 18% 12%,rgba(15,168,160,.16),transparent 70%),
+      radial-gradient(55% 50% at 86% 18%,rgba(155,140,224,.16),transparent 70%),
+      radial-gradient(70% 60% at 72% 96%,rgba(245,169,127,.18),transparent 72%),
+      linear-gradient(160deg,#FDFAF4,#F4EFE6)}
+  .blob{position:absolute;z-index:0;border-radius:50%;filter:blur(60px);opacity:.5;animation:drift 22s ease-in-out infinite}
+  .blob.b1{width:340px;height:340px;left:-60px;top:-40px;background:rgba(15,168,160,.4)}
+  .blob.b2{width:300px;height:300px;right:-40px;top:30px;background:rgba(155,140,224,.4);animation-delay:-7s}
+  .blob.b3{width:380px;height:380px;right:18%;bottom:-120px;background:rgba(245,169,127,.42);animation-delay:-13s}
+  @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(24px,-18px) scale(1.08)}}
+  .os::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.025;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* ===== menubar ===== */
+  .menubar{position:relative;z-index:30;display:flex;align-items:center;gap:14px;height:44px;padding:0 18px;
+    background:rgba(255,255,255,.6);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);
+    border-bottom:1px solid var(--stroke2);font-family:'Space Mono',monospace;font-size:13px}
+  .brand{display:flex;align-items:center;gap:9px;font-family:Fraunces;font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--ink)}
+  .orb{width:20px;height:20px;border-radius:50%;background:conic-gradient(from 140deg,var(--teal),var(--sky),var(--lilac),var(--peach),var(--teal));
+    box-shadow:0 0 12px rgba(15,168,160,.5);animation:pulse 6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 10px rgba(15,168,160,.4)}50%{box-shadow:0 0 18px rgba(155,140,224,.5)}}
+  .menubar .sp{flex:1}
+  .menubar .tag{color:var(--muted)} .menubar .clock{color:var(--ink)}
+
+  /* ===== desktop icons ===== */
+  .icons{position:absolute;top:60px;left:20px;z-index:5;display:flex;flex-direction:column;gap:18px}
+  .icon{width:94px;text-align:center;cursor:pointer;user-select:none;transition:transform .15s}
+  .icon:hover{transform:translateY(-3px)}
+  .icon .glyph{width:62px;height:54px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;
+    background:var(--cloud);border:1px solid var(--stroke);border-radius:16px;box-shadow:0 8px 20px rgba(30,42,58,.08)}
+  .icon .glyph svg{width:28px;height:28px;stroke:var(--deep-teal);fill:none;stroke-width:1.6}
+  .icon .nm{font-size:12.5px;color:var(--ink-soft);font-weight:500}
+
+  /* ===== windows ===== */
+  .win{position:absolute;z-index:10;display:none;width:430px;max-width:92vw;top:88px;left:150px;
+    background:var(--glass);backdrop-filter:blur(30px) saturate(140%);-webkit-backdrop-filter:blur(30px) saturate(140%);
+    border:1px solid var(--stroke);border-radius:18px;overflow:hidden;
+    box-shadow:0 30px 70px rgba(30,42,58,.18),inset 0 1px 0 rgba(255,255,255,.6)}
+  .win.wide{width:600px}
+  .win.open{display:block;animation:winIn .5s cubic-bezier(.16,1,.3,1)}
+  @keyframes winIn{from{opacity:0;transform:scale(.94) translateY(16px)}to{opacity:1;transform:none}}
+  .titlebar{display:flex;align-items:center;gap:9px;height:42px;padding:0 14px;cursor:move;touch-action:none;
+    border-bottom:1px solid var(--stroke2);background:linear-gradient(to bottom,rgba(255,255,255,.5),transparent)}
+  .tl{width:12px;height:12px;border-radius:50%;flex:0 0 auto}
+  .tl.r{background:#ff5f57;cursor:pointer} .tl.y{background:#febc2e} .tl.g{background:#28c840}
+  .titlebar .title{margin-left:6px;font-family:'Space Mono',monospace;font-size:13px;color:var(--muted)}
+  .win-body{padding:26px 26px 30px;max-height:calc(100dvh - 220px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(15,168,160,.4) transparent;background:rgba(255,255,255,.4)}
+  .win-body::-webkit-scrollbar{width:9px}
+  .win-body::-webkit-scrollbar-thumb{background:rgba(15,168,160,.35);border-radius:9px;border:2px solid transparent;background-clip:content-box}
+  .win-body.center{text-align:center}
+
+  /* ===== content ===== */
+  .hero{font-family:Fraunces;font-weight:700;font-size:40px;line-height:1.05;letter-spacing:-.5px;padding:4px 0 6px;color:var(--ink)}
+  .hero em{font-style:italic;color:var(--deep-teal)}
+  h2{font-family:Fraunces;font-weight:600;font-size:25px;margin-bottom:12px;color:var(--ink);letter-spacing:-.01em}
+  h3{font-family:Fraunces;font-weight:600;font-size:17px;color:var(--ink);margin-bottom:6px}
+  p{font-size:15px;line-height:1.62;color:var(--ink-soft);margin-bottom:12px}
+  .tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--deep-teal);margin-bottom:12px;display:block}
+  .lede{font-size:16px;color:var(--ink-soft)}
+
+  /* friendly home mark — soft concentric "gravity" rings */
+  .mark{position:relative;width:150px;height:150px;margin:0 auto 16px}
+  .mark span{position:absolute;inset:0;margin:auto;border-radius:50%;border:2px solid;}
+  .mark .r1{width:150px;height:150px;border-color:rgba(15,168,160,.55);animation:ring 6s ease-in-out infinite}
+  .mark .r2{width:104px;height:104px;border-color:rgba(62,124,177,.55);animation:ring 6s ease-in-out infinite .4s}
+  .mark .r3{width:58px;height:58px;border-color:rgba(155,140,224,.6);animation:ring 6s ease-in-out infinite .8s}
+  .mark .dot{width:24px;height:24px;border:none;background:conic-gradient(from 140deg,var(--teal),var(--sky),var(--lilac),var(--peach),var(--teal));box-shadow:0 0 20px rgba(15,168,160,.5)}
+  @keyframes ring{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.06);opacity:.6}}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:Inter;font-weight:600;font-size:15px;cursor:pointer;
+    padding:13px 22px;border-radius:12px;border:1px solid var(--stroke);background:var(--cloud);color:var(--ink);transition:.18s;text-decoration:none}
+  .btn:hover{background:#fff;transform:translateY(-1px);box-shadow:0 8px 22px rgba(30,42,58,.1)}
+  .btn.teal{background:linear-gradient(135deg,var(--teal),var(--deep-teal));color:#fff;border-color:transparent;font-weight:700;box-shadow:0 8px 24px rgba(15,168,160,.3)}
+  .btn.teal:hover{box-shadow:0 12px 32px rgba(15,168,160,.42)}
+  .btn.gold{background:linear-gradient(135deg,var(--gold),#f3c46a);color:#3a2a06;border-color:transparent;font-weight:700;box-shadow:0 8px 24px rgba(232,169,59,.28)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px} .row .btn{flex:1;min-width:130px}
+  .btn-stack{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+
+  /* tiers */
+  .tier{background:var(--cloud);border:1px solid var(--stroke);border-radius:15px;padding:22px;margin-bottom:12px;position:relative}
+  .tier.feature{border:1.5px solid var(--teal);box-shadow:0 10px 28px rgba(15,168,160,.12)}
+  .flag{position:absolute;top:-11px;left:20px;background:linear-gradient(135deg,var(--teal),var(--deep-teal));color:#fff;
+    font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:999px;font-weight:700}
+  .price{font-family:Fraunces;font-size:30px;color:var(--ink);margin:6px 0}
+  .price small{font-size:14px;color:var(--muted);font-family:Inter}
+  .tier ul{list-style:none;margin:12px 0 16px} .tier li{font-size:14px;color:var(--ink-soft);padding:5px 0 5px 20px;position:relative}
+  .tier li::before{content:"◇";position:absolute;left:0;color:var(--teal)}
+  .note{font-size:12px;color:var(--muted);font-style:italic;margin-top:8px}
+  /* task → output → result */
+  .task{font-size:15px;color:var(--ink);margin:2px 0 12px;font-weight:500;line-height:1.5}
+  .ord{font-size:14px;color:var(--ink-soft);line-height:1.55;padding:9px 0;border-top:1px solid var(--stroke2)}
+  .ord .lbl{display:inline-block;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--deep-teal);margin-right:8px}
+
+  /* proof / testimonials */
+  .sechead{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:block;margin:26px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--stroke2)}
+  .quote{background:var(--cloud);border:1px solid var(--stroke);border-left:3px solid var(--teal);border-radius:12px;padding:18px;margin-bottom:10px}
+  .quote.slot{border-left-style:dashed;border-left-color:var(--muted);background:rgba(255,255,255,.5)}
+  .quote p{font-size:15px;color:var(--ink);margin-bottom:8px;line-height:1.55}
+  .quote .who{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)}
+  .quote.hero{border-left-width:4px;background:linear-gradient(180deg,rgba(15,168,160,.08),transparent)}
+  .quote.hero p{font-family:Fraunces;font-size:19px;line-height:1.45;color:var(--ink)}
+  .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .pbar{display:flex;flex-direction:column;gap:8px;margin:6px 0}
+  .pline{font-size:14px;color:var(--ink);padding:10px 14px;background:var(--cloud);border:1px solid var(--stroke);border-radius:10px;line-height:1.45}
+  .pline .who{display:block;font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted);margin-top:3px}
+  @media(max-width:680px){.qgrid{grid-template-columns:1fr}}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+  .stat{background:var(--cloud);border:1px solid var(--stroke);border-radius:13px;padding:16px;text-align:center}
+  .stat .n{font-family:Fraunces;font-size:28px;color:var(--deep-teal)} .stat .l{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.35}
+
+  /* step ladder (the membrane) */
+  .step{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--stroke2)}
+  .step:last-child{border-bottom:none}
+  .step .nx{font-family:'Space Mono',monospace;font-size:13px;color:var(--teal);flex:0 0 auto;width:30px;font-weight:700}
+  .step .sx strong{display:block;color:var(--ink);font-family:Fraunces;font-size:16px;margin-bottom:2px}
+  .step .sx span{font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+
+  /* link list */
+  .lk{display:flex;align-items:center;gap:12px;background:var(--cloud);border:1px solid var(--stroke);border-radius:12px;padding:14px 16px;margin-bottom:9px;transition:.16s;cursor:pointer}
+  .lk:hover{border-color:var(--teal);transform:translateX(4px)}
+  .lk .ic{width:38px;height:38px;border-radius:10px;flex:0 0 38px;display:grid;place-items:center;background:rgba(15,168,160,.1)}
+  .lk .ic svg{width:20px;height:20px;stroke:var(--deep-teal);fill:none;stroke-width:1.7}
+  .lk .mt strong{display:block;color:var(--ink);font-weight:600;font-size:15px} .lk .mt span{font-size:12.5px;color:var(--muted)}
+  .free{font-family:'Space Mono',monospace;font-size:10px;color:var(--ok);border:1px solid rgba(47,163,122,.4);border-radius:999px;padding:3px 8px;margin-left:auto;text-transform:uppercase;letter-spacing:.08em}
+
+  /* testimonial video gallery */
+  .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+  .vslot{aspect-ratio:9/16;border-radius:12px;border:1px solid var(--stroke);display:grid;place-items:center;color:var(--deep-teal);cursor:pointer;transition:.16s;text-align:center;padding:10px;
+    font-family:'Space Mono',monospace;font-size:12.5px;background:linear-gradient(135deg,rgba(15,168,160,.1),rgba(155,140,224,.1))}
+  .vslot:hover{border-color:var(--teal);color:var(--ink);transform:translateY(-2px)}
+  .vslot.empty{border-style:dashed;color:var(--muted)}
+  #vmodal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;background:rgba(30,42,58,.7);backdrop-filter:blur(8px);padding:24px}
+  #vmodal.on{display:flex}
+  #vmodal .vbox{position:relative;width:min(360px,90vw);aspect-ratio:9/16;background:#000;border:1px solid var(--stroke);border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(30,42,58,.4)}
+  #vmodal video{width:100%;height:100%;object-fit:cover}
+  #vmodal .vclose{position:absolute;top:-18px;right:-4px;z-index:2;cursor:pointer;color:#fff;font-size:26px}
+
+  /* socials */
+  .socials{display:flex;gap:12px;justify-content:center;margin:18px 0 4px}
+  .socials a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:var(--cloud);border:1px solid var(--stroke);color:var(--muted);transition:.18s}
+  .socials a:hover{color:var(--deep-teal);border-color:rgba(15,168,160,.45);transform:translateY(-2px)}
+  .socials svg{width:20px;height:20px}
+
+  /* ===== dock ===== */
+  .dock{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:40;display:flex;align-items:flex-end;gap:10px;padding:10px 12px;max-width:96vw;
+    background:rgba(255,255,255,.62);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);
+    border:1px solid var(--stroke);border-radius:20px;box-shadow:0 18px 44px rgba(30,42,58,.16),inset 0 1px 0 rgba(255,255,255,.7)}
+  .dock .item{position:relative;width:48px;height:48px;flex:0 0 auto;border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    background:var(--cloud);border:1px solid var(--stroke2);box-shadow:inset 0 1px 0 rgba(255,255,255,.7);transition:transform .18s cubic-bezier(.2,.9,.25,1)}
+  .dock .item:hover{transform:translateY(-12px) scale(1.26)}
+  .dock .item svg{width:24px;height:24px;stroke:var(--deep-teal);fill:none;stroke-width:1.6}
+  .dock .item .tip{position:absolute;top:-34px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:11px;color:#fff;
+    background:rgba(30,42,58,.9);padding:4px 8px;border-radius:7px;white-space:nowrap;opacity:0;transition:.15s;pointer-events:none}
+  .dock .item:hover .tip{opacity:1}
+
+  /* boot reveal */
+  .menubar,.icons,.dock{opacity:0}
+  .os.booted .menubar{animation:rv .8s ease .2s forwards}
+  .os.booted .icons{animation:rv 1s ease .9s forwards}
+  .os.booted .dock{animation:rvDock 1s cubic-bezier(.2,.9,.25,1) 1.3s forwards}
+  @keyframes rv{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+  @keyframes rvDock{from{opacity:0;transform:translateX(-50%) translateY(28px)}to{opacity:1;transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.menubar,.icons,.dock,.blob{animation:none!important;opacity:1!important}}
+
+  @media(max-width:680px){
+    .icons{top:54px;left:0;right:0;padding:0 22px;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:18px 8px}
+    .icon{width:80px}
+    .win{left:4vw!important;right:4vw;width:auto!important;max-width:none;top:64px!important;transform:none!important}
+    .win.wide{width:auto!important}
+    .hero{font-size:32px}
+    .dock{bottom:calc(14px + env(safe-area-inset-bottom));gap:7px;padding:9px 10px}
+    .dock .item{width:46px;height:46px}
+    .stats{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+<div class="os" id="os">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+
+  <!-- menubar -->
+  <div class="menubar">
+    <span class="brand"><span class="orb"></span> InclusiFund OS</span>
+    <span class="sp"></span>
+    <span class="tag" id="day"></span>
+    <span class="clock" id="clock">00:00:00</span>
+  </div>
+
+  <!-- desktop icons -->
+  <div class="icons">
+    <div class="icon" data-open="w-work"><div class="glyph"><svg viewBox="0 0 24 24"><path d="M3 7h6l2 2h10v10H3z"/></svg></div><span class="nm">What We Do</span></div>
+    <div class="icon" data-open="w-proof"><div class="glyph"><svg viewBox="0 0 24 24"><path d="M5 4h14v16l-7-4-7 4z"/><path d="M9.5 10l1.5 1.5L14.5 8"/></svg></div><span class="nm">Proof</span></div>
+    <div class="icon" data-open="w-toolkit"><div class="glyph"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 9h16M9 5v14"/></svg></div><span class="nm">Open Toolkit</span></div>
+    <div class="icon" data-open="w-community"><div class="glyph"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="17" cy="8" r="2.4"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M14 20c0-2.4 1.8-4 3.5-4"/></svg></div><span class="nm">Community</span></div>
+    <div class="icon" data-open="w-membrane"><div class="glyph"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></div><span class="nm">How It Works</span></div>
+    <div class="icon" data-open="w-connect"><div class="glyph"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg></div><span class="nm">Connect</span></div>
+  </div>
+
+  <!-- ===== HOME ===== -->
+  <div class="win" id="w-home" style="top:90px;left:50%;transform:translateX(-50%)">
+    <div class="titlebar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="title">InclusiFund OS</span></div>
+    <div class="win-body center">
+      <div class="mark" role="img" aria-label="InclusiFund gravity mark"><span class="r1"></span><span class="r2"></span><span class="r3"></span><span class="dot"></span></div>
+      <div class="hero">Funding and growth,<br><em>built simply.</em></div>
+      <p class="lede" style="max-width:380px;margin:14px auto 0">We help underrepresented founders and community orgs get <strong>funded and get online</strong> — and we put our tools out in the open. We do a lot, so we made it a desktop. <strong>Tap an app.</strong></p>
+      <div class="btn-stack">
+        <a class="btn teal" data-open="w-proof">See what we've done →</a>
+        <div class="row"><a class="btn" data-open="w-work">What We Do</a><a class="btn" data-open="w-toolkit">Free Toolkit</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== WHAT WE DO ===== -->
+  <div class="win wide" id="w-work">
+    <div class="titlebar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="title">What We Do</span></div>
+    <div class="win-body">
+      <span class="tag">What we actually do</span>
+      <h2>Clear work. Clear outputs.</h2>
+      <p>No jargon, no overpromising. Here's the work, what you walk away with, and what it's for.</p>
+
+      <div class="tier feature"><span class="flag">Most start here</span>
+        <h3 class="fraunces">Funding & Grants</h3>
+        <p class="task">We find the funders that actually fit you, and write the application with you.</p>
+        <div class="ord"><span class="lbl">You get</span>A submitted, evidence-backed application + a shortlist of funders worth your time.</div>
+        <div class="ord"><span class="lbl">So you can</span>Go after the right money properly — assessors see exactly what they ask for.</div>
+        <a class="btn teal" data-open="w-apply" style="margin-top:16px">Talk funding →</a></div>
+
+      <div class="tier"><h3 class="fraunces">Funder-Ready Foundations</h3><div class="price">£297 <small>one-off</small></div>
+        <p class="task">We build the evidence base funders ask for before they'll fund you.</p>
+        <div class="ord"><span class="lbl">You get</span>A 2-page funder-readable summary — impact framework, safeguarding, EDI — in 7 working days.</div>
+        <div class="ord"><span class="lbl">So you can</span>Stop getting knocked back for "no policies, no evidence."</div>
+        <a class="btn" data-open="w-apply" style="margin-top:16px">Get Foundations →</a></div>
+
+      <div class="tier"><h3 class="fraunces">Websites & Tools</h3>
+        <p class="task">We design and build calm, conversion-ready sites and tools — like this one.</p>
+        <div class="ord"><span class="lbl">You get</span>A live, hosted site that explains you simply, plus any tools you need.</div>
+        <div class="ord"><span class="lbl">So you can</span>Send people one link that does the talking.</div>
+        <a class="btn" data-open="w-apply" style="margin-top:16px">Build with us →</a></div>
+
+      <div class="tier"><h3 class="fraunces">Partnerships</h3>
+        <p class="task">For a handful of founders we go all in — a shared roadmap, not a one-off job.</p>
+        <div class="ord"><span class="lbl">You get</span>Ongoing funding, build and growth support — often on revenue-share or asset-licence.</div>
+        <div class="ord"><span class="lbl">So you can</span>Grow with a team in your corner that only wins when you do.</div>
+        <a class="btn" data-open="w-apply" style="margin-top:16px">Start a conversation →</a></div>
+
+      <p class="note">InclusiFund is a brand of InclusiGroup Ltd. Not VAT-registered — prices are the price.</p>
+    </div>
+  </div>
+
+  <!-- ===== PROOF ===== -->
+  <div class="win wide" id="w-proof">
+    <div class="titlebar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="title">Proof</span></div>
+    <div class="win-body">
+      <span class="tag">Real people · real outcomes</span>
+      <h2>The proof, out in the open.</h2>
+      <p>We've helped founders put real funding applications in, get funder-ready, and ship websites that actually convert. Here's what they say — in their words.</p>
+
+      <!-- Verbatim quotes — Royal's 2026-05-22 publish-approved list only (testimonial-mine.md) -->
+      <div class="quote hero">
+        <p>“What's possible from this place is very different — and that's beautiful. That's how it should be.”</p>
+        <span class="who">— Natalie, Rose Rising</span>
+      </div>
+
+      <span class="sechead">Felt understood</span>
+      <div class="qgrid">
+        <div class="quote"><p>“From your first TikTok to now, you've resonated on a consistent level — and you got straight to the point.”</p><span class="who">— Marissa Bowes</span></div>
+        <div class="quote"><p>“It's really rare to have a company like yours that's focused on amplifying that.”</p><span class="who">— Dr Javeria K. Shah, Sufiyana</span></div>
+        <div class="quote"><p>“It also called me back in — we can't have people in that don't feel and embody this work. So it makes a lot of sense.”</p><span class="who">— Natalie, Rose Rising</span></div>
+      </div>
+
+      <span class="sechead">Trusted the partnership</span>
+      <div class="qgrid">
+        <div class="quote"><p>“I don't doubt you. I don't doubt you at all.”</p><span class="who">— Founder, creative-media studio</span></div>
+        <div class="quote"><p>“You're not there for the short-term — you're investing in the communities. That's what really stood out.”</p><span class="who">— Binni, Youths 2 Legends</span></div>
+        <div class="quote"><p>“You're very needed. We need you in this space.”</p><span class="who">— Amina Mohamed, SWP CIC</span></div>
+      </div>
+
+      <span class="sechead">The relief of a real extra hand</span>
+      <div class="qgrid">
+        <div class="quote"><p>“Grant writing isn't my skillset. I'm happy to outsource it rather than get it wrong — the learning process is more costly than I can afford right now.”</p><span class="who">— Naomi Buthee</span></div>
+        <div class="quote"><p>“I can't explain the back-and-forth — people who started a website and gave up halfway. I've had that a lot. This means a lot.”</p><span class="who">— Paula Francis</span></div>
+        <div class="quote"><p>“I see something I can't build on my own. I need the extra hand — it just makes my life much easier.”</p><span class="who">— Farah Hassan, Empowered Refugees CIC</span></div>
+      </div>
+
+      <span class="sechead">Ready to move</span>
+      <div class="qgrid">
+        <div class="quote"><p>“I mean that sounds amazing — I'm not going to dismiss that at all.”</p><span class="who">— Kadian, Rising Ohana's CIC</span></div>
+        <div class="quote"><p>“I'm very ready. This thing has been growing — I know now it's time.”</p><span class="who">— Ade Anifowose</span></div>
+        <div class="quote"><p>“Yeah — let's make it happen.”</p><span class="who">— Nancy Evbuomwan</span></div>
+        <div class="quote"><p>“You inspired me to start doing content.”</p><span class="who">— Emmanuel Akinnuoye</span></div>
+        <div class="quote"><p>“Even though you don't say much, it's an influence — it pushes one to keep going. I'm really grateful.”</p><span class="who">— Vivienne Green</span></div>
+      </div>
+
+      <span class="sechead">Quick word</span>
+      <div class="pbar">
+        <div class="pline">“I really enjoy watching your TikTok.”<span class="who">Dr Javeria K. Shah · Sufiyana</span></div>
+        <div class="pline">“Working under your guidance — it'll be brilliant.”<span class="who">Binni · Youths 2 Legends</span></div>
+        <div class="pline">“Did you make all of this just in January? Wow.”<span class="who">Edel Quine · CelestiReal</span></div>
+        <div class="pline">“A website like this or better — I'm in. I'm over the moon.”<span class="who">Founder · creative-media studio</span></div>
+        <div class="pline">“That sounds about right to me.”<span class="who">Josh Leach</span></div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="n">—</div><div class="l">funding secured<br>(figure to confirm)</div></div>
+        <div class="stat"><div class="n">—</div><div class="l">founders &amp; orgs<br>supported</div></div>
+        <div class="stat"><div class="n">—</div><div class="l">sites &amp; tools<br>shipped</div></div>
+      </div>
+      <p class="note">All quotes verbatim from real client calls (lightly cleaned, no words added). Published live 2026-06-04 (Royal surfacing to each client casually via WA relay). Stat numbers are placeholders until confirmed.</p>
+
+      <span class="sechead">On camera</span>
+      <p>No script, no actors — the clips people send after working with us.</p>
+      <div class="vgrid">
+        <div class="vslot empty" data-clip="1">＋ add clip 1</div>
+        <div class="vslot empty" data-clip="2">＋ add clip 2</div>
+        <div class="vslot empty" data-clip="3">＋ add clip 3</div>
+        <div class="vslot empty" data-clip="4">＋ add clip 4</div>
+      </div>
+      <p class="note">Drop real video files in <span class="mono">assets/testimonials/t1.mp4 …</span> and label each slot — they play in a lightbox, exactly like Scalar OS. Text quotes above work the same way: paste verbatim, never paraphrased.</p>
+    </div>
+  </div>
+
+  <!-- testimonial video lightbox -->
+  <div id="vmodal" onclick="closeVid(event)"><div class="vbox"><span class="vclose" onclick="closeVid()">✕</span><video id="vplayer" controls playsinline></video></div></div>
+
+  <!-- ===== OPEN TOOLKIT ===== -->
+  <div class="win wide" id="w-toolkit">
+    <div class="titlebar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="title">Open Toolkit</span></div>
+    <div class="win-body">
+      <span class="tag">Free · no login · no paywall</span>
+      <h2>The toolkit, open to all.</h2>
+      <p>The same engines we use internally, put out in the open so anyone can learn from them — whether you ever hire us or not. Free knowledge is how the network grows.</p>
+
+      <a class="lk" href="https://tools.inclusifund.co.uk" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 9h16M9 5v14"/></svg></span>
+        <span class="mt"><strong>CIC Toolkit</strong><span>Free tools for running a community interest company</span></span>
+        <span class="free">Free</span></a>
+
+      <a class="lk" href="https://inclusifund.co.uk/manifesto" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></span>
+        <span class="mt"><strong>The Manifesto</strong><span>What we stand for and why</span></span>
+        <span class="free">Free</span></a>
+
+      <a class="lk" href="https://inclusifund.co.uk/receipts" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M7 3h10v18l-2.5-2-2.5 2-2.5-2L7 21z"/><path d="M10 8h4M10 12h4"/></svg></span>
+        <span class="mt"><strong>Receipts</strong><span>The work, shown plainly</span></span>
+        <span class="free">Free</span></a>
+
+      <p class="note">More guides and open tools land here over time — this is the "replenish externally" half of how InclusiFund grows. <span class="mono">[ add: grant guide · governance templates · impact framework ]</span></p>
+    </div>
+  </div>
+
+  <!-- ===== COMMUNITY ===== -->
+  <div class="win" id="w-community">
+    <div class="titlebar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="title">Community</span></div>
+    <div class="win-body">
+      <span class="tag">The network</span>
+      <h2>You're not doing this alone.</h2>
+      <p>Founders, practitioners and partners in one place — sharing what works, opening doors, growing the gravity. Start with the knowledge, stay for the people.</p>
+      <a class="lk" href="https://community.inclusifund.co.uk" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="17" cy="8" r="2.4"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5"/></svg></span>
+        <span class="mt"><strong>Join the community</strong><span>community.inclusifund.co.uk</span></span></a>
+      <a class="lk" data-open="w-apply">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M16 3l5 5-11 11H5v-5z"/></svg></span>
+        <span class="mt"><strong>Partner with us</strong><span>Build something bigger together</span></span></a>
+      <p class="note">Partnerships span UGC creators, impact investors and client-infrastructure — the gravity flywheel.</p>
+    </div>
+  </div>
+
+  <!-- ===== HOW IT WORKS (the membrane) ===== -->
+  <div class="win wide" id="w-membrane">
+    <div class="titlebar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="title">How It Works</span></div>
+    <div class="win-body">
+      <span class="tag">The big waves</span>
+      <h2>Starts inside. Ripples out.</h2>
+      <p>Everything here runs on one loop — and you can step in at any ring.</p>
+      <div class="step"><span class="nx">01</span><span class="sx"><strong>Internal engines</strong><span>We build real tools to run our own agency — funding pipelines, evidence systems, websites.</span></span></div>
+      <div class="step"><span class="nx">02</span><span class="sx"><strong>Open knowledge</strong><span>We open-source the best of it — free toolkit, guides, manifesto. No paywall.</span></span></div>
+      <div class="step"><span class="nx">03</span><span class="sx"><strong>Community &amp; network</strong><span>Free knowledge pulls people in. The network compounds.</span></span></div>
+      <div class="step"><span class="nx">04</span><span class="sx"><strong>Work, naturally</strong><span>When you're ready for hands-on help, the door's right here — in clarity, no pressure.</span></span></div>
+      <div class="quote" style="margin-top:18px;border-left-color:var(--lilac)">
+        <p>“I was 'never-quite-made-it' energy myself until about nine months ago. Two years of heart and soul later, it really does pay off — now I help other founders get there too.”</p>
+        <span class="who">— Reece Dunn, founder</span>
+      </div>
+      <div class="btn-stack"><a class="btn teal" data-open="w-apply">Step in →</a></div>
+    </div>
+  </div>
+
+  <!-- ===== APPLY ===== -->
+  <div class="win" id="w-apply">
+    <div class="titlebar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="title">Work With Us</span></div>
+    <div class="win-body center">
+      <span class="tag">No big leap</span>
+      <h2>Tell us where you are</h2>
+      <p style="max-width:40ch;margin:0 auto 14px">One short message and we'll point you to the simplest next step — even if that's a free tool, not us.</p>
+      <div class="btn-stack">
+        <a class="btn teal" href="mailto:reece.dunn@inclusifund.co.uk?subject=InclusiFund%20%E2%80%94%20where%20I%27m%20at&body=Hi%20Reece%2C%20here%27s%20where%20I%27m%20at%3A%0A%0A">Email Reece →</a>
+        <a class="btn" href="tel:+443300545828">Call 0330 054 5828</a>
+      </div>
+      <p class="note">Replies come from Reece Dunn personally.</p>
+    </div>
+  </div>
+
+  <!-- ===== CONNECT ===== -->
+  <div class="win" id="w-connect">
+    <div class="titlebar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><span class="title">Connect</span></div>
+    <div class="win-body center">
+      <span class="tag">Reach us</span>
+      <h2>Connect</h2>
+      <p>The whole world of InclusiFund, a tap away.</p>
+      <div class="btn-stack">
+        <a class="btn teal" href="https://inclusifund.co.uk" target="_blank" rel="noopener">inclusifund.co.uk</a>
+        <a class="btn" href="https://tools.inclusifund.co.uk" target="_blank" rel="noopener">Free CIC Toolkit</a>
+        <a class="btn" href="https://community.inclusifund.co.uk" target="_blank" rel="noopener">Community</a>
+        <a class="btn" href="mailto:reece.dunn@inclusifund.co.uk">reece.dunn@inclusifund.co.uk</a>
+        <a class="btn" href="tel:+443300545828">0330 054 5828</a>
+      </div>
+      <p class="note" style="margin-top:18px">InclusiFund — a brand of InclusiGroup Ltd.</p>
+    </div>
+  </div>
+
+  <!-- dock -->
+  <div class="dock">
+    <div class="item" data-open="w-home"><span class="tip">Home</span><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/></svg></div>
+    <div class="item" data-open="w-work"><span class="tip">What We Do</span><svg viewBox="0 0 24 24"><path d="M3 7h6l2 2h10v10H3z"/></svg></div>
+    <div class="item" data-open="w-proof"><span class="tip">Proof</span><svg viewBox="0 0 24 24"><path d="M5 4h14v16l-7-4-7 4z"/><path d="M9.5 10l1.5 1.5L14.5 8"/></svg></div>
+    <div class="item" data-open="w-toolkit"><span class="tip">Open Toolkit</span><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 9h16M9 5v14"/></svg></div>
+    <div class="item" data-open="w-community"><span class="tip">Community</span><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="17" cy="8" r="2.4"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5"/></svg></div>
+    <div class="item" data-open="w-membrane"><span class="tip">How It Works</span><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></div>
+    <div class="item" data-open="w-apply"><span class="tip">Work With Us</span><svg viewBox="0 0 24 24"><path d="M16 3l5 5-11 11H5v-5z"/></svg></div>
+    <div class="item" data-open="w-connect"><span class="tip">Connect</span><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg></div>
+  </div>
+</div>
+
+<script>
+  const os=document.getElementById('os');
+  let z=10;
+  function open(id){const w=document.getElementById(id); if(!w) return; w.classList.add('open'); w.style.zIndex=(++z);}
+  function close(w){ w.classList.remove('open'); }
+  document.querySelectorAll('[data-open]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();open(el.dataset.open);}));
+  document.querySelectorAll('.win').forEach(w=>{
+    w.querySelector('.tl.r').addEventListener('click',()=>close(w));
+    w.addEventListener('pointerdown',()=>{w.style.zIndex=(++z);});
+    const tb=w.querySelector('.titlebar'); let sx,sy,ox,oy,drag=false;
+    tb.addEventListener('pointerdown',e=>{
+      if(e.target.classList.contains('tl')) return;
+      if(window.innerWidth<=680) return;
+      drag=true; w.style.transform='none';
+      const r=w.getBoundingClientRect(); ox=r.left; oy=r.top; sx=e.clientX; sy=e.clientY;
+      w.style.left=ox+'px'; w.style.top=oy+'px'; tb.setPointerCapture(e.pointerId);
+    });
+    tb.addEventListener('pointermove',e=>{ if(!drag)return; w.style.left=(ox+e.clientX-sx)+'px'; w.style.top=(oy+e.clientY-sy)+'px'; });
+    tb.addEventListener('pointerup',()=>{drag=false;});
+  });
+  // testimonial video lightbox (files live in assets/testimonials/t<N>.mp4)
+  window.openVid=function(n){var v=document.getElementById('vplayer');v.src='assets/testimonials/t'+n+'.mp4';document.getElementById('vmodal').classList.add('on');v.play().catch(()=>{});};
+  window.closeVid=function(e){if(e&&e.target&&e.target.closest('.vbox')&&!e.target.classList.contains('vclose'))return;var v=document.getElementById('vplayer');try{v.pause();}catch(_){}v.removeAttribute('src');v.load&&v.load();document.getElementById('vmodal').classList.remove('on');};
+  document.querySelectorAll('.vslot[data-clip]').forEach(el=>el.addEventListener('click',()=>{if(el.classList.contains('empty')){alert('Add a clip: drop assets/testimonials/t'+el.dataset.clip+'.mp4 and remove the "empty" class.');return;}openVid(el.dataset.clip);}));
+  function tick(){const d=new Date();
+    document.getElementById('clock').textContent=d.toLocaleTimeString('en-GB',{hour12:false});
+    document.getElementById('day').textContent=d.toLocaleDateString('en-GB',{weekday:'short',month:'short',day:'numeric'});}
+  tick(); setInterval(tick,1000);
+  os.classList.add('booted');
+  setTimeout(()=>open('w-home'),700);
+</script>
+</body>
+</html>
