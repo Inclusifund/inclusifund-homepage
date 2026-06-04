@@ -485,10 +485,10 @@
    ============================================================ */
 
 :root {
-  /* InclusiFund brand palette — teal / white / light blues (canonical) */
-  --cream: #F7FBFD;        /* base paper (pale blue-white) */
-  --cream-2: #E6F4F8;      /* pale sky wash */
-  --cream-3: #CDE9F0;      /* light blue */
+  /* InclusiFund brand palette — warm paper + teal (B "Deep Thinker" default) */
+  --cream: #F4F0E8;        /* base paper (warm cream) */
+  --cream-2: #ECE5D6;      /* warm wash */
+  --cream-3: #DCD2BE;      /* warm light sand */
   --forest: #0A2A35;       /* deep teal-navy ink */
   --forest-2: #355A68;     /* mid teal-grey */
   --forest-3: #5A7B88;     /* soft teal-grey */
@@ -501,10 +501,10 @@
   --ui: "Inter", ui-sans-serif, system-ui, sans-serif;
   --body: "Atkinson Hyperlegible", "Inter", ui-sans-serif, sans-serif;
 
-  --fs-body: 17px;
-  --lh-body: 1.55;
+  --fs-body: 16px;        /* B Deep Thinker — denser type */
+  --lh-body: 1.5;
   --tracking: 0;
-  --motion: 1;            /* Calm Kit: 0 = off, 0.5 = low, 1 = full */
+  --motion: 0.5;          /* B Deep Thinker — calmer motion (low) */
   --focus: 3px;
   --contrast: 1;          /* 0.85 low-blue, 1 default, 1.15 high */
 
@@ -1444,7 +1444,7 @@ html[data-motion="off"] .uk-node .ring { animation: none; opacity: 0.2; }
 }
 .spark-card {
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, #F7FBFD, #E6F4F8 40%, #CDE9F0);
+  background: linear-gradient(135deg, var(--cream), var(--cream-2) 40%, var(--cream-3));
   border-radius: 22px;
   overflow: hidden;
   transition: transform .2s;

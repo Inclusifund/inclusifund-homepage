@@ -10,14 +10,15 @@
   // 0. CALM KIT — root store. Every other section reads from this.
   // ================================================================
   const CALM_KEY = "inclusifund.calm.v1";
+  // Baked "B — Deep Thinker" defaults (Calm Kit UI removed; this is the fixed look)
   const DEFAULTS = {
-    motion: "full",   // off | low | full
-    textSize: 17,     // px, 14..22
-    lineHeight: 1.55,
+    motion: "low",    // off | low | full  — calmer, settled animation
+    textSize: 16,     // px — denser type
+    lineHeight: 1.5,
     tracking: 0,
     font: "default",  // default | atkinson | opendyslexic
     focus: "visible", // visible | hidden
-    contrast: "default", // default | high | low-blue
+    contrast: "default", // warmth comes from :root palette, not contrast mode
   };
 
   const Calm = {
@@ -43,9 +44,8 @@
     subscribe(fn) { this.listeners.push(fn); },
   };
   function load() {
-    try {
-      return Object.assign({}, DEFAULTS, JSON.parse(localStorage.getItem(CALM_KEY) || "{}"));
-    } catch { return Object.assign({}, DEFAULTS); }
+    // Kit UI removed — always use the baked defaults, ignore any stale stored prefs
+    return Object.assign({}, DEFAULTS);
   }
   function save(s) { try { localStorage.setItem(CALM_KEY, JSON.stringify(s)); } catch {} }
   Calm.apply();
