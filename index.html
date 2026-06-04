@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-archetype="AC" data-motion="full" data-font="default" data-focus="visible" data-contrast="default"><head>
+<html lang="en" data-motion="full"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InclusiFund — Not Self-Made. With Everyone.</title>
@@ -22,6 +22,36 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
 <link rel="stylesheet" href="./styles.css">
+<style>
+  /* ── Video hero (replaces particle hero) — calm/comfortable tuning ─── */
+  #s1-hero{position:relative;min-height:88svh;display:flex;align-items:center;overflow:hidden;isolation:isolate}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
+    filter:saturate(1.03) brightness(.98)}
+  /* warmer, lighter scrim — readable but not a heavy black wall */
+  .hero-scrim{position:absolute;inset:0;z-index:-1;
+    background:
+      linear-gradient(100deg,rgba(20,40,42,.66) 0%,rgba(20,40,42,.40) 46%,rgba(20,40,42,.12) 100%),
+      radial-gradient(120% 90% at 15% 50%,rgba(11,30,32,.34),transparent 70%)}
+  /* soft fade into the cream body so the dark→cream edge is gentle */
+  #s1-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:160px;z-index:-1;pointer-events:none;
+    background:linear-gradient(to bottom,transparent,var(--cream,#F7F2E9))}
+  #s1-hero .hero-content{max-width:720px;margin-inline:clamp(20px,7vw,120px);color:#fff;padding-block:72px}
+  #s1-hero .hero-eyebrow{color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.15em;font-size:12.5px;font-weight:600;display:block;margin-bottom:20px}
+  #s1-hero .hero-headline{font-size:clamp(44px,6.4vw,82px);line-height:1.02;letter-spacing:-.018em;margin:0 0 22px;color:#fff;font-weight:700;text-shadow:0 2px 30px rgba(8,20,22,.35)}
+  #s1-hero .hero-headline em{font-style:italic;color:#7fddd3}
+  #s1-hero .hero-proof{font-size:clamp(17px,1.7vw,21px);line-height:1.62;max-width:34ch;color:rgba(255,255,255,.94);margin:0 0 34px;text-shadow:0 1px 18px rgba(8,20,22,.4)}
+  #s1-hero .hero-proof strong{color:#fff}
+  #s1-hero .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 28px;border-radius:14px;font-weight:700;font-size:16px;transition:transform .18s,box-shadow .18s,background .18s;text-decoration:none}
+  .hero-btn.primary{background:linear-gradient(135deg,#15b3a8,#0b6e74);color:#fff;box-shadow:0 12px 34px rgba(15,168,160,.4)}
+  .hero-btn.primary:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(15,168,160,.55)}
+  .hero-btn.ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(6px)}
+  .hero-btn.ghost:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+  .topbar-cta{margin-left:auto;color:var(--forest,#0b3d3a);font-weight:700;text-decoration:none;font-size:14px;padding:8px 14px;border-radius:999px;border:1px solid currentColor;transition:.18s}
+  .topbar-cta:hover{background:var(--forest,#0b3d3a);color:#fff}
+  @media (prefers-reduced-motion:reduce){.hero-video{display:none}#s1-hero{background:#0c1a1c}}
+  @media (max-width:680px){#s1-hero .hero-content{margin-inline:20px}.hero-btn{flex:1}}
+</style>
 </head>
 <body>
 
@@ -31,55 +61,26 @@
     <span class="dot" aria-hidden="true"></span>
     <span>InclusiFund</span>
   </a>
-  <div class="skin-badge" aria-label="Change how this page reads">
-    <span aria-hidden="true">view</span>
-    <select id="skin-badge-select" aria-label="Switch archetype skin">
-      <option value="AC">A + C blend</option>
-      <option value="A">A · Overwhelmed Founder</option>
-      <option value="B">B · Deep Thinker</option>
-      <option value="C">C · Visual Processor</option>
-      <option value="D">D · Skeptic</option>
-      <option value="E">E · Community Builder</option>
-      <option value="F">F · Funder / Partner</option>
-    </select>
-  </div>
+  <a class="topbar-cta" href="#s3-globe">See the proof →</a>
 </header>
 
 <!-- ============================================================
      S1 — HERO particle break
 ============================================================ -->
 <section id="s1-hero" aria-labelledby="hero-h">
-  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <!-- 25s archetype film (WaveSpeed). Until the .mp4 lands, the poster still shows. -->
+  <video id="hero-video" class="hero-video" autoplay muted loop playsinline
+         poster="./img/hero/02-the-hand.png" aria-hidden="true">
+    <source src="./assets/hero-video/inclusifund-hero-25s.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim" aria-hidden="true"></div>
   <div class="hero-content">
-    <span class="eyebrow hero-eyebrow">funding · tools · your people, all in one place</span>
-    <h1 id="hero-h" class="hero-headline">Funding, tools, and a network for <em>your</em> community business.</h1>
-    <p class="hero-proof"><strong>142 communities</strong> · <strong>£1.2M moved</strong> · <strong>£3M target by October</strong> — built for people doing real work in real places.</p>
-    <div class="hero-ctas" role="list">
-      <a class="cta-tile primary" href="https://aiq.inclusifund.co.uk" role="listitem">
-        <span class="cta-eyebrow">1 · start here</span>
-        <span class="cta-title">AIQ</span>
-        <span class="cta-lede">Score your AI fluency in 3 questions.</span>
-        <span class="cta-meta">≈ 60 seconds</span>
-        <span class="cta-arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="cta-tile" href="#s5-funnel" role="listitem">
-        <span class="cta-eyebrow">2 · get the money</span>
-        <span class="cta-title">Grant Custom</span>
-        <span class="cta-lede">Describe your idea. Watch grants match live.</span>
-        <span class="cta-meta">real-time · free</span>
-        <span class="cta-arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="cta-tile" href="https://tools.inclusifund.co.uk" role="listitem">
-        <span class="cta-eyebrow">3 · get the kit</span>
-        <span class="cta-title">CIC Toolsuite</span>
-        <span class="cta-lede">Six tools to start, check, and fund your CIC.</span>
-        <span class="cta-meta">free · no card</span>
-        <span class="cta-arrow" aria-hidden="true">→</span>
-      </a>
-    </div>
-    <div class="hero-footnote">
-      <a href="#s2-skins" class="hero-skin-link">Reading is hard today? <span>We can change how the page looks ↓</span></a>
-      <button class="replay" id="hero-replay" aria-label="Replay the particle animation">↻ replay animation</button>
+    <span class="eyebrow hero-eyebrow">funding · tools · a network — for your community business</span>
+    <h1 id="hero-h" class="hero-headline">Funding,<br><em>built simply.</em></h1>
+    <p class="hero-proof">We help underrepresented founders and community orgs get <strong>funded</strong> and get <strong>online</strong> — then put our tools out in the open.</p>
+    <div class="hero-ctas">
+      <a class="hero-btn primary" href="#s3-globe">See the proof →</a>
+      <a class="hero-btn ghost" href="https://tools.inclusifund.co.uk">Free CIC Toolkit</a>
     </div>
   </div>
 </section>
@@ -500,78 +501,6 @@
 <!-- ============================================================
      Footer
 ============================================================ -->
-<!-- ============================================================
-     S2 — ARCHETYPE SKIN PICKER
-============================================================ -->
-<section id="s2-skins" aria-labelledby="s2-h">
-  <div class="wrap">
-    <div class="skins-head">
-      <span class="eyebrow">still here? we can change how this page works for you</span>
-      <h2 id="s2-h" class="h-serif">Pick how the page should read to you.</h2>
-      <p class="lede" style="margin-inline:auto;">Built for neurodiverse founders from day one. Six ways to read, one website. Text size, motion, spacing, and colour all change to match. Switch any time — we remember.</p>
-    </div>
-
-    <div class="skin-row" id="archetype-row" role="group" aria-label="Archetype skins">
-
-      <button class="skin-tile" data-key="A" aria-pressed="false" aria-label="Overwhelmed Founder skin — ADHD-friendly">
-        <span class="skin-key">A</span>
-        <img class="pictogram" src="./img/archetype-a.png" alt="" loading="lazy">
-        <div>
-          <div class="skin-label">Overwhelmed Founder</div>
-          <div class="skin-meta">ADHD-friendly · smaller bites</div>
-        </div>
-      </button>
-
-      <button class="skin-tile" data-key="B" aria-pressed="false" aria-label="Deep Thinker skin — autistic-friendly">
-        <span class="skin-key">B</span>
-        <img class="pictogram" src="./img/archetype-b.png" alt="" loading="lazy">
-        <div>
-          <div class="skin-label">Deep Thinker</div>
-          <div class="skin-meta">autistic · shows how it works</div>
-        </div>
-      </button>
-
-      <button class="skin-tile" data-key="C" aria-pressed="false" aria-label="Visual Processor skin — dyslexic-friendly">
-        <span class="skin-key">C</span>
-        <img class="pictogram" src="./img/archetype-c.png" alt="" loading="lazy">
-        <div>
-          <div class="skin-label">Visual Processor</div>
-          <div class="skin-meta">dyslexia-friendly · pictures first</div>
-        </div>
-      </button>
-
-      <button class="skin-tile" data-key="D" aria-pressed="false" aria-label="Skeptic skin — receipts-first">
-        <span class="skin-key">D</span>
-        <img class="pictogram" src="./img/archetype-d.png" alt="" loading="lazy">
-        <div>
-          <div class="skin-label">Skeptic</div>
-          <div class="skin-meta">prove it · numbers and names only</div>
-        </div>
-      </button>
-
-      <button class="skin-tile" data-key="E" aria-pressed="false" aria-label="Community Builder skin">
-        <span class="skin-key">E</span>
-        <img class="pictogram" src="./img/archetype-e.png" alt="" loading="lazy">
-        <div>
-          <div class="skin-label">Community Builder</div>
-          <div class="skin-meta">show me the people</div>
-        </div>
-      </button>
-
-      <button class="skin-tile" data-key="F" aria-pressed="false" aria-label="Funder / Partner skin">
-        <span class="skin-key">F</span>
-        <img class="pictogram" src="./img/archetype-f.png" alt="" loading="lazy">
-        <div>
-          <div class="skin-label">Funder / Partner</div>
-          <div class="skin-meta">funder view · numbers + one-pager</div>
-        </div>
-      </button>
-
-    </div>
-</div>
-</section>
-
-
 <footer class="page-footer">
   <div class="wrap">
     <div>
@@ -601,81 +530,6 @@
     </div>
   </div>
 </footer>
-
-<!-- ============================================================
-     S12 — CALM CONSTRUCTION KIT (persistent dock)
-============================================================ -->
-<aside class="calm-dock minimised" id="calm-dock" aria-label="Calm Construction Kit — accessibility controls">
-  <button class="calm-edge" id="calm-edge" type="button" aria-label="Open Calm Kit accessibility controls" aria-expanded="false">
-    <span class="calm-edge-icon" aria-hidden="true">⚙</span>
-    <span class="calm-edge-label">calm kit</span>
-  </button>
-  <div class="calm-body">
-    <div class="calm-title">
-      <span class="t">Calm Kit</span>
-      <button class="calm-close" id="calm-close" type="button" aria-label="Close Calm Kit">×</button>
-    </div>
-
-    <div class="calm-row">
-      <span class="label">Motion</span>
-      <div class="seg" data-seg="motion" role="group" aria-label="Motion level">
-        <button data-v="off">Off</button>
-        <button data-v="low">Low</button>
-        <button data-v="full">Full</button>
-      </div>
-    </div>
-
-    <div class="calm-row">
-      <span class="label">Text size · <span id="ck-textsize-val">17px</span></span>
-      <div style="display:flex; align-items:center; gap:8px;">
-        <button class="chip" data-ts="-1" aria-label="Decrease text size" style="padding:6px 12px; border-radius:999px; background:var(--cream-2); border:1px solid var(--cream-3); font-weight:700;">A−</button>
-        <input id="ck-textsize" type="range" min="14" max="24" step="1" aria-label="Text size slider">
-        <button class="chip" data-ts="1" aria-label="Increase text size" style="padding:6px 12px; border-radius:999px; background:var(--cream-2); border:1px solid var(--cream-3); font-weight:700;">A+</button>
-      </div>
-    </div>
-
-    <div class="calm-row">
-      <span class="label">Line height</span>
-      <input id="ck-lineheight" type="range" min="1.2" max="2" step="0.05" aria-label="Line height slider">
-    </div>
-
-    <div class="calm-row">
-      <span class="label">Letter spacing</span>
-      <input id="ck-tracking" type="range" min="-0.02" max="0.12" step="0.01" aria-label="Letter spacing slider">
-    </div>
-
-    <div class="calm-row">
-      <span class="label">Font family</span>
-      <div class="seg" data-seg="font" role="group" aria-label="Font family">
-        <button data-v="default">Default</button>
-        <button data-v="atkinson">Atkinson</button>
-        <button data-v="opendyslexic">OpenDys</button>
-      </div>
-    </div>
-
-    <div class="calm-row">
-      <span class="label">Focus outline</span>
-      <div class="seg" data-seg="focus" role="group" aria-label="Focus outline">
-        <button data-v="visible">Visible</button>
-        <button data-v="hidden">Hidden</button>
-      </div>
-    </div>
-
-    <div class="calm-row">
-      <span class="label">Contrast</span>
-      <div class="seg" data-seg="contrast" role="group" aria-label="Contrast mode">
-        <button data-v="default">Default</button>
-        <button data-v="high">High</button>
-        <button data-v="low-blue">Low-blue</button>
-      </div>
-    </div>
-
-    <div class="calm-preview">
-      <small>live preview</small>
-      We build warm, accessible funding for community business. Your settings apply to every section above — motion, density, type.
-    </div>
-  </div>
-</aside>
 
 <script src="./app.js" defer></script>
 

@@ -1,4 +1,4 @@
-.git
+# hero-video build artifacts — only the final stitched hero is served
 assets/hero-video/clip-*.mp4
 assets/hero-video/_*.mp4
 assets/hero-video/.stage_*.mp4
