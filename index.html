@@ -51,6 +51,20 @@
   .topbar-cta:hover{background:var(--forest,#0b3d3a);color:#fff}
   @media (prefers-reduced-motion:reduce){.hero-video{display:none}#s1-hero{background:#0c1a1c}}
   @media (max-width:680px){#s1-hero .hero-content{margin-inline:20px}.hero-btn{flex:1}}
+  /* ── Proof / testimonials ──────────────────────────────────── */
+  #proof{padding:clamp(60px,9vw,110px) 0;background:linear-gradient(180deg,var(--cream),var(--cream-2))}
+  #proof .proof-head{max-width:720px;margin:0 auto clamp(26px,4vw,44px);text-align:center}
+  #proof .proof-head .lede{margin-inline:auto}
+  .proof-hero-quote{max-width:840px;margin:0 auto clamp(26px,3.5vw,40px);text-align:center;font-family:var(--serif);font-size:clamp(22px,3vw,34px);line-height:1.3;color:var(--forest);letter-spacing:-.01em}
+  .proof-hero-quote .who{display:block;margin-top:16px;font-family:var(--ui);font-size:14px;font-weight:600;color:var(--terracotta);letter-spacing:.02em}
+  .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1120px;margin:0 auto;padding:0 20px}
+  .proof-card{background:rgba(255,255,255,.6);border:1px solid rgba(10,42,53,.1);border-left:3px solid var(--terracotta);border-radius:14px;padding:22px;backdrop-filter:blur(4px)}
+  .proof-card p{font-size:15.5px;line-height:1.55;color:var(--forest);margin:0 0 12px}
+  .proof-card .who{font-size:12.5px;font-weight:600;color:var(--forest-2);letter-spacing:.01em}
+  .proof-cta{text-align:center;margin-top:clamp(28px,4vw,46px)}
+  .proof-cta .btn{display:inline-flex;align-items:center;gap:8px}
+  @media(max-width:860px){.proof-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.proof-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -61,7 +75,7 @@
     <span class="dot" aria-hidden="true"></span>
     <span>InclusiFund</span>
   </a>
-  <a class="topbar-cta" href="#s3-globe">See the proof →</a>
+  <a class="topbar-cta" href="#proof">See the proof →</a>
 </header>
 
 <!-- ============================================================
@@ -79,7 +93,7 @@
     <h1 id="hero-h" class="hero-headline">Funding,<br><em>built simply.</em></h1>
     <p class="hero-proof">We help underrepresented founders and community orgs get <strong>funded</strong> and get <strong>online</strong> — then put our tools out in the open.</p>
     <div class="hero-ctas">
-      <a class="hero-btn primary" href="#s3-globe">See the proof →</a>
+      <a class="hero-btn primary" href="#proof">See the proof →</a>
       <a class="hero-btn ghost" href="https://tools.inclusifund.co.uk">Free CIC Toolkit</a>
     </div>
   </div>
@@ -174,6 +188,38 @@
         <span class="journey-lede">Our live map of CICs, partners and grant movement across the UK. No login.</span>
         <span class="journey-meta">UK ecosystem map</span>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROOF — testimonials (verbatim client words)
+============================================================ -->
+<section id="proof" aria-labelledby="proof-h">
+  <div class="wrap">
+    <div class="proof-head">
+      <span class="eyebrow">real people · real outcomes</span>
+      <h2 id="proof-h" class="h-serif">The proof, in their words.</h2>
+      <p class="lede">Founders we've helped get funded, get online, and get taken seriously — saying it better than we could.</p>
+    </div>
+
+    <p class="proof-hero-quote">“What's possible from this place is very different — and that's beautiful. That's how it should be.”
+      <span class="who">— Natalie, Rose Rising</span></p>
+
+    <div class="proof-grid">
+      <div class="proof-card"><p>“From your first TikTok to now, you've resonated on a consistent level — and you got straight to the point.”</p><span class="who">Marissa Bowes</span></div>
+      <div class="proof-card"><p>“It's really rare to have a company like yours that's focused on amplifying that.”</p><span class="who">Dr Javeria K. Shah · Sufiyana</span></div>
+      <div class="proof-card"><p>“You're not there for the short-term — you're investing in the communities. That's what really stood out.”</p><span class="who">Binni · Youths 2 Legends</span></div>
+      <div class="proof-card"><p>“I mean that sounds amazing — I'm not going to dismiss that at all.”</p><span class="who">Kadian · Rising Ohana's CIC</span></div>
+      <div class="proof-card"><p>“You're very needed. We need you in this space.”</p><span class="who">Amina Mohamed · SWP CIC</span></div>
+      <div class="proof-card"><p>“Grant writing isn't my skillset. I'm happy to outsource it rather than get it wrong.”</p><span class="who">Naomi Buthee</span></div>
+      <div class="proof-card"><p>“People who started a website and gave up halfway — I've had that a lot. This means a lot.”</p><span class="who">Paula Francis</span></div>
+      <div class="proof-card"><p>“I see something I can't build on my own. I need the extra hand — it makes my life much easier.”</p><span class="who">Farah Hassan · Empowered Refugees CIC</span></div>
+      <div class="proof-card"><p>“You inspired me to start doing content.”</p><span class="who">Emmanuel Akinnuoye</span></div>
+    </div>
+
+    <div class="proof-cta">
+      <a class="btn" href="#s10-spark">Start your way in →</a>
     </div>
   </div>
 </section>
