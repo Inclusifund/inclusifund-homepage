@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foundations — InclusiFund</title>
+  <meta name="description" content="Get funder-ready. Start free with the Funding-Ready Checklist + CIC Toolkit, then build your evidence base with the £297 Foundations Pack — impact, safeguarding and EDI policies, funder-readable, in 7 working days." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       Foundations — sibling page to /receipts
+       Same InclusiFund palette + Fraunces/Inter type system + CTA shapes
+       ============================================================ */
+    :root {
+      /* InclusiFund brand palette — teal / white / light blues (matches receipts.css) */
+      --cream: #F7FBFD;
+      --cream-deep: #E6F4F8;
+      --ink: #0A2A35;
+      --ink-soft: #355A68;
+      --teal: #0F8B8D;
+      --teal-deep: #0B6E6E;
+      --forest-deep: #082F38;
+      --accent: #14B8A6;
+      /* Funnel palette anchors (02-magnet-blog-post.html): teal #0B3D3A, gold #C9A227 */
+      --brand-teal: #0B3D3A;
+      --gold: #C9A227;
+      --gold-soft: #E4CB7E;
+
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --type-serif: "Fraunces", "Canela", Georgia, serif;
+      --type-sans: "Inter", system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--cream);
+    }
+
+    body {
+      font-family: var(--type-sans);
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, var(--cream-deep), transparent 60%),
+        var(--cream);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      z-index: 1000;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    /* ============================================================
+       Hero
+       ============================================================ */
+    .hero {
+      padding: clamp(3.5rem, 9vw, 6.5rem) 0 clamp(2rem, 5vw, 3.5rem);
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .hero-kicker {
+      font-family: var(--type-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: var(--type-serif);
+      font-weight: 400;
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--teal-deep);
+    }
+    .hero-lede {
+      font-family: var(--type-serif);
+      font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.5;
+      color: var(--ink-soft);
+      max-width: 54ch;
+      margin: 0 auto 1.75rem;
+    }
+    .hero-proof {
+      font-family: var(--type-sans);
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+    .hero-proof a {
+      color: var(--teal-deep);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--gold);
+      transition: color 0.3s var(--ease);
+    }
+    .hero-proof a:hover { color: var(--gold); }
+
+    /* ============================================================
+       Free entry band (above the ladder)
+       ============================================================ */
+    .free-band {
+      margin: 0 auto clamp(2.5rem, 6vw, 4rem);
+      max-width: 920px;
+      background: linear-gradient(135deg, var(--forest-deep), var(--brand-teal));
+      color: var(--cream);
+      border-radius: 20px;
+      padding: clamp(1.75rem, 4vw, 2.5rem);
+      box-shadow: 0 18px 50px -24px rgba(8, 47, 56, 0.6);
+    }
+    .free-band .free-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 0.75rem;
+    }
+    .free-band h2 {
+      font-family: var(--type-serif);
+      font-weight: 400;
+      font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+    .free-band p {
+      color: rgba(247, 251, 253, 0.84);
+      max-width: 60ch;
+      margin-bottom: 1.4rem;
+      font-size: 1rem;
+    }
+    .free-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    /* ============================================================
+       Ladder section
+       ============================================================ */
+    .ladder-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto clamp(1.75rem, 4vw, 2.75rem);
+    }
+    .ladder-head .section-kicker {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+    .ladder-head h2 {
+      font-family: var(--type-serif);
+      font-weight: 400;
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+    .ladder-head p {
+      color: var(--ink-soft);
+      font-size: 1.02rem;
+    }
+
+    .tiers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+      padding-bottom: clamp(3rem, 7vw, 5rem);
+    }
+
+    .tier {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid rgba(10, 42, 53, 0.1);
+      border-radius: 18px;
+      padding: clamp(1.6rem, 3vw, 2.1rem);
+      box-shadow: 0 10px 30px -22px rgba(10, 42, 53, 0.4);
+      transition: box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+    }
+    /* tactile-but-tasteful: gold lift on hover, NO scale transform */
+    .tier:hover {
+      border-color: var(--gold);
+      box-shadow: 0 18px 44px -22px rgba(11, 61, 58, 0.42);
+    }
+
+    .tier-hero {
+      border-color: var(--gold);
+      box-shadow: 0 20px 52px -22px rgba(201, 162, 39, 0.5);
+    }
+    .tier-hero::before {
+      content: "Most popular";
+      position: absolute;
+      top: -0.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--forest-deep);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.95rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .tier-hero:hover {
+      box-shadow: 0 26px 60px -22px rgba(201, 162, 39, 0.58);
+    }
+
+    .tier-name {
+      font-family: var(--type-sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal-deep);
+      margin-bottom: 0.85rem;
+    }
+    .tier-hero .tier-name { color: var(--gold); }
+
+    .tier-price {
+      font-family: var(--type-serif);
+      font-weight: 700;
+      font-size: clamp(2.4rem, 5vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 0.15rem;
+    }
+    .tier-price .price-note {
+      font-family: var(--type-sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      letter-spacing: 0;
+    }
+    .tier-tagline {
+      font-family: var(--type-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      margin: 0.5rem 0 1.25rem;
+      line-height: 1.4;
+    }
+
+    .tier-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin: 0 0 1.75rem;
+      flex-grow: 1;
+    }
+    .tier-features li {
+      position: relative;
+      padding-left: 1.6rem;
+      font-size: 0.96rem;
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    .tier-features li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.45em;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+    .tier-hero .tier-features li::before { background: var(--gold); }
+
+    .tier-meta {
+      font-family: var(--type-sans);
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      margin-bottom: 1.1rem;
+    }
+
+    /* ============================================================
+       CTA buttons (shape lifted from receipts.css .cta system)
+       ============================================================ */
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.6rem;
+      font-family: var(--type-sans);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      border-radius: 999px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .cta-primary {
+      background: var(--ink);
+      color: var(--cream);
+    }
+    .cta-primary:hover {
+      background: var(--teal);
+    }
+    .cta-gold {
+      background: var(--gold);
+      color: var(--forest-deep);
+      font-weight: 600;
+      box-shadow: 0 8px 22px -12px rgba(201, 162, 39, 0.7);
+    }
+    .cta-gold:hover {
+      background: var(--gold-soft);
+      box-shadow: 0 10px 26px -10px rgba(201, 162, 39, 0.8);
+    }
+    .cta-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid rgba(10, 42, 53, 0.2);
+    }
+    .cta-ghost:hover {
+      background: rgba(10, 42, 53, 0.05);
+      border-color: var(--teal);
+    }
+    .cta-on-dark {
+      background: var(--cream);
+      color: var(--forest-deep);
+    }
+    .cta-on-dark:hover { background: #fff; }
+    .cta-on-dark.cta-ghost {
+      background: transparent;
+      color: var(--cream);
+      border-color: rgba(247, 251, 253, 0.4);
+    }
+    .cta-on-dark.cta-ghost:hover {
+      background: rgba(247, 251, 253, 0.12);
+      border-color: var(--gold-soft);
+    }
+    .tier .cta { width: 100%; }
+
+    /* ============================================================
+       What you get / detail band
+       ============================================================ */
+    .detail {
+      background: #fff;
+      border-top: 1px solid rgba(10, 42, 53, 0.08);
+      border-bottom: 1px solid rgba(10, 42, 53, 0.08);
+      padding: clamp(3rem, 7vw, 5rem) 0;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: start;
+    }
+    .detail h2 {
+      font-family: var(--type-serif);
+      font-weight: 400;
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .detail p {
+      color: var(--ink-soft);
+      font-size: 1.02rem;
+      margin-bottom: 1rem;
+      max-width: 52ch;
+    }
+    .detail .deliverables {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .deliverables li {
+      background: var(--cream);
+      border: 1px solid rgba(10, 42, 53, 0.08);
+      border-left: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+    .deliverables strong {
+      display: block;
+      font-family: var(--type-serif);
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+    .deliverables span {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+
+    /* ============================================================
+       Closing band
+       ============================================================ */
+    .closer {
+      text-align: center;
+      padding: clamp(3rem, 8vw, 5.5rem) 0;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .closer h2 {
+      font-family: var(--type-serif);
+      font-weight: 400;
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .closer p {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+    .closer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    /* ============================================================
+       Footer
+       ============================================================ */
+    footer {
+      text-align: center;
+      padding: 2.5rem 0 3rem;
+      border-top: 1px solid rgba(10, 42, 53, 0.08);
+    }
+    footer p {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-bottom: 0.5rem;
+    }
+    footer a {
+      color: var(--teal-deep);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    footer a:hover { color: var(--gold); text-decoration: underline; }
+    .vat-note { font-size: 0.78rem; opacity: 0.7; }
+
+    /* ============================================================
+       Responsive
+       ============================================================ */
+    @media (max-width: 880px) {
+      .tiers { grid-template-columns: 1fr; gap: 1.75rem; }
+      .tier-hero { order: -1; }
+      .tier-hero::before { top: -0.7rem; }
+      .detail-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .free-actions .cta,
+      .closer-actions .cta { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#ladder" class="skip-link">Skip to pricing</a>
+
+  <div class="wrap">
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+      <p class="hero-kicker">InclusiFund · Foundations</p>
+      <h1>Get <em>funder-ready</em>, the right way round.</h1>
+      <p class="hero-lede">Start free. Build your evidence base for £297. Bring us in to win the money when you're ready. One ladder, no dead ends — pick the rung that fits where you are.</p>
+      <p class="hero-proof">We keep the receipts public — £1.2M moved into 142 communities. <a href="https://inclusifund.co.uk/receipts">See the proof &rarr;</a></p>
+    </header>
+  </div>
+
+  <div class="wrap">
+    <!-- ============ FREE ENTRY BAND ============ -->
+    <section class="free-band" aria-label="Free starting point">
+      <span class="free-tag">Start here · Free, forever</span>
+      <h2>The Funding-Ready Checklist + the CIC Toolkit</h2>
+      <p>Five steps and 177 live funders, so you only apply when you can actually win. Match yourself in two minutes — no card, no catch. This is where everyone starts.</p>
+      <div class="free-actions">
+        <a class="cta cta-gold" href="https://community.inclusifund.co.uk/funding-ready-checklist">Get the Funding-Ready Checklist &rarr;</a>
+        <a class="cta cta-on-dark cta-ghost" href="https://tools.inclusifund.co.uk">Open the free CIC Toolkit &rarr;</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <!-- ============ LADDER ============ -->
+    <section id="ladder" aria-label="Pricing tiers">
+      <div class="ladder-head">
+        <p class="section-kicker">When you're ready for more than the toolkit</p>
+        <h2>Three ways we build it with you</h2>
+        <p>From a funder-readable evidence base to a fully done-for-you grant pipeline. Prices are final — no VAT, no surprises.</p>
+      </div>
+
+      <div class="tiers">
+        <!-- TIER 1 — Foundations Pack £297 (HERO / recommended) -->
+        <article class="tier tier-hero" aria-label="Foundations Pack, £297">
+          <p class="tier-name">Foundations Pack</p>
+          <p class="tier-price">£297 <span class="price-note">one-off</span></p>
+          <p class="tier-tagline">Your funder-readable evidence base, built in 7 working days.</p>
+          <ul class="tier-features">
+            <li>Impact reporting framework — your real outcome metrics, with measurable before/after shape</li>
+            <li>Safeguarding policy — dated, named DSL, board-sign-off ready</li>
+            <li>EDI policy + monitoring framework with at least one quantifiable metric</li>
+            <li>One 2-page funder-readable evidence pack (PDF) tying it all together</li>
+            <li>All three policies handed over as editable .docx files</li>
+          </ul>
+          <p class="tier-meta">Delivered inside 7 working days from your intake form · 14-day pre-delivery refund</p>
+          <!-- ROYAL — MONDAY SWAP: both buttons currently fall back to a mailto enrol (data-stripe-pending="true").
+               Create the £297 Stripe Payment Link per projects/foundations-pack-sku-2026-05-01/01-stripe-payment-link-spec.md
+               (£297 GBP, no VAT/tax toggle, success URL → admin.inclusifund.co.uk/foundations-pack/intake), then
+               find-replace BOTH href="mailto:..." with the Stripe link and remove data-stripe-pending. Push → live. -->
+          <a class="cta cta-gold" data-stripe-pending="true" href="mailto:reece.dunn@inclusifund.co.uk?subject=Foundations%20Pack%20%E2%80%94%20%C2%A3297%20enrol&body=Hi%20Reece%2C%20I'd%20like%20to%20enrol%20in%20the%20%C2%A3297%20Foundations%20Pack.%20Please%20send%20me%20the%20payment%20link%20and%20intake%20form.">Reserve your place — £297</a>
+        </article>
+
+        <!-- TIER 2 — Lite Mission £1,297 -->
+        <article class="tier" aria-label="Lite Mission, £1,297">
+          <p class="tier-name">Lite Mission</p>
+          <p class="tier-price">£1,297 <span class="price-note">one-off</span></p>
+          <p class="tier-tagline">Everything in Foundations, plus a funded route to apply.</p>
+          <ul class="tier-features">
+            <li>The full Foundations Pack evidence base, included</li>
+            <li>Funder mapping — the live funders matched specifically to your mission</li>
+            <li>A structured, application-ready offer you can take to funders</li>
+            <li>Your case for support shaped so applications write faster</li>
+          </ul>
+          <p class="tier-meta">Best if you're ready to apply but want it structured properly first</p>
+          <a class="cta cta-primary" href="mailto:hello@inclusifund.co.uk?subject=Lite%20Mission%20(%C2%A31%2C297)%20%E2%80%94%20I'd%20like%20to%20talk&body=Hi%20Reece%2C%20I'm%20interested%20in%20the%20Lite%20Mission.%20Here's%20a%20line%20about%20my%20organisation%3A%0A%0A">Book a call</a>
+        </article>
+
+        <!-- TIER 3 — Full Mission £2,897 -->
+        <article class="tier" aria-label="Full Mission, £2,897">
+          <p class="tier-name">Full Mission</p>
+          <p class="tier-price">£2,897 <span class="price-note">one-off</span></p>
+          <p class="tier-tagline">Done-for-you. We run the grant pipeline end to end.</p>
+          <ul class="tier-features">
+            <li>Everything in Lite Mission, included</li>
+            <li>Full grant pipeline — sourced, matched, and written for you</li>
+            <li>Applications drafted and shaped to each funder's diligence</li>
+            <li>Done-for-you delivery so you can stay focused on the work</li>
+          </ul>
+          <p class="tier-meta">Best if you'd rather we carry the fundraising while you run your organisation</p>
+          <a class="cta cta-primary" href="mailto:hello@inclusifund.co.uk?subject=Full%20Mission%20(%C2%A32%2C897)%20%E2%80%94%20I'd%20like%20to%20talk&body=Hi%20Reece%2C%20I'm%20interested%20in%20the%20Full%20Mission%20done-for-you%20pipeline.%20Here's%20a%20line%20about%20my%20organisation%3A%0A%0A">Book a call</a>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ DETAIL — what the Foundations Pack actually is ============ -->
+  <section class="detail" aria-label="What's in the Foundations Pack">
+    <div class="wrap detail-grid">
+      <div>
+        <h2>What the £297 Foundations Pack actually gives you</h2>
+        <p>Funders don't reject early-stage CICs for lack of passion. They reject them for missing evidence — no impact framework, no safeguarding policy, no EDI line they can sign off on.</p>
+        <p>The Foundations Pack closes that gap. It's bespoke to your CIC — your metrics, your designated safeguarding lead, your EDI ambition — not a boilerplate template dump. Board-sign-off ready, dated, and structured for grant diligence.</p>
+      </div>
+      <ul class="deliverables">
+        <li>
+          <strong>Impact reporting framework</strong>
+          <span>Your real outcome metrics with measurable before/after shape — worked examples, not blank shells.</span>
+        </li>
+        <li>
+          <strong>Safeguarding policy</strong>
+          <span>A full, dated document with named DSL, disclosure procedure and review cadence — ready for board sign-off.</span>
+        </li>
+        <li>
+          <strong>EDI policy + monitoring</strong>
+          <span>Your EDI ambition woven in, with at least one quantifiable metric — the part funders check on diligence.</span>
+        </li>
+        <li>
+          <strong>2-page evidence pack</strong>
+          <span>A funder-readable PDF summary plus all three policies as editable .docx — delivered inside 7 working days.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <!-- ============ CLOSER ============ -->
+    <section class="closer" aria-label="Get started">
+      <h2>Not sure which rung you're on?</h2>
+      <p>Start free, then move up when you're ready. Most early-stage CICs begin with the £297 Foundations Pack — it's the fastest way to become a serious applicant.</p>
+      <div class="closer-actions">
+        <!-- ROYAL: same Stripe link as the Foundations tier above goes here too. -->
+        <a class="cta cta-gold" data-stripe-pending="true" href="mailto:reece.dunn@inclusifund.co.uk?subject=Foundations%20Pack%20%E2%80%94%20%C2%A3297%20enrol&body=Hi%20Reece%2C%20I'd%20like%20to%20enrol%20in%20the%20%C2%A3297%20Foundations%20Pack.%20Please%20send%20me%20the%20payment%20link%20and%20intake%20form.">Reserve your place — £297</a>
+        <a class="cta cta-ghost" href="mailto:hello@inclusifund.co.uk?subject=Foundations%20%E2%80%94%20which%20option%20fits%20me%3F">Talk it through first</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap">
+      <p>
+        <a href="https://inclusifund.co.uk/receipts">The Receipts</a> ·
+        <a href="https://tools.inclusifund.co.uk">CIC Toolkit</a> ·
+        <a href="https://community.inclusifund.co.uk">Community</a> ·
+        <a href="mailto:hello@inclusifund.co.uk">hello@inclusifund.co.uk</a>
+      </p>
+      <p class="vat-note">InclusiFund is a trading brand of InclusiGroup Ltd. Prices shown are final — InclusiGroup Ltd is not VAT-registered, so there is no VAT to add.</p>
+    </div>
+  </footer>
+</body>
+</html>
