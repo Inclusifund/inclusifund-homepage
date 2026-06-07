@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Foundations — InclusiFund</title>
-  <meta name="description" content="Get funder-ready. Start free with the Funding-Ready Checklist + CIC Toolkit, then build your evidence base with the £297 Foundations Pack — impact, safeguarding and EDI policies, funder-readable, in 7 working days." />
+  <title>Reserve your priority — InclusiFund</title>
+  <meta name="description" content="Every /start application gets reviewed. Put down a small deposit to jump the queue — £97 reserves your cohort spot, £47 gets a priority Action-Taker call within 72 hours and top of the leaderboard. The deposit comes straight off your final price." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -230,7 +230,7 @@
       box-shadow: 0 20px 52px -22px rgba(201, 162, 39, 0.5);
     }
     .tier-hero::before {
-      content: "Most popular";
+      content: "Locks your spot";
       position: absolute;
       top: -0.75rem;
       left: 50%;
@@ -508,120 +508,89 @@
   </style>
 </head>
 <body>
-  <a href="#ladder" class="skip-link">Skip to pricing</a>
+  <a href="#options" class="skip-link">Skip to options</a>
 
   <div class="wrap">
     <!-- ============ HERO ============ -->
     <header class="hero">
-      <p class="hero-kicker">InclusiFund · Foundations</p>
-      <h1>Get <em>funder-ready</em>, the right way round.</h1>
-      <p class="hero-lede">Start free. Build your evidence base for £297. Bring us in to win the money when you're ready. One ladder, no dead ends — pick the rung that fits where you are.</p>
-      <p class="hero-proof">We keep the receipts public — £1.2M moved into 142 communities. <a href="https://inclusifund.co.uk/receipts">See the proof &rarr;</a></p>
+      <p class="hero-kicker">InclusiFund · Priority</p>
+      <h1>Skip the queue — <em>reserve your priority</em>.</h1>
+      <p class="hero-lede">Every application from /start gets reviewed. A small deposit moves you to the front — and it isn't a fee, it comes straight off your final price. Priority goes to the committers and the action-takers.</p>
+      <p class="hero-proof">Not sure where you sit yet? <a href="https://inclusifund.co.uk/start">Start with the 3-question sort &rarr;</a></p>
     </header>
   </div>
 
   <div class="wrap">
-    <!-- ============ FREE ENTRY BAND ============ -->
-    <section class="free-band" aria-label="Free starting point">
-      <span class="free-tag">Start here · Free, forever</span>
-      <h2>The Funding-Ready Checklist + the CIC Toolkit</h2>
-      <p>Five steps and 177 live funders, so you only apply when you can actually win. Match yourself in two minutes — no card, no catch. This is where everyone starts.</p>
-      <div class="free-actions">
-        <a class="cta cta-gold" href="https://community.inclusifund.co.uk/funding-ready-checklist">Get the Funding-Ready Checklist &rarr;</a>
-        <a class="cta cta-on-dark cta-ghost" href="https://tools.inclusifund.co.uk">Open the free CIC Toolkit &rarr;</a>
-      </div>
-    </section>
-  </div>
-
-  <div class="wrap">
-    <!-- ============ LADDER ============ -->
-    <section id="ladder" aria-label="Pricing tiers">
+    <!-- ============ OPTIONS ============ -->
+    <section id="options" aria-label="Priority deposit options">
       <div class="ladder-head">
-        <p class="section-kicker">When you're ready for more than the toolkit</p>
-        <h2>Three ways we build it with you</h2>
-        <p>From a funder-readable evidence base to a fully done-for-you grant pipeline. Prices are final — no VAT, no surprises.</p>
+        <p class="section-kicker">Two ways to jump the line</p>
+        <h2>Put a little down, go to the front.</h2>
+        <p>Both deposits are fully credited toward whatever you go on to do with us — the Foundations Pack or a Mission tier. You're not paying extra; you're paying early.</p>
       </div>
 
-      <div class="tiers">
-        <!-- TIER 1 — Foundations Pack £297 (HERO / recommended) -->
-        <article class="tier tier-hero" aria-label="Foundations Pack, £297">
-          <p class="tier-name">Foundations Pack</p>
-          <p class="tier-price">£297 <span class="price-note">one-off</span></p>
-          <p class="tier-tagline">Your funder-readable evidence base, built in 7 working days.</p>
+      <div class="tiers" style="grid-template-columns:repeat(2,1fr);max-width:760px;margin:0 auto;">
+
+        <!-- £97 — Reserve your spot (the bigger commitment) -->
+        <article class="tier tier-hero" aria-label="Reserve your spot, £97 deposit">
+          <p class="tier-name">Reserve</p>
+          <p class="tier-price">£97 <span class="price-note">deposit</span></p>
+          <p class="tier-tagline">Hold your place in the next cohort.</p>
           <ul class="tier-features">
-            <li>Impact reporting framework — your real outcome metrics, with measurable before/after shape</li>
-            <li>Safeguarding policy — dated, named DSL, board-sign-off ready</li>
-            <li>EDI policy + monitoring framework with at least one quantifiable metric</li>
-            <li>One 2-page funder-readable evidence pack (PDF) tying it all together</li>
-            <li>All three policies handed over as editable .docx files</li>
+            <li>Your spot in the next cohort is held — you skip the open queue entirely</li>
+            <li>We reach out to you directly to book your onboarding</li>
+            <li>Priority review of your /start application, ahead of everyone without a deposit</li>
+            <li>Fully credited toward your Foundations Pack or Mission tier</li>
           </ul>
-          <p class="tier-meta">Delivered inside 7 working days from your intake form · 14-day pre-delivery refund</p>
-          <!-- ROYAL — STRIPE SWAP: "Pay now" falls back to a team@ enrol email (data-stripe-pending="true").
-               Create the £297 Stripe Payment Link per projects/foundations-pack-sku-2026-05-01/01-stripe-payment-link-spec.md
-               (£297 GBP, no VAT/tax toggle, success URL → admin.inclusifund.co.uk/foundations-pack/intake), then
-               replace the href below with the Stripe link and remove data-stripe-pending. Push → live.
-               The "not ready" link below sends them to /reserve (the £97/£47 priority-deposit page). -->
-          <a class="cta cta-gold" data-stripe-pending="true" href="mailto:team@inclusifund.co.uk?subject=Foundations%20Pack%20%E2%80%94%20%C2%A3297%20enrol&body=Hi%20InclusiFund%20team%2C%20I'd%20like%20to%20enrol%20in%20the%20%C2%A3297%20Foundations%20Pack.%20Please%20send%20me%20the%20payment%20link%20and%20intake%20form.">Pay now — £297</a>
-          <p class="tier-meta" style="margin:0.85rem 0 0;text-align:center;">Not ready to pay in full? <a href="https://inclusifund.co.uk/reserve" style="color:var(--teal-deep);text-decoration:underline;text-underline-offset:2px;text-decoration-color:var(--gold);">Reserve your priority from £47 &rarr;</a></p>
+          <p class="tier-meta">For committers who already know they're moving.</p>
+          <!-- ROYAL — STRIPE SWAP: create a £97 GBP one-off Payment Link (no VAT/tax toggle),
+               success URL → a "spot reserved" thank-you. Replace the href below with that link and
+               remove data-stripe-pending. Until then this falls back to a team@ enrol email. -->
+          <a class="cta cta-gold" data-stripe-pending="true" href="mailto:team@inclusifund.co.uk?subject=Reserve%20my%20spot%20%E2%80%94%20%C2%A397%20deposit&body=Hi%20InclusiFund%20team%2C%20I'd%20like%20to%20reserve%20my%20cohort%20spot%20with%20the%20%C2%A397%20deposit.%20Please%20send%20me%20the%20payment%20link.%20Here's%20my%20organisation%3A%0A%0A">Reserve your spot — £97</a>
         </article>
 
-        <!-- TIER 2 — Lite Mission £1,297 -->
-        <article class="tier" aria-label="Lite Mission, £1,297">
-          <p class="tier-name">Lite Mission</p>
-          <p class="tier-price">£1,297 <span class="price-note">one-off</span></p>
-          <p class="tier-tagline">Everything in Foundations, plus a funded route to apply.</p>
+        <!-- £47 — Priority Action-Taker call (speed + visibility) -->
+        <article class="tier" aria-label="Priority Action-Taker call, £47 deposit">
+          <p class="tier-name">Priority call</p>
+          <p class="tier-price">£47 <span class="price-note">deposit</span></p>
+          <p class="tier-tagline">A call within 72 hours — and your name at the top.</p>
           <ul class="tier-features">
-            <li>The full Foundations Pack evidence base, included</li>
-            <li>Funder mapping — the live funders matched specifically to your mission</li>
-            <li>A structured, application-ready offer you can take to funders</li>
-            <li>Your case for support shaped so applications write faster</li>
+            <li>A priority Action-Taker call booked within 72 hours</li>
+            <li>Top of the Action-Takers leaderboard</li>
+            <li>We review your /start application first, ahead of the open queue</li>
+            <li>Fully credited toward whatever you go on to do with us</li>
           </ul>
-          <p class="tier-meta">Best if you're ready to apply but want it structured properly first</p>
-          <a class="cta cta-primary" href="mailto:team@inclusifund.co.uk?subject=Lite%20Mission%20(%C2%A31%2C297)%20%E2%80%94%20about%20my%20organisation&body=Hi%20InclusiFund%20team%2C%20I'm%20interested%20in%20the%20Lite%20Mission.%20Here's%20a%20line%20about%20my%20organisation%20(feel%20free%20to%20attach%20any%20materials%20%E2%80%94%20we'll%20review%20and%20come%20back%20to%20you)%3A%0A%0A">Tell us about your mission &rarr;</a>
+          <p class="tier-meta">For action-takers who want momentum right now.</p>
+          <!-- ROYAL — STRIPE SWAP: create a £47 GBP one-off Payment Link (no VAT/tax toggle),
+               success URL → a "we'll call you within 72h" thank-you. Replace the href and remove data-stripe-pending. -->
+          <a class="cta cta-primary" data-stripe-pending="true" href="mailto:team@inclusifund.co.uk?subject=Priority%20Action-Taker%20call%20%E2%80%94%20%C2%A347%20deposit&body=Hi%20InclusiFund%20team%2C%20I'd%20like%20the%20%C2%A347%20priority%20call%20within%2072%20hours.%20Please%20send%20me%20the%20payment%20link.%20Here's%20my%20organisation%3A%0A%0A">Get the priority call — £47</a>
         </article>
 
-        <!-- TIER 3 — Full Mission £2,897 -->
-        <article class="tier" aria-label="Full Mission, £2,897">
-          <p class="tier-name">Full Mission</p>
-          <p class="tier-price">£2,897 <span class="price-note">one-off</span></p>
-          <p class="tier-tagline">Done-for-you. We run the grant pipeline end to end.</p>
-          <ul class="tier-features">
-            <li>Everything in Lite Mission, included</li>
-            <li>Full grant pipeline — sourced, matched, and written for you</li>
-            <li>Applications drafted and shaped to each funder's diligence</li>
-            <li>Done-for-you delivery so you can stay focused on the work</li>
-          </ul>
-          <p class="tier-meta">Best if you'd rather we carry the fundraising while you run your organisation</p>
-          <a class="cta cta-primary" href="mailto:team@inclusifund.co.uk?subject=Full%20Mission%20(%C2%A32%2C897)%20%E2%80%94%20about%20my%20organisation&body=Hi%20InclusiFund%20team%2C%20I'm%20interested%20in%20the%20Full%20Mission%20done-for-you%20pipeline.%20Here's%20a%20line%20about%20my%20organisation%20(feel%20free%20to%20attach%20any%20materials%20%E2%80%94%20we'll%20review%20and%20come%20back%20to%20you)%3A%0A%0A">Tell us about your mission &rarr;</a>
-        </article>
       </div>
     </section>
   </div>
 
-  <!-- ============ DETAIL — what the Foundations Pack actually is ============ -->
-  <section class="detail" aria-label="What's in the Foundations Pack">
+  <!-- ============ THE "OTHERWISE" PATH ============ -->
+  <section class="detail" aria-label="If you don't put a deposit down">
     <div class="wrap detail-grid">
       <div>
-        <h2>What the £297 Foundations Pack actually gives you</h2>
-        <p>Funders don't reject early-stage CICs for lack of passion. They reject them for missing evidence — no impact framework, no safeguarding policy, no EDI line they can sign off on.</p>
-        <p>The Foundations Pack closes that gap. It's bespoke to your CIC — your metrics, your designated safeguarding lead, your EDI ambition — not a boilerplate template dump. Board-sign-off ready, dated, and structured for grant diligence.</p>
+        <h2>No deposit? You're still in.</h2>
+        <p>Every application that comes through /start gets reviewed — putting money down is never the only way in.</p>
+        <p>Without a deposit, we work through applications at our own pace and capacity. The committers and action-takers who've reserved go first; everyone else, we get to as the cohorts open up.</p>
+        <p>The deposit isn't a charge for our time — it's a credit. Whatever you put down comes straight off your final price.</p>
       </div>
       <ul class="deliverables">
         <li>
-          <strong>Impact reporting framework</strong>
-          <span>Your real outcome metrics with measurable before/after shape — worked examples, not blank shells.</span>
+          <strong>£97 — Reserve</strong>
+          <span>Holds your cohort spot. We come to you to book onboarding. Credited in full.</span>
         </li>
         <li>
-          <strong>Safeguarding policy</strong>
-          <span>A full, dated document with named DSL, disclosure procedure and review cadence — ready for board sign-off.</span>
+          <strong>£47 — Priority call</strong>
+          <span>Call within 72 hours + top of the leaderboard. Credited in full.</span>
         </li>
         <li>
-          <strong>EDI policy + monitoring</strong>
-          <span>Your EDI ambition woven in, with at least one quantifiable metric — the part funders check on diligence.</span>
-        </li>
-        <li>
-          <strong>2-page evidence pack</strong>
-          <span>A funder-readable PDF summary plus all three policies as editable .docx — delivered inside 7 working days.</span>
+          <strong>£0 — Open queue</strong>
+          <span>Reviewed at our pace and capacity, after the committers. No clock, no cost.</span>
         </li>
       </ul>
     </div>
@@ -629,13 +598,12 @@
 
   <div class="wrap">
     <!-- ============ CLOSER ============ -->
-    <section class="closer" aria-label="Get started">
-      <h2>Not sure which rung you're on?</h2>
-      <p>Start free, then move up when you're ready. Most early-stage CICs begin with the £297 Foundations Pack — it's the fastest way to become a serious applicant.</p>
+    <section class="closer" aria-label="Next step">
+      <h2>Ready to go all the way?</h2>
+      <p>If you already know the Foundations Pack is your next move, you can skip the deposit and pay in full — the deposit only exists to hold priority while you decide.</p>
       <div class="closer-actions">
-        <!-- ROYAL: same £297 Stripe link as the Foundations tier above goes here too. -->
-        <a class="cta cta-gold" data-stripe-pending="true" href="mailto:team@inclusifund.co.uk?subject=Foundations%20Pack%20%E2%80%94%20%C2%A3297%20enrol&body=Hi%20InclusiFund%20team%2C%20I'd%20like%20to%20enrol%20in%20the%20%C2%A3297%20Foundations%20Pack.%20Please%20send%20me%20the%20payment%20link%20and%20intake%20form.">Pay now — £297</a>
-        <a class="cta cta-ghost" href="https://inclusifund.co.uk/reserve">Not ready? Reserve from £47 &rarr;</a>
+        <a class="cta cta-gold" href="https://inclusifund.co.uk/foundations">See the Foundations options &rarr;</a>
+        <a class="cta cta-ghost" href="https://inclusifund.co.uk/start">Back to /start</a>
       </div>
     </section>
   </div>
@@ -649,7 +617,7 @@
         <a href="https://community.inclusifund.co.uk">Community</a> ·
         <a href="mailto:team@inclusifund.co.uk">team@inclusifund.co.uk</a>
       </p>
-      <p class="vat-note">InclusiFund is a trading brand of InclusiGroup Ltd. Prices shown are final — InclusiGroup Ltd is not VAT-registered, so there is no VAT to add.</p>
+      <p class="vat-note">InclusiFund is a trading brand of InclusiGroup Ltd. Deposits are credited in full toward your final package — InclusiGroup Ltd is not VAT-registered, so there is no VAT to add.</p>
     </div>
   </footer>
 </body>
