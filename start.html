@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start here — InclusiFund</title>
+  <meta name="description" content="Three quick questions and we'll show you exactly where you are and your next step. We onboard in cohorts every two weeks so everyone gets through the door smoothly." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* InclusiFund triage — sibling to /foundations + /receipts. Same palette + type. */
+    :root {
+      --cream: #F7FBFD;
+      --cream-deep: #E6F4F8;
+      --ink: #0A2A35;
+      --ink-soft: #355A68;
+      --teal: #0F8B8D;
+      --teal-deep: #0B6E6E;
+      --brand-teal: #0B3D3A;
+      --forest-deep: #082F38;
+      --accent: #14B8A6;
+      --gold: #C9A227;
+      --gold-soft: #E4CB7E;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --type-serif: "Fraunces", "Canela", Georgia, serif;
+      --type-sans: "Inter", system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--cream); }
+    body {
+      font-family: var(--type-sans);
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, var(--cream-deep), transparent 60%),
+        var(--cream);
+      min-height: 100vh;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 2rem); }
+
+    /* Header */
+    .kicker {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--teal-deep); margin-bottom: 0.9rem;
+    }
+    h1 { font-family: var(--type-serif); font-weight: 600; font-size: clamp(1.9rem, 5.5vw, 2.9rem); line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+    .lede { font-size: clamp(1rem, 2.4vw, 1.15rem); color: var(--ink-soft); max-width: 34rem; }
+
+    /* Capacity banner */
+    .capacity {
+      margin: 1.6rem 0 0; padding: 0.85rem 1.1rem; border-radius: 14px;
+      background: linear-gradient(180deg, rgba(15,139,141,0.08), rgba(15,139,141,0.03));
+      border: 1px solid rgba(15,139,141,0.18);
+      font-size: 0.93rem; color: var(--ink-soft); display: flex; gap: 0.7rem; align-items: flex-start;
+    }
+    .capacity strong { color: var(--ink); font-weight: 600; }
+    .capacity .dot { flex: 0 0 auto; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); margin-top: 0.45rem; box-shadow: 0 0 0 4px rgba(201,162,39,0.18); }
+
+    /* Progress */
+    .progress { display: flex; gap: 6px; margin: 2.4rem 0 1.6rem; }
+    .progress span { height: 4px; flex: 1; border-radius: 99px; background: rgba(10,42,53,0.10); transition: background .4s var(--ease); }
+    .progress span.on { background: var(--teal); }
+
+    /* Steps */
+    .step { display: none; animation: rise .5s var(--ease) both; }
+    .step.active { display: block; }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+    .q { font-family: var(--type-serif); font-weight: 600; font-size: clamp(1.4rem, 4vw, 2rem); line-height: 1.15; margin-bottom: 0.5rem; }
+    .q-help { color: var(--ink-soft); font-size: 0.98rem; margin-bottom: 1.6rem; }
+
+    .opts { display: grid; gap: 0.85rem; }
+    .opt {
+      text-align: left; width: 100%; cursor: pointer;
+      padding: 1.15rem 1.25rem; border-radius: 16px;
+      background: #fff; border: 1.5px solid rgba(10,42,53,0.12);
+      font-family: var(--type-sans); font-size: 1.05rem; font-weight: 500; color: var(--ink);
+      transition: transform .18s var(--ease), border-color .18s var(--ease), box-shadow .18s var(--ease);
+      display: flex; align-items: center; gap: 0.9rem;
+    }
+    .opt:hover { border-color: var(--teal); box-shadow: 0 8px 26px -14px rgba(15,139,141,0.5); }
+    .opt:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 2px; }
+    .opt .tick { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(15,139,141,0.35); display: grid; place-items: center; font-size: 0.95rem; color: var(--teal-deep); }
+    .opt small { display: block; font-weight: 400; font-size: 0.86rem; color: var(--ink-soft); margin-top: 2px; }
+    .opt b { font-weight: 600; }
+
+    .back { background: none; border: none; color: var(--ink-soft); font-family: var(--type-sans); font-size: 0.9rem; cursor: pointer; margin-top: 1.6rem; padding: 0.4rem 0; }
+    .back:hover { color: var(--ink); }
+
+    /* Result */
+    .result-card {
+      background: #fff; border-radius: 22px; padding: clamp(1.5rem, 5vw, 2.4rem);
+      border: 1px solid rgba(10,42,53,0.10); box-shadow: 0 30px 60px -40px rgba(8,47,56,0.5);
+    }
+    .lane-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.76rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 0.8rem; border-radius: 99px; margin-bottom: 1.1rem; }
+    .lane-a { background: rgba(201,162,39,0.14); color: #8a6d12; }
+    .lane-b { background: rgba(15,139,141,0.14); color: var(--teal-deep); }
+    .lane-c { background: rgba(53,90,104,0.12); color: var(--ink-soft); }
+    .result-card h2 { font-family: var(--type-serif); font-weight: 600; font-size: clamp(1.5rem, 4.5vw, 2.1rem); line-height: 1.12; margin-bottom: 0.7rem; }
+    .result-card .where { color: var(--ink-soft); font-size: 1.02rem; margin-bottom: 1.5rem; }
+    .nextstep { background: linear-gradient(180deg, var(--cream-deep), #fff); border: 1px solid rgba(15,139,141,0.18); border-radius: 16px; padding: 1.2rem 1.3rem; margin-bottom: 1.4rem; }
+    .nextstep .label { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 0.5rem; }
+    .nextstep p { font-size: 1.02rem; }
+    .homework { margin-bottom: 1.6rem; }
+    .homework .label { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.6rem; }
+    .homework ul { list-style: none; display: grid; gap: 0.55rem; }
+    .homework li { position: relative; padding-left: 1.7rem; font-size: 0.96rem; color: var(--ink); }
+    .homework li::before { content: "→"; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+    /* Capture form */
+    .capture { border-top: 1px solid rgba(10,42,53,0.1); padding-top: 1.4rem; }
+    .capture .label { font-size: 0.86rem; color: var(--ink-soft); margin-bottom: 0.9rem; }
+    .field { margin-bottom: 0.8rem; }
+    .field input {
+      width: 100%; padding: 0.95rem 1.1rem; border-radius: 12px; border: 1.5px solid rgba(10,42,53,0.14);
+      font-family: var(--type-sans); font-size: 1rem; color: var(--ink); background: var(--cream);
+    }
+    .field input:focus { outline: none; border-color: var(--teal); }
+
+    .cta {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%;
+      padding: 1.05rem 1.4rem; border-radius: 14px; border: none; cursor: pointer;
+      font-family: var(--type-sans); font-size: 1.05rem; font-weight: 600; text-decoration: none;
+      background: linear-gradient(180deg, var(--teal), var(--teal-deep)); color: #fff;
+      box-shadow: 0 14px 30px -16px rgba(15,139,141,0.8); transition: transform .18s var(--ease), box-shadow .18s var(--ease);
+    }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -18px rgba(15,139,141,0.9); }
+    .cta.gold { background: linear-gradient(180deg, var(--gold-soft), var(--gold)); color: #3a2d05; box-shadow: 0 14px 30px -16px rgba(201,162,39,0.8); }
+    .cta.ghost { background: #fff; color: var(--teal-deep); border: 1.5px solid rgba(15,139,141,0.3); box-shadow: none; }
+    .cta-secondary { display: block; text-align: center; margin-top: 0.9rem; color: var(--ink-soft); font-size: 0.92rem; text-decoration: none; }
+    .cta-secondary:hover { color: var(--ink); }
+
+    .done { text-align: center; padding: 1rem 0; }
+    .done .check { width: 64px; height: 64px; border-radius: 50%; background: rgba(15,139,141,0.12); color: var(--teal-deep); display: grid; place-items: center; font-size: 2rem; margin: 0 auto 1.2rem; }
+    .done h2 { font-family: var(--type-serif); font-size: 1.8rem; margin-bottom: 0.6rem; }
+    .done p { color: var(--ink-soft); }
+
+    footer { text-align: center; margin-top: 2.5rem; font-size: 0.84rem; color: var(--ink-soft); }
+    footer a { color: var(--teal-deep); }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <!-- INTRO -->
+    <header id="intro">
+      <p class="kicker">Start here</p>
+      <h1>Three questions, and we'll show you your next step.</h1>
+      <p class="lede">Loads of you are reaching out right now — thank you. This sorts you to the right starting point in 20 seconds, so nobody falls through the cracks.</p>
+      <div class="capacity">
+        <span class="dot" aria-hidden="true"></span>
+        <span>We onboard in <strong>cohorts every two weeks</strong> so everyone we can help gets through the door smoothly. If replies take a few days, that's why — thanks for bearing with us. You're not being ignored; you're in the queue.</span>
+      </div>
+    </header>
+
+    <div class="progress" aria-hidden="true" id="prog">
+      <span class="on"></span><span></span><span></span>
+    </div>
+
+    <!-- Q1 -->
+    <section class="step active" id="q1" aria-labelledby="q1h">
+      <p class="q" id="q1h">Do you have a registered CIC?</p>
+      <p class="q-help">A Community Interest Company that's officially registered at Companies House.</p>
+      <div class="opts">
+        <button class="opt" data-q="1" data-v="yes"><span class="tick">●</span><span><b>Yes</b> — it's registered<small>I have my company number</small></span></button>
+        <button class="opt" data-q="1" data-v="no"><span class="tick">○</span><span><b>Not yet</b> — but I'm ready to set one up<small>Or I have a different/early-stage structure</small></span></button>
+      </div>
+    </section>
+
+    <!-- Q2 -->
+    <section class="step" id="q2" aria-labelledby="q2h">
+      <p class="q" id="q2h">Does your CIC have a business bank account?</p>
+      <p class="q-help">A dedicated account in the CIC's name — the thing grants and donations actually pay into.</p>
+      <div class="opts">
+        <button class="opt" data-q="2" data-v="yes"><span class="tick">●</span><span><b>Yes</b> — account's open<small>Ready to receive funds</small></span></button>
+        <button class="opt" data-q="2" data-v="no"><span class="tick">○</span><span><b>No</b> — or I've been knocked back<small>This is the most common blocker — we have a pathway for it</small></span></button>
+      </div>
+      <button class="back" data-back>← Back</button>
+    </section>
+
+    <!-- Q3 -->
+    <section class="step" id="q3" aria-labelledby="q3h">
+      <p class="q" id="q3h">Are you ready to invest in getting funding-ready?</p>
+      <p class="q-help">No wrong answer — it just changes where we point you first.</p>
+      <div class="opts">
+        <button class="opt" data-q="3" data-v="yes"><span class="tick">●</span><span><b>Yes — let's get moving</b><small>I'm ready to put resource behind this now</small></span></button>
+        <button class="opt" data-q="3" data-v="no"><span class="tick">○</span><span><b>Just exploring for now</b><small>Send me the free stuff and I'll come back</small></span></button>
+      </div>
+      <button class="back" data-back>← Back</button>
+    </section>
+
+    <!-- RESULT -->
+    <section class="step" id="result" aria-live="polite"></section>
+
+    <footer>
+      InclusiFund — we've moved <strong>£1.2M+</strong> to grassroots communities.
+      <a href="https://inclusifund.co.uk/receipts">See the receipts →</a>
+    </footer>
+  </main>
+
+  <script>
+    // ====== CONFIG — swap these when live ======
+    const CFG = {
+      stripeFoundations: "STRIPE_LINK_PLACEHOLDER_FOUNDATIONS_297",  // Foundations £297 Stripe link
+      checklist:  "https://community.inclusifund.co.uk/funding-ready-checklist",
+      toolkit:    "https://tools.inclusifund.co.uk",
+      receipts:   "https://inclusifund.co.uk/receipts",
+      foundations:"https://inclusifund.co.uk/foundations",
+      captureWebhook: "https://modest-goose-991.convex.site/triage-capture",  // Convex PROD → triageLeads → Intake-Concierge (live + verified 2026-06-06)
+      contactEmail: "hello@inclusifund.co.uk"
+    };
+
+    const answers = {};
+    const steps = ["q1","q2","q3"];
+    const prog = document.getElementById("prog").children;
+    let path = ["q1","q2","q3"]; // recomputed after q1
+
+    function show(id) {
+      document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      const idx = path.indexOf(id);
+      [...prog].forEach((p, i) => p.classList.toggle("on", i <= (idx < 0 ? path.length : idx)));
+    }
+
+    document.querySelectorAll(".opt").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const q = btn.dataset.q, v = btn.dataset.v;
+        answers["q" + q] = v;
+        if (q === "1") {
+          // Not-yet CIC skips the bank question
+          path = v === "yes" ? ["q1","q2","q3"] : ["q1","q3"];
+          show(v === "yes" ? "q2" : "q3");
+        } else if (q === "2") {
+          show("q3");
+        } else if (q === "3") {
+          renderResult();
+        }
+      });
+    });
+    document.querySelectorAll("[data-back]").forEach(b => {
+      b.addEventListener("click", () => {
+        const cur = b.closest(".step").id;
+        const i = path.indexOf(cur);
+        show(path[Math.max(0, i - 1)]);
+      });
+    });
+
+    function lane() {
+      const { q1, q2, q3 } = answers;
+      if (q1 === "yes" && q2 === "yes") return "A";          // banked CIC → fast lane
+      if (q1 === "yes" && q2 === "no")  return "B";          // CIC, no bank → Common Standard
+      return "C";                                            // no CIC yet → setup lane
+    }
+
+    const LANES = {
+      A: {
+        cls: "lane-a", badge: "Fast lane",
+        h: "You're ready for the door — let's get you funding-ready.",
+        where: "Registered CIC with a live bank account. You're the furthest along, so you go straight into the next onboarding cohort — no plumbing to fix first.",
+        step: "Join the next cohort. We map the £ you can realistically go for, then build the applications with you.",
+        homework: [
+          "Have your CIC36 / governing document to hand",
+          "Note your last 12 months of activity (even rough numbers)",
+          "List the 2–3 outcomes you're proudest of — that's your evidence base"
+        ],
+        cta: () => `<a class="cta gold" href="${CFG.foundations}">See the cohort options →</a>
+                    <a class="cta-secondary" href="mailto:${CFG.contactEmail}?subject=Fast%20lane%20%E2%80%94%20ready%20for%20the%20next%20cohort">Or email me directly →</a>`
+      },
+      B: {
+        cls: "lane-b", badge: "Common Standard lane",
+        h: "One thing's in the way — and it's the thing we fix best.",
+        where: "You've got the CIC, but no bank account yet. That's the single most common blocker we see, and it's not your fault — the banks make it hard. We have a pathway built for exactly this.",
+        step: "We get you into the Common Standard banking pathway. Once the account's open, every grant and recurring donation can finally land — and you move straight into a cohort.",
+        homework: [
+          "Get your CIC company number + registered address ready",
+          "Have a director's ID + proof of address to hand",
+          "Don't apply to another high-street bank solo first — let's do it together"
+        ],
+        cta: () => `<a class="cta" href="mailto:${CFG.contactEmail}?subject=Common%20Standard%20banking%20pathway%20%E2%80%94%20I%20need%20an%20account">Start the banking pathway →</a>
+                    <a class="cta-secondary" href="${CFG.checklist}">While you wait: grab the free Funding-Ready Checklist →</a>`
+      },
+      C_pay: {
+        cls: "lane-c", badge: "Setup lane",
+        h: "Let's build the structure that unlocks the funding.",
+        where: "No CIC yet — but you're ready to move. The fastest route is to get the structure and the funder-ready foundations in place, so you're not starting from zero when the money's there to go for.",
+        step: "Start with the Foundations Pack — your impact, safeguarding and EDI policies, funder-readable, in 7 working days. It's the groundwork every grant asks for.",
+        homework: [
+          "Decide your CIC's name + one-line purpose",
+          "Note who your beneficiaries are and where",
+          "Think of one person who could be a second director"
+        ],
+        cta: () => `<a class="cta gold" href="${CFG.foundations}">Get funding-ready — Foundations £297 →</a>
+                    <a class="cta-secondary" href="mailto:${CFG.contactEmail}?subject=Setup%20lane%20%E2%80%94%20I%20want%20to%20set%20up%20a%20CIC">Or talk it through with me first →</a>`
+      },
+      C_free: {
+        cls: "lane-c", badge: "Start free",
+        h: "Start free — come back when you're ready.",
+        where: "No CIC yet and just exploring — perfect place to start. Take the free tools, see what's possible, and you'll be in a much stronger spot when you decide to move. No pressure, no clock.",
+        step: "Grab the free Funding-Ready Checklist and the CIC Toolkit (eligibility checker + 177 live funders). When you're ready for the door, you know where we are.",
+        homework: [
+          "Read the Funding-Ready Checklist — it shows what funders look for",
+          "Run your idea through the CIC Toolkit eligibility checker",
+          "Follow along — the next cohort opens in two weeks"
+        ],
+        cta: () => `<a class="cta" href="${CFG.checklist}">Get the free Funding-Ready Checklist →</a>
+                    <a class="cta-secondary" href="${CFG.toolkit}">Explore the CIC Toolkit + 177 funders →</a>`
+      }
+    };
+
+    function renderResult() {
+      const L = lane();
+      let key = L;
+      if (L === "C") key = answers.q3 === "yes" ? "C_pay" : "C_free";
+      const d = LANES[key];
+      const wantCapture = !(key === "C_free"); // free-explorers get the magnet, not a queue slot
+      const el = document.getElementById("result");
+      el.innerHTML = `
+        <div class="result-card">
+          <span class="lane-badge ${d.cls}">${d.badge}</span>
+          <h2>${d.h}</h2>
+          <p class="where">${d.where}</p>
+          <div class="nextstep">
+            <div class="label">Your next step</div>
+            <p>${d.step}</p>
+          </div>
+          <div class="homework">
+            <div class="label">${wantCapture ? "Do this while you wait" : "Start here"}</div>
+            <ul>${d.homework.map(h => `<li>${h}</li>`).join("")}</ul>
+          </div>
+          ${wantCapture ? `
+          <div class="capture">
+            <p class="label">Pop your details in and we'll hold your place in the next cohort:</p>
+            <div class="field"><input id="cName" type="text" placeholder="Your name" autocomplete="name" /></div>
+            <div class="field"><input id="cOrg" type="text" placeholder="Your CIC / project name" /></div>
+            <div class="field"><input id="cEmail" type="email" placeholder="Email" autocomplete="email" /></div>
+          </div>` : ""}
+          ${d.cta()}
+        </div>`;
+      // Capture on CTA click
+      if (wantCapture) {
+        el.querySelectorAll(".cta").forEach(c => c.addEventListener("click", () => capture(key)));
+      }
+      show("result");
+      [...prog].forEach(p => p.classList.add("on"));
+    }
+
+    function capture(laneKey) {
+      const payload = {
+        lane: laneKey,
+        answers,
+        name: (document.getElementById("cName") || {}).value || "",
+        org:  (document.getElementById("cOrg")  || {}).value || "",
+        email:(document.getElementById("cEmail")|| {}).value || "",
+        ts: new Date().toISOString(),
+        source: "tiktok-triage"
+      };
+      // Primary: POST to Convex triage endpoint (→ triageLeads → Intake-Concierge). Fire-and-forget.
+      if (CFG.captureWebhook && !CFG.captureWebhook.includes("PLACEHOLDER")) {
+        try {
+          fetch(CFG.captureWebhook, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+            keepalive: true
+          });
+        } catch (e) { /* non-blocking */ }
+      } else if (payload.email) {
+        // Fallback while webhook isn't wired: email the lead to hello@
+        const body = encodeURIComponent(
+          `New triage lead\n\nLane: ${laneKey}\nName: ${payload.name}\nOrg: ${payload.org}\nEmail: ${payload.email}\nAnswers: ${JSON.stringify(answers)}\nTime: ${payload.ts}`
+        );
+        // open a background mailto without blocking the CTA navigation
+        const a = document.createElement("a");
+        a.href = `mailto:${CFG.contactEmail}?subject=${encodeURIComponent("New triage lead — lane " + laneKey)}&body=${body}`;
+        // do not auto-click (would hijack the CTA); store for ops. Logged to console for now.
+        console.log("[triage lead]", payload);
+      }
+    }
+  </script>
+</body>
+</html>
