@@ -1671,20 +1671,27 @@ section > .wrap > p.lede { max-width: 640px; font-size: 16px; color: var(--fores
 #viral { background: var(--cream-2); }
 .viral-head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
 .viral-head .lede { margin: 12px auto 0; color: var(--forest-2); max-width: 56ch; }
-.viral-rail {
-  display: flex; gap: 18px; overflow-x: auto; padding: 6px 4px 22px;
-  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin; scrollbar-color: var(--forest-3) transparent;
+.viral-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  max-width: 760px; margin: 0 auto;
 }
-.viral-rail::-webkit-scrollbar { height: 8px; }
-.viral-rail::-webkit-scrollbar-thumb { background: var(--forest-3); border-radius: 8px; }
+@media (max-width: 560px) { .viral-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+.viral-card.extra { display: none; }
+.viral-grid.show-all .viral-card.extra { display: block; }
 .viral-card {
-  position: relative; flex: 0 0 auto; width: clamp(168px, 42vw, 230px);
-  aspect-ratio: 9 / 16; border: 0; padding: 0; cursor: pointer;
-  border-radius: var(--radius); overflow: hidden; scroll-snap-align: start;
-  background: var(--poster) center/cover no-repeat, var(--forest);
+  position: relative; width: 100%; border: 0; padding: 0; cursor: pointer;
+  aspect-ratio: 9 / 16; border-radius: var(--radius); overflow: hidden;
+  background-color: var(--forest); background-size: cover; background-position: center; background-repeat: no-repeat;
   box-shadow: var(--shadow-md); transition: transform .25s ease, box-shadow .25s ease;
 }
+.viral-watchall {
+  display: block; margin: 28px auto 0; padding: 12px 26px; cursor: pointer;
+  font: inherit; font-weight: 600; color: var(--cream); background: var(--forest);
+  border: 0; border-radius: 999px; box-shadow: var(--shadow-md);
+  transition: background .2s ease, transform .2s ease;
+}
+.viral-watchall:hover { background: var(--forest-2); transform: translateY(-1px); }
+.viral-watchall[hidden] { display: none; }
 .viral-card::after {
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(10,42,53,0) 45%, rgba(10,42,53,.55) 100%);
