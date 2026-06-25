@@ -1,0 +1,112 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "InclusiFund",
+      "description": "InclusiFund is a UK funding ecosystem focused on grassroots community organisations — specifically CICs (Community Interest Companies), small charities, and community-run businesses that sit below the £1M income threshold where most institutional funding stops looking. We pair grant-matching and application-writing services with building tools (websites, director dashboards, content systems) for the same operators. The worldview is set out at /manifesto; the impact ledger at /receipts. AntiGravity Projects is the build arm (web agency / digital studio) that delivers the technology side.",
+      "url": "https://inclusifund.co.uk",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "InclusiGroup Ltd"
+      },
+      "email": "reece.dunn@inclusifund.co.uk",
+      "areaServed": "United Kingdom",
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Grant-matching for CICs, small charities, and community-run businesses"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Grant application writing"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Website builds (AntiGravity Projects build arm)"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Director dashboards and operational tools"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Content systems"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "CIC toolkit (eligibility, compliance, grant-finder) at tools.inclusifund.co.uk"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI fluency assessment at aiq.inclusifund.co.uk"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Member community at community.inclusifund.co.uk"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is InclusiFund for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "UK grassroots community organisations — CICs (Community Interest Companies), small charities, and community-run businesses, especially those below the £1M income threshold where most institutional funding stops looking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does InclusiFund actually do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We pair grant-matching and application-writing with building the tools those operators need — websites, director dashboards, and content systems. AntiGravity Projects is our build arm that delivers the technology side."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who runs InclusiFund?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "InclusiGroup Ltd is the registered company; InclusiFund is the brand. Founder: Reece Dunn. Contact: reece.dunn@inclusifund.co.uk."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the related InclusiFund surfaces?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "studio.inclusifund.co.uk (portfolio + studio landing pages), aiq.inclusifund.co.uk (AI fluency assessment), community.inclusifund.co.uk (member community), and tools.inclusifund.co.uk (the CIC toolkit)."
+          }
+        }
+      ]
+    }
+  ]
+}

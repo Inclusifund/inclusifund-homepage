@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "last_resolved": "2026-06-25T13:50:44.675953+00:00",
+  "data": {
+    "business_name": "InclusiFund",
+    "parent_company": "InclusiGroup Ltd",
+    "tagline": "Grants, tools, and a community for people building CICs, charities, and community-run businesses in the UK. Built neurodiverse-first.",
+    "positioning": "InclusiFund is a UK funding ecosystem focused on grassroots community organisations — specifically CICs (Community Interest Companies), small charities, and community-run businesses that sit below the £1M income threshold where most institutional funding stops looking. We pair grant-matching and application-writing services with building tools (websites, director dashboards, content systems) for the same operators. The worldview is set out at /manifesto; the impact ledger at /receipts. AntiGravity Projects is the build arm (web agency / digital studio) that delivers the technology side.",
+    "founded_year": null,
+    "address": "",
+    "phone": "",
+    "email": "reece.dunn@inclusifund.co.uk",
+    "service_area": "United Kingdom",
+    "hours": "",
+    "services": [
+      "Grant-matching for CICs, small charities, and community-run businesses",
+      "Grant application writing",
+      "Website builds (AntiGravity Projects build arm)",
+      "Director dashboards and operational tools",
+      "Content systems",
+      "CIC toolkit (eligibility, compliance, grant-finder) at tools.inclusifund.co.uk",
+      "AI fluency assessment at aiq.inclusifund.co.uk",
+      "Member community at community.inclusifund.co.uk"
+    ],
+    "pricing_model": "Free community and tools; grant-writing and web/technology builds delivered as paid services.",
+    "traction": [],
+    "awards": [],
+    "testimonials": [],
+    "website": "https://inclusifund.co.uk",
+    "socials": {},
+    "faqs": [
+      {
+        "q": "Who is InclusiFund for?",
+        "a": "UK grassroots community organisations — CICs (Community Interest Companies), small charities, and community-run businesses, especially those below the £1M income threshold where most institutional funding stops looking."
+      },
+      {
+        "q": "What does InclusiFund actually do?",
+        "a": "We pair grant-matching and application-writing with building the tools those operators need — websites, director dashboards, and content systems. AntiGravity Projects is our build arm that delivers the technology side."
+      },
+      {
+        "q": "Who runs InclusiFund?",
+        "a": "InclusiGroup Ltd is the registered company; InclusiFund is the brand. Founder: Reece Dunn. Contact: reece.dunn@inclusifund.co.uk."
+      },
+      {
+        "q": "What are the related InclusiFund surfaces?",
+        "a": "studio.inclusifund.co.uk (portfolio + studio landing pages), aiq.inclusifund.co.uk (AI fluency assessment), community.inclusifund.co.uk (member community), and tools.inclusifund.co.uk (the CIC toolkit)."
+      }
+    ]
+  },
+  "sources": {
+    "business_name": {
+      "tier": 1,
+      "source": "manual:operator-supplied (apex llms.txt 2026-06-25)"
+    },
+    "parent_company": {
+      "tier": 1,
+      "source": "manual:feedback_brand_name.md"
+    },
+    "tagline": {
+      "tier": 1,
+      "source": "manual:apex llms.txt 2026-06-25"
+    },
+    "positioning": {
+      "tier": 1,
+      "source": "manual:apex llms.txt 2026-06-25"
+    },
+    "email": {
+      "tier": 1,
+      "source": "manual:apex llms.txt 2026-06-25"
+    },
+    "service_area": {
+      "tier": 1,
+      "source": "manual:operator-supplied"
+    },
+    "services": {
+      "tier": 1,
+      "source": "manual:apex llms.txt 2026-06-25"
+    },
+    "pricing_model": {
+      "tier": 1,
+      "source": "manual:operator-supplied"
+    },
+    "website": {
+      "tier": 1,
+      "source": "manual:apex llms.txt 2026-06-25"
+    },
+    "faqs": {
+      "tier": 1,
+      "source": "manual:derived from apex llms.txt + manifesto"
+    }
+  },
+  "gaps": [
+    "founded_year",
+    "address",
+    "phone",
+    "hours",
+    "traction",
+    "awards",
+    "testimonials",
+    "socials"
+  ]
+}
