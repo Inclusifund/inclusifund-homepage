@@ -1440,8 +1440,66 @@
     });
     mount.addEventListener("mouseleave", () => { card.style.transform = ""; });
 
+    // Capture endpoint (CRM triage lane). Origin must be in ALLOWED_ORIGINS server-side.
+    const SPARK_ENDPOINT = "https://energetic-loris-267.eu-west-1.convex.site/triage-capture";
+    const FALLBACK_EMAIL = "reece.dunn@inclusifund.co.uk";
+
+    // Signup previously animated and discarded the details. Anything that stops
+    // the lead reaching the CRM must surface a way to reach us, never a silent success.
+    function sparkFallback(payload) {
+      const note = $("#spark-fallback") || (() => {
+        const el = document.createElement("div");
+        el.id = "spark-fallback";
+        el.className = "spark-caption";
+        el.setAttribute("role", "alert");
+        el.style.marginTop = "10px";
+        form.appendChild(el);
+        return el;
+      })();
+      const subject = encodeURIComponent("Spark signup — " + (payload.org || payload.name || "new"));
+      const body = encodeURIComponent(
+        "Name: " + (payload.name || "") + "\nProject: " + (payload.org || "") + "\nEmail: " + (payload.email || "")
+      );
+      note.innerHTML =
+        "We couldn't save that from your browser. " +
+        '<a href="mailto:' + FALLBACK_EMAIL + "?subject=" + subject + "&body=" + body + '">Send it to us directly →</a>';
+    }
+
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
+      // Form carries novalidate, so the required attribute never fires. Check here.
+      const addr = email.value.trim();
+      if (!addr || !email.checkValidity()) {
+        email.focus();
+        email.setAttribute("aria-invalid", "true");
+        email.style.borderColor = "#ff3c10";
+        return;
+      }
+      email.removeAttribute("aria-invalid");
+      email.style.borderColor = "";
+
+      const payload = {
+        lane: "spark",
+        source: "apex-spark",
+        name: name.value.trim() || undefined,
+        org: proj.value.trim() || undefined,
+        email: addr,
+        answers: { project: proj.value.trim() || null, page: location.pathname },
+      };
+
+      const existing = $("#spark-fallback");
+      if (existing) existing.remove();
+
+      fetch(SPARK_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+        .then((r) => r.json().catch(() => ({ ok: r.ok })))
+        .then((res) => { if (!res || res.ok !== true) sparkFallback(payload); })
+        .catch(() => sparkFallback(payload));
+
       // Animate card flying up
       card.animate([
         { transform: "translateY(0) scale(1)", opacity: 1 },
