@@ -160,7 +160,7 @@
     <!-- INTRO -->
     <header id="intro">
       <p class="kicker">Start here</p>
-      <h1>Three questions, and we'll show you your next step.</h1>
+      <h1>Four quick questions, and we'll show you your next step.</h1>
       <p class="lede">Loads of you are reaching out right now — thank you. This sorts you to the right starting point in 20 seconds, so nobody falls through the cracks.</p>
       <div class="capacity">
         <span class="dot" aria-hidden="true"></span>
@@ -169,17 +169,28 @@
     </header>
 
     <div class="progress" aria-hidden="true" id="prog">
-      <span class="on"></span><span></span><span></span>
+      <span class="on"></span><span></span><span></span><span></span>
     </div>
 
+    <!-- Q0 -->
+    <section class="step active" id="q0" aria-labelledby="q0h">
+      <p class="q" id="q0h">Do you run a business or project?</p>
+      <p class="q-help">Anything you've started — selling, serving, or running something for your community.</p>
+      <div class="opts">
+        <button class="opt" data-q="0" data-v="yes"><span class="tick">●</span><span><b>Yes</b> — it's up and running<small>I have customers, clients or people I serve</small></span></button>
+        <button class="opt" data-q="0" data-v="no"><span class="tick">○</span><span><b>Not yet</b> — it's an idea<small>I'm still working it out</small></span></button>
+      </div>
+    </section>
+
     <!-- Q1 -->
-    <section class="step active" id="q1" aria-labelledby="q1h">
+    <section class="step" id="q1" aria-labelledby="q1h">
       <p class="q" id="q1h">Do you have a registered CIC?</p>
       <p class="q-help">A Community Interest Company that's officially registered at Companies House.</p>
       <div class="opts">
         <button class="opt" data-q="1" data-v="yes"><span class="tick">●</span><span><b>Yes</b> — it's registered<small>I have my company number</small></span></button>
         <button class="opt" data-q="1" data-v="no"><span class="tick">○</span><span><b>Not yet</b> — but I'm ready to set one up<small>Or I have a different/early-stage structure</small></span></button>
       </div>
+      <button class="back" data-back>← Back</button>
     </section>
 
     <!-- Q2 -->
@@ -195,7 +206,7 @@
 
     <!-- Q3 -->
     <section class="step" id="q3" aria-labelledby="q3h">
-      <p class="q" id="q3h">Are you ready to invest in getting funding-ready?</p>
+      <p class="q" id="q3h">Are you ready to invest in taking this further?</p>
       <p class="q-help">No wrong answer — it just changes where we point you first.</p>
       <div class="opts">
         <button class="opt" data-q="3" data-v="yes"><span class="tick">●</span><span><b>Yes — let's get moving</b><small>I'm ready to put resource behind this now</small></span></button>
@@ -227,9 +238,10 @@
     };
 
     const answers = {};
-    const steps = ["q1","q2","q3"];
+    // Per-live tag, e.g. /start?src=live-am, so each slot's lanes can be counted.
+    const SRC = (new URLSearchParams(location.search).get("src") || "").toLowerCase().replace(/[^a-z0-9-]/g, "").slice(0, 30);
     const prog = document.getElementById("prog").children;
-    let path = ["q1","q2","q3"]; // recomputed after q1
+    let path = ["q0","q1","q2","q3"]; // recomputed after q0 and q1
 
     function show(id) {
       document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
@@ -243,9 +255,15 @@
       btn.addEventListener("click", () => {
         const q = btn.dataset.q, v = btn.dataset.v;
         answers["q" + q] = v;
-        if (q === "1") {
+        if (q === "0") {
+          // Idea-stage skips the CIC and bank questions (lane C either way)
+          if (v === "no") { delete answers.q1; delete answers.q2; }
+          path = v === "yes" ? ["q0","q1","q2","q3"] : ["q0","q3"];
+          show(v === "yes" ? "q1" : "q3");
+        } else if (q === "1") {
           // Not-yet CIC skips the bank question
-          path = v === "yes" ? ["q1","q2","q3"] : ["q1","q3"];
+          if (v === "no") delete answers.q2;
+          path = v === "yes" ? ["q0","q1","q2","q3"] : ["q0","q1","q3"];
           show(v === "yes" ? "q2" : "q3");
         } else if (q === "2") {
           show("q3");
@@ -375,7 +393,7 @@
         email: val("cEmail"),
         phone: val("cPhone"),
         ts: new Date().toISOString(),
-        source: "tiktok-triage"
+        source: SRC || "tiktok-triage"
       };
     }
 
