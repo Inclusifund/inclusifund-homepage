@@ -1441,7 +1441,7 @@
     mount.addEventListener("mouseleave", () => { card.style.transform = ""; });
 
     // Capture endpoint (CRM triage lane). Origin must be in ALLOWED_ORIGINS server-side.
-    const SPARK_ENDPOINT = "https://energetic-loris-267.eu-west-1.convex.site/triage-capture";
+    const SPARK_ENDPOINT = "https://modest-goose-991.convex.site/triage-capture";
     const FALLBACK_EMAIL = "reece.dunn@inclusifund.co.uk";
 
     // Signup previously animated and discarded the details. Anything that stops

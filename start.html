@@ -133,6 +133,18 @@
     .cta.ghost { background: #fff; color: var(--teal-deep); border: 1.5px solid rgba(15,139,141,0.3); box-shadow: none; }
     .cta-secondary { display: block; text-align: center; margin-top: 0.9rem; color: var(--ink-soft); font-size: 0.92rem; text-decoration: none; }
     .cta-secondary:hover { color: var(--ink); }
+    button.cta { border: 0; cursor: pointer; font: inherit; width: 100%; }
+    .field textarea { width: 100%; min-height: 110px; padding: 0.85rem 1rem; border-radius: 12px; border: 1.5px solid rgba(10,42,53,0.15); font: inherit; resize: vertical; }
+    .field textarea:focus { outline: none; border-color: var(--teal); }
+    .form-err { color: #b3261e; font-size: 0.9rem; margin: 0 0 0.8rem; }
+    .bizq { margin: 0 0 1.2rem; }
+    .bizq > p { font-weight: 600; margin: 0 0 0.5rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .chip { font: inherit; font-size: 0.92rem; padding: 0.5rem 0.9rem; border-radius: 999px; border: 1.5px solid rgba(15,139,141,0.3); background: #fff; color: var(--ink); cursor: pointer; }
+    .chip[aria-pressed="true"] { background: var(--teal); border-color: var(--teal); color: #fff; }
+    .chip:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 2px; }
+    .office { text-align: center; padding: 1.4rem 0 0.4rem; }
+    .office .big { font-size: 1.7rem; font-weight: 700; letter-spacing: 0.02em; margin: 0.3rem 0 1rem; }
 
     .done { text-align: center; padding: 1rem 0; }
     .done .check { width: 64px; height: 64px; border-radius: 50%; background: rgba(15,139,141,0.12); color: var(--teal-deep); display: grid; place-items: center; font-size: 2rem; margin: 0 auto 1.2rem; }
@@ -210,7 +222,8 @@
       receipts:   "https://inclusifund.co.uk/receipts",
       foundations:"https://inclusifund.co.uk/foundations",
       captureWebhook: "https://modest-goose-991.convex.site/triage-capture",  // Convex PROD → triageLeads → Intake-Concierge (live + verified 2026-06-06)
-      contactEmail: "team@inclusifund.co.uk"
+      contactEmail: "team@inclusifund.co.uk",
+      officePhone: "0330 054 5828"
     };
 
     const answers = {};
@@ -316,7 +329,6 @@
       let key = L;
       if (L === "C") key = answers.q3 === "yes" ? "C_pay" : "C_free";
       const d = LANES[key];
-      const wantCapture = !(key === "C_free"); // free-explorers get the magnet, not a queue slot
       const el = document.getElementById("result");
       el.innerHTML = `
         <div class="result-card">
@@ -328,57 +340,169 @@
             <p>${d.step}</p>
           </div>
           <div class="homework">
-            <div class="label">${wantCapture ? "Do this while you wait" : "Start here"}</div>
+            <div class="label">${key === "C_free" ? "Start here" : "Do this while you wait"}</div>
             <ul>${d.homework.map(h => `<li>${h}</li>`).join("")}</ul>
           </div>
-          ${wantCapture ? `
-          <div class="capture">
+          <div class="capture" id="captureBox">
             <p class="label">Pop your details in and we'll hold your place in the next cohort:</p>
             <div class="field"><input id="cName" type="text" placeholder="Your name" autocomplete="name" /></div>
-            <div class="field"><input id="cOrg" type="text" placeholder="Your CIC / project name" /></div>
+            <div class="field"><input id="cOrg" type="text" placeholder="${key.startsWith("C") ? "Your business / project name" : "Your CIC / project name"}" /></div>
             <div class="field"><input id="cEmail" type="email" placeholder="Email" autocomplete="email" /></div>
-          </div>` : ""}
-          ${d.cta()}
+            <div class="field"><input id="cPhone" type="tel" placeholder="Mobile number (so we can give you a call)" autocomplete="tel" inputmode="tel" /></div>
+            <p class="form-err" id="cErr" role="alert" hidden></p>
+            <button class="cta" id="cSend" type="button">Send my details →</button>
+          </div>
+          <div id="afterBox"></div>
+          <div id="laneCtas">${d.cta()}</div>
         </div>`;
-      // Capture on CTA click
-      if (wantCapture) {
-        el.querySelectorAll(".cta").forEach(c => c.addEventListener("click", () => capture(key)));
-      }
+      // Clicking a lane CTA without sending details still logs the lane (anonymous funnel count).
+      el.querySelectorAll("#laneCtas .cta").forEach(c => c.addEventListener("click", () => { if (!sent) post(key, payloadFor(key)); }));
+      document.getElementById("cSend").addEventListener("click", () => submitDetails(key));
       show("result");
       [...prog].forEach(p => p.classList.add("on"));
     }
 
-    function capture(laneKey) {
-      const payload = {
+    let sent = false;
+    const val = id => ((document.getElementById(id) || {}).value || "").trim();
+    const esc = t => t.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+    function payloadFor(laneKey, extra) {
+      return {
         lane: laneKey,
-        answers,
-        name: (document.getElementById("cName") || {}).value || "",
-        org:  (document.getElementById("cOrg")  || {}).value || "",
-        email:(document.getElementById("cEmail")|| {}).value || "",
+        answers: Object.assign({}, answers, extra || {}),
+        name: val("cName"),
+        org: val("cOrg"),
+        email: val("cEmail"),
+        phone: val("cPhone"),
         ts: new Date().toISOString(),
         source: "tiktok-triage"
       };
-      // Primary: POST to Convex triage endpoint (→ triageLeads → Intake-Concierge). Fire-and-forget.
-      if (CFG.captureWebhook && !CFG.captureWebhook.includes("PLACEHOLDER")) {
-        try {
-          fetch(CFG.captureWebhook, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-            keepalive: true
-          });
-        } catch (e) { /* non-blocking */ }
-      } else if (payload.email) {
-        // Fallback while webhook isn't wired: email the lead to hello@
-        const body = encodeURIComponent(
-          `New triage lead\n\nLane: ${laneKey}\nName: ${payload.name}\nOrg: ${payload.org}\nEmail: ${payload.email}\nAnswers: ${JSON.stringify(answers)}\nTime: ${payload.ts}`
-        );
-        // open a background mailto without blocking the CTA navigation
-        const a = document.createElement("a");
-        a.href = `mailto:${CFG.contactEmail}?subject=${encodeURIComponent("New triage lead — lane " + laneKey)}&body=${body}`;
-        // do not auto-click (would hijack the CTA); store for ops. Logged to console for now.
-        console.log("[triage lead]", payload);
+    }
+
+    // Resolves true only when the CRM confirmed the save.
+    async function post(laneKey, payload) {
+      try {
+        const r = await fetch(CFG.captureWebhook, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+          keepalive: true
+        });
+        return r.ok;
+      } catch (e) {
+        return false;
       }
+    }
+
+    // A failed save must never look like a success — hand them a way to reach us.
+    function fallbackNote(laneKey, payload) {
+      const body = encodeURIComponent(
+        `New triage lead\n\nLane: ${laneKey}\nName: ${payload.name}\nOrg: ${payload.org}\nEmail: ${payload.email}\nPhone: ${payload.phone}\nAnswers: ${JSON.stringify(payload.answers)}`
+      );
+      return `<p class="form-err">We couldn't save that from your browser. <a href="mailto:${CFG.contactEmail}?subject=${encodeURIComponent("Triage lead — lane " + laneKey)}&body=${body}">Send it to us directly →</a></p>`;
+    }
+
+    async function submitDetails(laneKey) {
+      const err = document.getElementById("cErr");
+      const email = document.getElementById("cEmail");
+      if (!val("cName") || !val("cEmail") || !email.checkValidity()) {
+        err.textContent = "Please add your name and a valid email so we can reach you.";
+        err.hidden = false;
+        (val("cName") ? email : document.getElementById("cName")).focus();
+        return;
+      }
+      err.hidden = true;
+      const btn = document.getElementById("cSend");
+      btn.disabled = true;
+      btn.textContent = "Sending…";
+      const payload = payloadFor(laneKey);
+      const ok = await post(laneKey, payload);
+      sent = true;
+      document.getElementById("captureBox").hidden = true;
+      const after = document.getElementById("afterBox");
+      const note = ok ? "" : fallbackNote(laneKey, payload);
+      if (laneKey === "A" || laneKey === "B") {
+        after.innerHTML = officeCard(payload, laneKey) + note;
+      } else {
+        document.getElementById("laneCtas").hidden = true;
+        after.innerHTML = note + bizForm();
+        wireBizForm(laneKey);
+      }
+      after.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function officeCard(p, laneKey) {
+      const tel = "+44" + CFG.officePhone.replace(/\s/g, "").replace(/^0/, "");
+      const first = esc(p.name.split(" ")[0]);
+      const callback = p.phone
+        ? `If you can't get through, we'll ring you back on <b>${esc(p.phone)}</b>.`
+        : `If you can't get through, we'll email you at <b>${esc(p.email)}</b>.`;
+      return `<div class="nextstep office">
+          <div class="label">Got it, ${first} — want to skip the queue?</div>
+          <p>${laneKey === "A" ? "You're in good shape, so let's talk." : "The bank account is the part we sort fastest on a call."} Ring the office now:</p>
+          <p class="big">${CFG.officePhone}</p>
+          <a class="cta gold" href="tel:${tel}">Call the office →</a>
+          <p class="q-help" style="margin-top:0.9rem">${callback}</p>
+        </div>`;
+    }
+
+    const BIZ_QS = [
+      { k: "biz_offer", q: "What do you offer?", o: ["A product", "A service", "Both", "Still working it out"] },
+      { k: "biz_sold", q: "Have you already sold it or delivered it to anyone?", o: ["Yes", "Not yet"] },
+      { k: "biz_reach", q: "Roughly how many people so far?", o: ["1–10", "11–50", "51–200", "200+"], showIf: a => a.biz_sold === "Yes" },
+      { k: "biz_marketing", q: "Would help with marketing be useful right now?", o: ["Yes", "No", "Not sure"] }
+    ];
+
+    function bizForm() {
+      return `<div class="nextstep" id="bizBox">
+          <div class="label">Two more minutes — tell us what you're building</div>
+          <p>We read every one. It's how we work out the best way to help you.</p>
+          ${BIZ_QS.map(b => `<div class="bizq" data-k="${b.k}"${b.showIf ? " hidden" : ""}>
+              <p>${b.q}</p>
+              <div class="chips">${b.o.map(o => `<button type="button" class="chip" aria-pressed="false" data-v="${o}">${o}</button>`).join("")}</div>
+            </div>`).join("")}
+          <div class="bizq">
+            <p>Your business model, in a few lines</p>
+            <div class="field"><textarea id="bizModel" maxlength="600" placeholder="Who pays you, for what, and roughly how much?"></textarea></div>
+          </div>
+          <button class="cta" id="bizSend" type="button">Send →</button>
+          <a class="cta-secondary" href="#" id="bizSkip">Skip for now</a>
+        </div>`;
+    }
+
+    function wireBizForm(laneKey) {
+      const biz = {};
+      document.querySelectorAll("#bizBox .bizq[data-k]").forEach(group => {
+        group.querySelectorAll(".chip").forEach(chip => chip.addEventListener("click", () => {
+          group.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c === chip)));
+          biz[group.dataset.k] = chip.dataset.v;
+          BIZ_QS.filter(b => b.showIf).forEach(b => {
+            const g = document.querySelector(`#bizBox .bizq[data-k="${b.k}"]`);
+            g.hidden = !b.showIf(biz);
+            if (g.hidden) delete biz[b.k];
+          });
+        }));
+      });
+      document.getElementById("bizSend").addEventListener("click", async () => {
+        const btn = document.getElementById("bizSend");
+        btn.disabled = true;
+        btn.textContent = "Sending…";
+        const model = val("bizModel");
+        // Same email + lane on the same day patches the row we already saved.
+        const payload = payloadFor(laneKey, Object.assign({}, biz, model ? { biz_model: model } : {}));
+        const ok = await post(laneKey, payload);
+        finishC(ok ? "" : fallbackNote(laneKey, payload));
+      });
+      document.getElementById("bizSkip").addEventListener("click", e => { e.preventDefault(); finishC(""); });
+    }
+
+    function finishC(note) {
+      const first = esc(val("cName").split(" ")[0]);
+      document.getElementById("afterBox").innerHTML = note + `<div class="nextstep">
+          <div class="label">Thanks, ${first} — you're in</div>
+          <p>We read every one of these. If it looks like a fit, we'll be in touch.</p>
+        </div>`;
+      document.getElementById("laneCtas").hidden = false;
     }
   </script>
 </body>
